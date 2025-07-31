@@ -66,7 +66,7 @@ const process = [
 
 const faqs = [
   {
-    question: 'What if my insurance isn\'t listed?',
+    question: 'What if my insurance isn&apos;t listed?',
     answer: 'We regularly add new insurance providers. Contact us to verify if we accept your plan or to discuss private pay options.',
   },
   {
@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     question: 'What are typical out-of-pocket costs?',
-    answer: 'Costs depend on your specific plan\'s deductible, copays, and out-of-pocket maximums. We\'ll explain your benefits clearly.',
+    answer: 'Costs depend on your specific plan&apos;s deductible, copays, and out-of-pocket maximums. We&apos;ll explain your benefits clearly.',
   },
   {
     question: 'Do you offer payment plans?',
@@ -98,7 +98,7 @@ export default function InsurancePage() {
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 We work with most major insurance providers to ensure ABA therapy is 
                 accessible and affordable for your family. Our team handles the insurance 
-                process so you can focus on your child's progress.
+                process so you can focus on your child&apos;s progress.
               </p>
             </ScrollReveal>
           </div>
@@ -112,14 +112,14 @@ export default function InsurancePage() {
                 Accepted Insurance Providers
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We're in-network with major insurance companies serving South Florida.
+                We&apos;re in-network with major insurance companies serving South Florida.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
               <div className="max-w-4xl mx-auto">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {acceptedInsurance.map((provider, index) => (
+                  {acceptedInsurance.map((provider) => (
                     <div
                       key={provider}
                       className="bg-white rounded-xl p-4 text-center shadow-sm border border-border"
@@ -134,7 +134,7 @@ export default function InsurancePage() {
                   <div className="flex items-start gap-3">
                     <IconAlertCircle size={24} className="text-info-foreground flex-shrink-0" />
                     <div>
-                      <p className="font-semibold mb-1">Don't see your insurance?</p>
+                      <p className="font-semibold mb-1">Don&apos;t see your insurance?</p>
                       <p className="text-sm text-muted-foreground">
                         This list is not exhaustive. Please contact us to verify coverage with your specific plan.
                       </p>
@@ -151,7 +151,7 @@ export default function InsurancePage() {
           <div className="container">
             <ScrollReveal className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
-                What's Typically Covered
+                What&apos;s Typically Covered
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Most insurance plans cover comprehensive ABA therapy services.
@@ -186,7 +186,7 @@ export default function InsurancePage() {
                 Our Insurance Process
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We handle the complexities so you don't have to.
+                We handle the complexities so you don&apos;t have to.
               </p>
             </ScrollReveal>
 
@@ -229,7 +229,7 @@ export default function InsurancePage() {
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
                   Our dedicated insurance team works tirelessly to maximize your benefits 
-                  and minimize your stress. Here's what we handle for you:
+                  and minimize your stress. Here&apos;s what we handle for you:
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">

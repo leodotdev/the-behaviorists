@@ -86,7 +86,7 @@ export default function Pricing() {
             Empower Wellness with The Perfect Plan
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Choose the plan that best fits your family's needs. All plans include 
+            Choose the plan that best fits your family&apos;s needs. All plans include 
             our evidence-based ABA therapy delivered by certified professionals.
           </p>
         </ScrollReveal>

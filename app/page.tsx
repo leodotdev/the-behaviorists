@@ -40,7 +40,7 @@ export default function Home() {
       source: "Indeed",
       location: "Miami, FL",
       rating: 5,
-      text: "The behaviorist offers great training to make sure we're doing our best. We work together with BCBAs. The Behaviorist also cares about our growth, giving us chances to learn more and move up. The best part is seeing how our work makes a real difference in the kids' lives.",
+      text: "The behaviorist offers great training to make sure we&apos;re doing our best. We work together with BCBAs. The Behaviorist also cares about our growth, giving us chances to learn more and move up. The best part is seeing how our work makes a real difference in the kids&apos; lives.",
     },
     {
       name: "Registered Behavior Technician",
@@ -48,7 +48,7 @@ export default function Home() {
       source: "Indeed",
       location: "Doral",
       rating: 5,
-      text: "This is my first ABA job and I can easily say I'd never leave. The team is extremely supportive and always at arms reach when needed. I can easily contact my boss without an issue. I feel comfortable talking to them and their extremely flexible and understanding. Love this place so much.",
+      text: "This is my first ABA job and I can easily say I&apos;d never leave. The team is extremely supportive and always at arms reach when needed. I can easily contact my boss without an issue. I feel comfortable talking to them and their extremely flexible and understanding. Love this place so much.",
     },
     {
       name: "Crystal Upegui",
@@ -93,7 +93,7 @@ export default function Home() {
   const slides = [
     {
       image: "/images/ig-0.jpg",
-      title: "It's not just about behavior.",
+      title: "It&apos;s not just about behavior.",
       filter: "contrast(1.1) brightness(1.05)",
     },
     {
@@ -139,18 +139,6 @@ export default function Home() {
     }
   }, [reviews.length, reviewsAutoplayPaused]);
 
-  const handleSwipe = (direction: number) => {
-    if (direction > 0) {
-      // Swiped right - go to previous slide
-      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    } else {
-      // Swiped left - go to next slide
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }
-    // Pause autoplay for a bit after manual swipe
-    setAutoplayPaused(true);
-    setTimeout(() => setAutoplayPaused(false), slideDuration * 2);
-  };
   return (
     <>
       <main className="min-h-screen bg-white">
@@ -738,7 +726,7 @@ export default function Home() {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-zinc-700 mb-1">
-                          Child's Name
+                          Child&apos;s Name
                         </label>
                         <input
                           type="text"
@@ -747,7 +735,7 @@ export default function Home() {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-zinc-700 mb-1">
-                          Parent/Caregiver's Name
+                          Parent/Caregiver&apos;s Name
                         </label>
                         <input
                           type="text"
@@ -759,7 +747,7 @@ export default function Home() {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-zinc-700 mb-1">
-                          Child's Date of Birth
+                          Child&apos;s Date of Birth
                         </label>
                         <input
                           type="date"
@@ -780,7 +768,7 @@ export default function Home() {
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-medium text-zinc-700 mb-1">
-                          Child's Diagnosis
+                          Child&apos;s Diagnosis
                         </label>
                         <input
                           type="text"
@@ -826,7 +814,7 @@ export default function Home() {
                         Submit
                       </button>
                       <p className="text-center text-sm text-zinc-500 mt-3">
-                        We'll call you within 24 hours
+                        We&apos;ll call you within 24 hours
                       </p>
                     </div>
                   </form>
@@ -871,8 +859,8 @@ export default function Home() {
                         1. Introduction
                       </h3>
                       <p className="text-zinc-600 leading-relaxed">
-                        Welcome to The Behaviorists ("Company," "we," "our,"
-                        "us"). We are committed to protecting your privacy. This
+                        Welcome to The Behaviorists (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot;
+                        &quot;us&quot;). We are committed to protecting your privacy. This
                         Privacy Policy explains how we collect, use, disclose,
                         and safeguard your information when you visit our
                         website hello@the-behaviorists.com.
@@ -1004,7 +992,7 @@ export default function Home() {
 
                     <section className="mb-6">
                       <h3 className="text-lg font-semibold mb-3">
-                        8. Children's Privacy
+                        8. Children&apos;s Privacy
                       </h3>
                       <p className="text-zinc-600">
                         We do not knowingly collect personal information from
@@ -1100,8 +1088,8 @@ export default function Home() {
                         1. Introduction
                       </h3>
                       <p className="text-zinc-600 leading-relaxed">
-                        Welcome to The Behaviorists ("Company," "we," "our,"
-                        "us"). By accessing or using our website
+                        Welcome to The Behaviorists (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot;
+                        &quot;us&quot;). By accessing or using our website
                         the-behaviorists.com, you agree to comply with and be
                         bound by these Terms and Conditions. If you do not
                         agree, please do not use our website.

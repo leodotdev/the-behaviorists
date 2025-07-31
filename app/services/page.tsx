@@ -9,7 +9,7 @@ const serviceDetails = [
     id: 'home',
     icon: IconHome,
     title: 'Home-Based ABA Therapy',
-    description: 'Our home-based services bring evidence-based therapy directly to your family\'s natural environment.',
+    description: 'Our home-based services bring evidence-based therapy directly to your family&apos;s natural environment.',
     features: [
       'Comfortable, familiar setting for your child',
       'Direct parent training and involvement',
@@ -75,7 +75,7 @@ export default function ServicesPage() {
                 Comprehensive <span className="text-gradient">ABA Services</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                We offer flexible service delivery options to meet your family\'s unique needs. 
+                We offer flexible service delivery options to meet your family&apos;s unique needs. 
                 Our board-certified professionals provide evidence-based ABA therapy in the 
                 setting that works best for your child.
               </p>

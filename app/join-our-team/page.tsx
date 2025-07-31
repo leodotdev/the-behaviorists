@@ -1,7 +1,7 @@
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
 import ScrollReveal from '@/components/ui/scroll-reveal';
-import { IconHeart, IconTrophy, IconUsers, IconSparkles, IconBriefcase, IconGrowth, IconCalendarEvent, IconShieldCheck } from '@tabler/icons-react';
+import { IconHeart, IconTrophy, IconUsers, IconSparkles, IconGrowth, IconCalendarEvent, IconShieldCheck } from '@tabler/icons-react';
 
 const benefits = [
   {
@@ -89,7 +89,7 @@ export default function JoinOurTeamPage() {
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 Join a passionate team dedicated to transforming lives through 
-                evidence-based ABA therapy. We're looking for compassionate professionals 
+                evidence-based ABA therapy. We&apos;re looking for compassionate professionals 
                 who share our commitment to excellence.
               </p>
             </ScrollReveal>
@@ -140,7 +140,7 @@ export default function JoinOurTeamPage() {
                 <p className="text-lg text-muted-foreground mb-8">
                   At The Behaviorists, we foster an environment where every team member 
                   can thrive professionally and personally. Our collaborative approach 
-                  ensures you're never alone in your journey.
+                  ensures you&apos;re never alone in your journey.
                 </p>
                 
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -179,7 +179,7 @@ export default function JoinOurTeamPage() {
                 Current Opportunities
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We're always looking for talented individuals to join our growing team.
+                We&apos;re always looking for talented individuals to join our growing team.
               </p>
             </ScrollReveal>
 
@@ -234,7 +234,7 @@ export default function JoinOurTeamPage() {
                 </h2>
                 <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
                   Take the first step toward a rewarding career where you can make 
-                  a real difference in children\'s lives every day.
+                  a real difference in children&apos;s lives every day.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a

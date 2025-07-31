@@ -1,7 +1,7 @@
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
 import ScrollReveal from '@/components/ui/scroll-reveal';
-import { IconHeart, IconBrain, IconChartLine, IconUsers, IconAward, IconCalendar, IconTarget, IconHandshake } from '@tabler/icons-react';
+import { IconHeart, IconBrain, IconChartLine, IconUsers, IconAward, IconCalendar, IconTarget, IconHeartHandshake } from '@tabler/icons-react';
 
 const milestones = [
   {
@@ -56,7 +56,7 @@ const coreValues = [
     description: 'We maintain the highest standards in our therapy services and continuously improve our practices.',
   },
   {
-    icon: IconHandshake,
+    icon: IconHeartHandshake,
     title: 'Collaboration',
     description: 'We work closely with families, schools, and healthcare providers for comprehensive care.',
   },

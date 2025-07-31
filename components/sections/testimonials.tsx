@@ -9,14 +9,14 @@ const testimonials = [
     name: 'Sarah Johnson',
     role: 'Parent',
     image: '/images/ig-1.jpg',
-    content: 'The Behaviorists has been a blessing for our family. Our son has made incredible progress in just 6 months. The therapists are patient, knowledgeable, and truly care about our child\'s success.',
+    content: 'The Behaviorists has been a blessing for our family. Our son has made incredible progress in just 6 months. The therapists are patient, knowledgeable, and truly care about our child&apos;s success.',
     rating: 5,
   },
   {
     name: 'Michael Chen',
     role: 'Parent',
     image: '/images/ig-2.jpg',
-    content: 'The home-based therapy has been perfect for our daughter. She\'s more comfortable learning in familiar surroundings, and we\'ve learned so much about how to support her development.',
+    content: 'The home-based therapy has been perfect for our daughter. She&apos;s more comfortable learning in familiar surroundings, and we&apos;ve learned so much about how to support her development.',
     rating: 5,
   },
   {
@@ -70,7 +70,7 @@ export default function Testimonials() {
                 {/* Quote */}
                 <blockquote className="flex-1 mb-8">
                   <p className="text-muted-foreground leading-relaxed italic">
-                    "{testimonial.content}"
+                    &quot;{testimonial.content}&quot;
                   </p>
                 </blockquote>
 

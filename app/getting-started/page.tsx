@@ -7,9 +7,9 @@ const steps = [
   {
     icon: IconPhone,
     title: 'Initial Phone Interview',
-    description: 'We start with a brief phone conversation to understand your child\'s needs and answer your questions.',
+    description: 'We start with a brief phone conversation to understand your child&apos;s needs and answer your questions.',
     details: [
-      'Discussion of your child\'s current needs',
+      'Discussion of your child&apos;s current needs',
       'Overview of our services and approach',
       'Insurance verification process',
       'Scheduling preferences',
@@ -82,7 +82,7 @@ export default function GettingStartedPage() {
                 Getting Started is <span className="text-gradient">Simple</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-                We've streamlined our intake process to get your child the support they need 
+                We&apos;ve streamlined our intake process to get your child the support they need 
                 as quickly as possible. Our caring team guides you through every step.
               </p>
               <a
@@ -104,7 +104,7 @@ export default function GettingStartedPage() {
                 Your Journey With Us
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                From first contact to ongoing therapy, we're with you every step of the way.
+                From first contact to ongoing therapy, we&apos;re with you every step of the way.
               </p>
             </ScrollReveal>
 
@@ -159,7 +159,7 @@ export default function GettingStartedPage() {
                 <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
                   <div className="flex items-center gap-3 mb-6">
                     <IconClipboard size={32} className="text-primary" />
-                    <h2 className="text-3xl font-sans font-bold">What You'll Need</h2>
+                    <h2 className="text-3xl font-sans font-bold">What You&apos;ll Need</h2>
                   </div>
                   
                   <p className="text-muted-foreground mb-8">

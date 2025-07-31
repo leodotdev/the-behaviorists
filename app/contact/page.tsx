@@ -79,7 +79,7 @@ export default function ContactPage() {
         message: '',
       });
       setSubmitStatus('success');
-    } catch (error) {
+    } catch (_error) {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -98,7 +98,7 @@ export default function ContactPage() {
                 Get in <span className="text-gradient">Touch</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                We're here to answer your questions and help you begin your journey. 
+                We&apos;re here to answer your questions and help you begin your journey. 
                 Reach out to our friendly team today.
               </p>
             </ScrollReveal>
@@ -202,7 +202,7 @@ export default function ContactPage() {
                         id="message"
                         rows={4}
                         className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none resize-none"
-                        placeholder="Tell us about your child's needs..."
+                        placeholder="Tell us about your child&apos;s needs..."
                         value={formData.message}
                         onChange={handleInputChange}
                         required
@@ -221,7 +221,7 @@ export default function ContactPage() {
                       <div
                         className="text-center text-success-foreground bg-success/20 border border-success-border rounded-lg p-3"
                       >
-                        Thank you! We'll be in touch soon.
+                        Thank you! We&apos;ll be in touch soon.
                       </div>
                     )}
                     
@@ -337,7 +337,7 @@ export default function ContactPage() {
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 With two convenient locations and home-based services throughout the region, 
-                we're always nearby when you need us.
+                we&apos;re always nearby when you need us.
               </p>
             </ScrollReveal>
 
