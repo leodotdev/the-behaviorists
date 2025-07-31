@@ -226,9 +226,7 @@ export default function ContactPage() {
                     )}
                     
                     {submitStatus === 'error' && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
+                      <div
                         className="text-center text-danger-foreground bg-danger/20 border border-danger-border rounded-lg p-3"
                       >
                         Something went wrong. Please try again or call us directly.
