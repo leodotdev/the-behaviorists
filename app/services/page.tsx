@@ -1,7 +1,8 @@
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
 import ScrollReveal from '@/components/ui/scroll-reveal';
-import { IconHome, IconSchool, IconBuildingHospital, IconCheckCircle, IconSparkles } from '@tabler/icons-react';
+import Image from 'next/image';
+import { IconHome, IconSchool, IconBuildingHospital, IconCircleCheck, IconSparkles } from '@tabler/icons-react';
 
 const serviceDetails = [
   {
@@ -16,7 +17,10 @@ const serviceDetails = [
       'Flexible scheduling to fit family needs',
       'Natural environment teaching opportunities',
     ],
-    bgColor: 'pastel-blue',
+    bgColor: 'bg-pastel-blue/50',
+    gradientFrom: 'from-pastel-blue',
+    gradientTo: 'to-pastel-blue/50',
+    image: '/images/ig-12.jpg',
   },
   {
     id: 'school',
@@ -30,7 +34,10 @@ const serviceDetails = [
       'Academic support and accommodations',
       'IEP meeting participation and advocacy',
     ],
-    bgColor: 'pastel-green',
+    bgColor: 'bg-pastel-green/50',
+    gradientFrom: 'from-pastel-green',
+    gradientTo: 'to-pastel-green/50',
+    image: '/images/ig-13.jpg',
   },
   {
     id: 'clinic',
@@ -44,7 +51,10 @@ const serviceDetails = [
       'Access to specialized resources',
       'Group therapy sessions available',
     ],
-    bgColor: 'pastel-lavender',
+    bgColor: 'bg-pastel-lavender/50',
+    gradientFrom: 'from-pastel-lavender',
+    gradientTo: 'to-pastel-lavender/50',
+    image: '/images/ig-9.jpg',
   },
 ];
 
@@ -61,7 +71,7 @@ export default function ServicesPage() {
                 <IconSparkles size={16} className="text-accent-peach" />
                 <span>Our Services</span>
               </div>
-              <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6">
+              <h1 className="text-5xl md:text-6xl font-sans font-bold mb-6">
                 Comprehensive <span className="text-gradient">ABA Services</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -84,10 +94,10 @@ export default function ServicesPage() {
                   }`}>
                     {/* Content */}
                     <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                      <div className={`inline-flex p-3 bg-${service.bgColor}/50 rounded-2xl mb-6`}>
+                      <div className={`inline-flex p-3 ${service.bgColor} rounded-2xl mb-6`}>
                         <service.icon size={40} className="text-primary" />
                       </div>
-                      <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+                      <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
                         {service.title}
                       </h2>
                       <p className="text-lg text-muted-foreground mb-8">
@@ -97,7 +107,7 @@ export default function ServicesPage() {
                       <ul className="space-y-3">
                         {service.features.map((feature, i) => (
                           <li key={i} className="flex items-start gap-3">
-                            <IconCheckCircle size={20} className="text-accent-green flex-shrink-0 mt-0.5" />
+                            <IconCircleCheck size={20} className="text-accent-green flex-shrink-0 mt-0.5" />
                             <span className="text-muted-foreground">{feature}</span>
                           </li>
                         ))}
@@ -106,11 +116,17 @@ export default function ServicesPage() {
 
                     {/* Visual */}
                     <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                      <div className={`aspect-square bg-gradient-to-br from-${service.bgColor} to-${service.bgColor}/50 rounded-3xl flex items-center justify-center`}>
-                        <service.icon size={120} className="text-white/50" />
+                      <div className="relative aspect-square rounded-3xl overflow-hidden">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent" />
                       </div>
-                      <div className="absolute -top-4 -right-4 w-32 h-32 bg-accent-peach/20 rounded-full blur-2xl" />
-                      <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-accent-blue/20 rounded-full blur-2xl" />
+                      <div className="absolute -top-4 -right-4 w-32 h-32 bg-wellness-coral/20 rounded-full blur-2xl" />
+                      <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-wellness-mint/20 rounded-full blur-2xl" />
                     </div>
                   </div>
                 </ScrollReveal>
@@ -123,7 +139,7 @@ export default function ServicesPage() {
         <section className="py-20 bg-gradient-to-b from-pastel-yellow/20 to-transparent">
           <div className="container">
             <ScrollReveal className="text-center">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
                 Ready to Get Started?
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -133,13 +149,13 @@ export default function ServicesPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/getting-started"
-                  className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all"
+                  className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium cursor-pointer"
                 >
                   Learn About Our Process
                 </a>
                 <a
                   href="tel:786-860-5161"
-                  className="px-8 py-4 bg-white border-2 border-primary text-primary rounded-full font-medium hover:bg-secondary transition-all"
+                  className="px-8 py-4 bg-white border-2 border-primary text-primary rounded-full font-medium cursor-pointer"
                 >
                   Call 786-860-5161
                 </a>

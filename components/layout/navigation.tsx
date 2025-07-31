@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
 import { IconMenu2, IconX, IconPhone } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
 
@@ -28,27 +28,28 @@ export default function Navigation() {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 ${
         scrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-md'
-          : 'bg-transparent'
+          ? 'bg-background/95 backdrop-blur-xl border-b border-border'
+          : 'bg-background/80 backdrop-blur-sm'
       }`}
     >
       <div className="container">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-2xl font-serif font-bold text-gradient"
+          <Link href="/" className="flex items-center">
+            <div
+              className="relative h-12 w-48"
             >
-              The Behaviorists
-            </motion.div>
+              <Image
+                src="/logo-1.avif"
+                alt="The Behaviorists"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,42 +58,33 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                className={`relative text-base font-medium hover:text-primary ${
                   pathname === item.href
                     ? 'text-primary'
-                    : 'text-muted-foreground'
+                    : 'text-foreground'
                 }`}
               >
                 {item.name}
                 {pathname === item.href && (
-                  <motion.div
-                    layoutId="navbar-indicator"
+                  <div
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                    initial={false}
-                    transition={{
-                      type: 'spring',
-                      stiffness: 500,
-                      damping: 30,
-                    }}
                   />
                 )}
               </Link>
             ))}
-            <motion.a
+            <a
               href="tel:786-860-5161"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 transition-colors"
+              className="flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 hover:shadow-md cursor-pointer"
             >
               <IconPhone size={16} />
               <span>Call Us</span>
-            </motion.a>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-muted cursor-pointer"
             aria-label="Toggle menu"
           >
             {isOpen ? <IconX size={24} /> : <IconMenu2 size={24} />}
@@ -101,13 +93,8 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Navigation */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+      {isOpen && (
+          <div
             className="md:hidden border-t border-border bg-white/95 backdrop-blur-md"
           >
             <div className="container py-4 space-y-2">
@@ -116,10 +103,10 @@ export default function Navigation() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-3 rounded-lg transition-colors ${
+                  className={`block px-4 py-3 rounded-lg ${
                     pathname === item.href
-                      ? 'bg-secondary text-primary'
-                      : 'text-muted-foreground hover:bg-secondary/50'
+                      ? 'bg-primary/10 text-primary font-medium'
+                      : 'text-foreground hover:bg-muted'
                   }`}
                 >
                   {item.name}
@@ -133,9 +120,8 @@ export default function Navigation() {
                 <span>786-860-5161</span>
               </a>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 }

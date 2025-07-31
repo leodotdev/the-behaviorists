@@ -78,7 +78,7 @@ export default function GettingStartedPage() {
         <section className="py-20 bg-gradient-to-br from-pastel-green/30 to-pastel-blue/30">
           <div className="container">
             <ScrollReveal className="text-center">
-              <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6">
+              <h1 className="text-5xl md:text-6xl font-sans font-bold mb-6">
                 Getting Started is <span className="text-gradient">Simple</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
@@ -87,7 +87,7 @@ export default function GettingStartedPage() {
               </p>
               <a
                 href="tel:786-860-5161"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium cursor-pointer"
               >
                 <IconPhone size={20} />
                 <span>Start with a Phone Call: 786-860-5161</span>
@@ -100,7 +100,7 @@ export default function GettingStartedPage() {
         <section className="py-20">
           <div className="container">
             <ScrollReveal className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
                 Your Journey With Us
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -127,7 +127,7 @@ export default function GettingStartedPage() {
 
                       {/* Content */}
                       <div className="flex-1">
-                        <h3 className="text-2xl font-serif font-bold mb-3">
+                        <h3 className="text-2xl font-sans font-bold mb-3">
                           Step {index + 1}: {step.title}
                         </h3>
                         <p className="text-muted-foreground mb-4">
@@ -159,7 +159,7 @@ export default function GettingStartedPage() {
                 <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
                   <div className="flex items-center gap-3 mb-6">
                     <IconClipboard size={32} className="text-primary" />
-                    <h2 className="text-3xl font-serif font-bold">What You'll Need</h2>
+                    <h2 className="text-3xl font-sans font-bold">What You'll Need</h2>
                   </div>
                   
                   <p className="text-muted-foreground mb-8">
@@ -168,7 +168,7 @@ export default function GettingStartedPage() {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-4">
-                      <h3 className="font-serif font-bold text-lg mb-3">Required Documents</h3>
+                      <h3 className="font-sans font-bold text-lg mb-3">Required Documents</h3>
                       <div className="space-y-3">
                         <div className="flex items-start gap-3">
                           <IconShieldCheck size={20} className="text-accent-green flex-shrink-0" />
@@ -188,7 +188,7 @@ export default function GettingStartedPage() {
                     </div>
 
                     <div className="space-y-4">
-                      <h3 className="font-serif font-bold text-lg mb-3">Helpful Information</h3>
+                      <h3 className="font-sans font-bold text-lg mb-3">Helpful Information</h3>
                       <div className="space-y-3">
                         <div className="flex items-start gap-3">
                           <IconFileDescription size={20} className="text-accent-blue flex-shrink-0" />
@@ -217,7 +217,7 @@ export default function GettingStartedPage() {
         <section className="py-20">
           <div className="container">
             <ScrollReveal className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
                 Frequently Asked Questions
               </h2>
               <p className="text-lg text-muted-foreground">
@@ -229,7 +229,7 @@ export default function GettingStartedPage() {
               {faqs.map((faq, index) => (
                 <ScrollReveal key={index} delay={index * 0.1}>
                   <div className="bg-white rounded-2xl p-6 shadow-sm border border-border">
-                    <h3 className="font-serif font-bold text-lg mb-2">
+                    <h3 className="font-sans font-bold text-lg mb-2">
                       {faq.question}
                     </h3>
                     <p className="text-muted-foreground">
@@ -246,7 +246,7 @@ export default function GettingStartedPage() {
         <section className="py-20 bg-gradient-to-b from-pastel-peach/20 to-transparent">
           <div className="container">
             <ScrollReveal className="text-center">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
                 Ready to Take the First Step?
               </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -256,14 +256,14 @@ export default function GettingStartedPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="tel:786-860-5161"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium cursor-pointer"
                 >
                   <IconPhone size={20} />
                   <span>Call Now: 786-860-5161</span>
                 </a>
                 <a
                   href="/contact"
-                  className="px-8 py-4 bg-white border-2 border-primary text-primary rounded-full font-medium hover:bg-secondary transition-all"
+                  className="px-8 py-4 bg-white border-2 border-primary text-primary rounded-full font-medium cursor-pointer"
                 >
                   Contact Form
                 </a>

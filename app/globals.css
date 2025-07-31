@@ -1,48 +1,22 @@
 @import "tailwindcss";
 
-/* Font faces */
-@font-face {
-  font-family: 'Pally';
-  src: url('/fonts/Pally-Regular.woff2') format('woff2'),
-       url('/fonts/Pally-Regular.woff') format('woff'),
-       url('/fonts/Pally-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pally';
-  src: url('/fonts/Pally-Medium.woff2') format('woff2'),
-       url('/fonts/Pally-Medium.woff') format('woff'),
-       url('/fonts/Pally-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pally';
-  src: url('/fonts/Pally-Bold.woff2') format('woff2'),
-       url('/fonts/Pally-Bold.woff') format('woff'),
-       url('/fonts/Pally-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Google Fonts are loaded via Next.js font optimization */
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: "Pally", serif;
-  --font-mono: "Geist Mono", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace';
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 2px);
+  --font-sans: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Code", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-display: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: var(--font-dm-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -80,25 +54,25 @@
 }
 
 :root {
-  --radius: 1rem;
+  --radius: 0.75rem;
   
-  /* Light pastel theme */
-  --background: #fefefe;
-  --foreground: #2d3748;
-  --card: #ffffff;
-  --card-foreground: #2d3748;
+  /* Minimal Apple-inspired theme with zinc colors */
+  --background: #ffffff;
+  --foreground: #18181b;
+  --card: #fafafa;
+  --card-foreground: #18181b;
   --popover: #ffffff;
-  --popover-foreground: #2d3748;
-  --primary: #93c5fd;
-  --primary-foreground: #1e293b;
-  --secondary: #e6f3ff;
-  --secondary-foreground: #1e40af;
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
-  --accent: #ddd6fe;
-  --accent-foreground: #4c1d95;
-  --destructive: #fca5a5;
-  --destructive-foreground: #1e293b;
+  --popover-foreground: #18181b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #71717a;
+  --secondary-foreground: #fafafa;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
   --danger: #fee2e2;
   --danger-foreground: #dc2626;
   --danger-border: #fecaca;
@@ -111,23 +85,37 @@
   --success: #d1fae5;
   --success-foreground: #059669;
   --success-border: #a7f3d0;
-  --border: #e5e7eb;
+  --border: #e4e4e7;
   --input: #ffffff;
-  --ring: #93c5fd;
+  --ring: #18181b;
   
-  /* Pastel colors for sections */
-  --pastel-blue: #e6f3ff;
-  --pastel-green: #e6f7e6;
-  --pastel-peach: #fff0e6;
-  --pastel-lavender: #f0e6ff;
-  --pastel-pink: #ffe6f0;
-  --pastel-yellow: #fffbe6;
+  /* Zinc color palette */
+  --zinc-50: #fafafa;
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
+  --zinc-600: #52525b;
+  --zinc-700: #3f3f46;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
   
-  /* Accent pastels */
-  --accent-blue: #93c5fd;
-  --accent-green: #a7f3d0;
-  --accent-peach: #fcd5ce;
-  --accent-lavender: #ddd6fe;
+  /* Wellness color palette */
+  --wellness-cream: #fdf8f3;
+  --wellness-sage: #a7c4a3;
+  --wellness-mint: #7dd3c0;
+  --wellness-coral: #d97757;
+  --wellness-peach: #f5c99b;
+  --wellness-sand: #e7ddd4;
+  --wellness-lavender: #c7b8ea;
+  --wellness-sky: #87ceeb;
+  
+  /* Section backgrounds */
+  --section-mint: #e6f7f4;
+  --section-peach: #fff5f0;
+  --section-sage: #f0f5ef;
+  --section-lavender: #f5f2fb;
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -193,6 +181,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: transparent;
+    font-size: 16px; /* 1rem = 16px */
   }
   
   html[data-base-ui-scroll-locked] {
@@ -204,6 +193,7 @@
     color: var(--foreground);
     overscroll-behavior: none;
     font-family: var(--font-sans);
+    font-size: 1rem; /* 16px base */
     line-height: 1.6;
   }
   
@@ -212,14 +202,67 @@
     min-height: 100vh;
   }
   
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-serif);
+  h1 {
+    font-family: var(--font-sans);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--foreground);
+    letter-spacing: -0.03em;
+    -webkit-text-stroke: 0.8px currentColor;
+  }
+  
+  h2 {
+    font-family: var(--font-sans);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--foreground);
+    letter-spacing: -0.02em;
+    -webkit-text-stroke: 0.4px currentColor;
+  }
+  
+  h3 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--foreground);
+    letter-spacing: -0.02em;
+    -webkit-text-stroke: 0.3px currentColor;
+  }
+  
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--foreground);
+    letter-spacing: -0.02em;
+    -webkit-text-stroke: 0.2px currentColor;
+  }
+  
+  h5 {
+    font-family: var(--font-sans);
     font-weight: 500;
     line-height: 1.2;
     color: var(--foreground);
+    letter-spacing: -0.02em;
+    -webkit-text-stroke: 0.1px currentColor;
+  }
+  
+  h6 {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--foreground);
+    letter-spacing: -0.02em;
   }
   
   .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .container-narrow {
     max-width: 768px;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -227,10 +270,81 @@
   
   /* Utility classes */
   .text-gradient {
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-lavender));
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  
+  /* Typography system */
+  .text-display {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    -webkit-text-stroke: 0.5px currentColor;
+  }
+  
+  .text-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    -webkit-text-stroke: 0.4px currentColor;
+  }
+  
+  .text-subheading {
+    font-family: var(--font-body);
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  
+  /* Font weight utilities */
+  .font-black { font-weight: 900; }
+  .font-extrabold { font-weight: 800; }
+  .font-bold { font-weight: 700; }
+  .font-semibold { font-weight: 600; }
+  .font-medium { font-weight: 500; }
+  .font-normal { font-weight: 400; }
+  
+  /* Animations removed */
+  
+  /* Interactive elements */
+  .hover-lift {
+    /* Transitions removed */
+  }
+  
+  /* Hover effects removed */
+  
+  /* Card styles */
+  .card-shadow-sm {
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.05),
+      0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+  
+  .card-shadow-md {
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+  
+  .card-shadow-lg {
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.05),
+      0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  }
+  
+  /* Transitions removed */
+  .transition-all {
+    /* Transition removed */
+  }
+  
+  .transition-transform {
+    /* Transition removed */
   }
   
   ::-webkit-scrollbar {
@@ -247,7 +361,77 @@
     border-radius: 4px;
   }
   
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--muted-foreground);
+  /* Scrollbar hover removed */
+  
+  /* Background image sections with effects */
+  .bg-image-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .bg-image-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+  }
+  
+  /* Overlay for readability */
+  .bg-image-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, 
+      rgba(253, 248, 243, 0.85) 0%, 
+      rgba(253, 248, 243, 0.95) 100%);
+    z-index: -1;
+  }
+  
+  /* Dark overlay variant */
+  .bg-image-section.dark-overlay::after {
+    background: linear-gradient(to bottom, 
+      rgba(45, 41, 38, 0.85) 0%, 
+      rgba(45, 41, 38, 0.95) 100%);
+  }
+  
+  /* Light blur effect */
+  .bg-image-section.blur-light::before {
+    filter: blur(2px);
+  }
+  
+  /* Heavy blur effect */
+  .bg-image-section.blur-heavy::before {
+    filter: blur(8px);
+  }
+  
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+  
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  }
+  
+  /* Ensure content is above overlays */
+  .bg-image-section > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Bento Grid System removed - using Tailwind instead */
+  
+  /* Sticky header styling */
+  header {
+    /* Transition removed */
   }
 }

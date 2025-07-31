@@ -1,69 +1,69 @@
-import Link from 'next/link';
-import { IconMapPin, IconPhone, IconMail, IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin } from '@tabler/icons-react';
+import Link from "next/link";
+import Image from "next/image";
+import { IconMapPin, IconPhone } from "@tabler/icons-react";
 
 const footerLinks = {
   services: [
-    { name: 'Home-Based Therapy', href: '/services#home' },
-    { name: 'School-Based Support', href: '/services#school' },
-    { name: 'Clinic-Based Services', href: '/services#clinic' },
+    { name: "Home-Based Therapy", href: "/services#home" },
+    { name: "School-Based Support", href: "/services#school" },
+    { name: "Clinic-Based Services", href: "/services#clinic" },
   ],
   company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Join Our Team', href: '/join-our-team' },
-    { name: 'Contact', href: '/contact' },
+    { name: "Join Our Team", href: "/join-our-team" },
+    { name: "Contact", href: "/contact" },
   ],
-  resources: [
-    { name: 'Getting Started', href: '/getting-started' },
-    { name: 'Insurance', href: '/insurance' },
-    { name: 'FAQs', href: '/faqs' },
-  ],
+  resources: [{ name: "Getting Started", href: "/getting-started" }],
 };
-
-const socialLinks = [
-  { icon: IconBrandFacebook, href: '#', label: 'Facebook' },
-  { icon: IconBrandInstagram, href: '#', label: 'Instagram' },
-  { icon: IconBrandLinkedin, href: '#', label: 'LinkedIn' },
-];
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-pastel-yellow/10 to-white border-t border-border">
-      <div className="container py-12 md:py-16">
+    <footer className="bg-gradient-to-b from-section-sage/30 to-background border-t border-border">
+      {/* Instagram Gallery */}
+      <div className="grid grid-cols-6 md:grid-cols-12">
+        {[12, 13, 0, 3, 5, 7, 8, 9, 10, 11, 1, 2].map((num, index) => (
+          <div
+            key={index}
+            className="relative aspect-square overflow-hidden group cursor-pointer"
+          >
+            <Image
+              src={`/images/ig-${num}.jpg`}
+              alt="Instagram gallery"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/0" />
+          </div>
+        ))}
+      </div>
+
+      <div className="container py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <h3 className="text-2xl font-serif font-bold mb-4 text-gradient">
-              The Behaviorists
-            </h3>
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/logo-1.avif"
+                alt="The Behaviorists"
+                width={180}
+                height={60}
+                className="object-contain"
+              />
+            </Link>
             <p className="text-muted-foreground mb-6 max-w-sm">
-              Providing exceptional ABA therapy services to children and families 
-              across South Florida since 2017.
+              Providing exceptional ABA therapy services to children and
+              families across South Florida since 2017.
             </p>
-            
-            {/* Social links */}
-            <div className="flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="p-2 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors"
-                >
-                  <social.icon size={20} className="text-muted-foreground" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="font-serif font-bold mb-4">Services</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold mb-4">Services</h4>
+            <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-muted-foreground text-sm"
                   >
                     {link.name}
                   </Link>
@@ -73,13 +73,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-serif font-bold mb-4">Company</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold mb-4">Company</h4>
+            <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-muted-foreground text-sm"
                   >
                     {link.name}
                   </Link>
@@ -89,13 +89,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-serif font-bold mb-4">Resources</h4>
-            <ul className="space-y-2">
+            <h4 className="font-semibold mb-4">Resources</h4>
+            <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-muted-foreground text-sm"
                   >
                     {link.name}
                   </Link>
@@ -107,30 +107,41 @@ export default function Footer() {
 
         {/* Contact info */}
         <div className="mt-12 pt-8 border-t border-border">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-muted-foreground">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
             <div className="flex items-start gap-3">
-              <IconMapPin size={20} className="flex-shrink-0 mt-0.5" />
+              <IconMapPin
+                size={18}
+                className="flex-shrink-0 mt-0.5 text-muted-foreground"
+              />
               <div>
-                <p className="font-medium text-foreground">Headquarters</p>
-                <p>7735 NW 48th St Ste 110</p>
-                <p>Doral, FL 33166</p>
+                <p className="font-medium">Headquarters</p>
+                <p className="text-muted-foreground">
+                  7735 NW 48th St Ste 110, Doral, FL
+                </p>
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3">
-              <IconMapPin size={20} className="flex-shrink-0 mt-0.5" />
+              <IconMapPin
+                size={18}
+                className="flex-shrink-0 mt-0.5 text-muted-foreground"
+              />
               <div>
-                <p className="font-medium text-foreground">Miami Springs</p>
-                <p>657 South Dr Ste 403</p>
-                <p>Miami Springs, FL</p>
+                <p className="font-medium">Miami Springs</p>
+                <p className="text-muted-foreground">
+                  657 South Dr Ste 403, Miami Springs, FL
+                </p>
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3">
-              <IconPhone size={20} className="flex-shrink-0 mt-0.5" />
+              <IconPhone
+                size={18}
+                className="flex-shrink-0 mt-0.5 text-muted-foreground"
+              />
               <div>
-                <p className="font-medium text-foreground">Contact</p>
-                <a href="tel:786-860-5161" className="hover:text-primary transition-colors">
+                <p className="font-medium">Contact</p>
+                <a href="tel:786-860-5161" className="text-muted-foreground">
                   786-860-5161
                 </a>
               </div>
@@ -139,8 +150,18 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} The Behaviorists. All rights reserved.</p>
+        <div className="mt-8 text-center">
+          <Image
+            src="/logo-rainbow-mark.avif"
+            alt="The Behaviorists Logo"
+            width={72}
+            height={72}
+            className="mx-auto mb-4 opacity-60"
+          />
+          <p className="text-sm text-muted-foreground">
+            &copy; {new Date().getFullYear()} The Behaviorists. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>

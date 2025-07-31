@@ -1,137 +1,141 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { IconArrowRight, IconStar } from '@tabler/icons-react';
 
 export default function Hero() {
+  const stats = [
+    { value: '500+', label: 'Families Served' },
+    { value: '98%', label: 'Parent Satisfaction' },
+    { value: '7+', label: 'Years Experience' },
+    { value: '5⭐', label: 'Average Rating' },
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-pastel-blue via-background to-pastel-lavender opacity-50" />
+    <section className="relative min-h-[90vh] flex items-center pt-20 bg-image-section blur-light noise-overlay" style={{ '--bg-image': 'url(/images/sandy-millar-nuS2GDpCDoI-unsplash.jpg)' } as React.CSSProperties}>
+      <style jsx>{`
+        section::before {
+          background-image: var(--bg-image);
+        }
+      `}</style>
       
-      {/* Animated shapes */}
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 10, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-20 left-10 w-64 h-64 bg-accent-blue/20 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          y: [0, 20, 0],
-          rotate: [0, -10, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute bottom-20 right-10 w-96 h-96 bg-accent-lavender/20 rounded-full blur-3xl"
-      />
-
-      <div className="container relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-6"
-        >
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm text-muted-foreground border border-border"
-          >
-            <IconStar size={16} className="text-accent-blue" />
-            <span>Established 2017 • South Florida</span>
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-5xl md:text-7xl font-serif font-bold leading-tight"
-          >
-            Empowering Children
-            <br />
-            <span className="text-gradient">Through ABA Therapy</span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
-          >
-            Specialized Applied Behavior Analysis services for children with autism 
-            and related disorders. Supporting families across South Florida with 
-            evidence-based, individualized treatment plans.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
-          >
-            <Link href="/getting-started">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium text-lg hover:bg-primary/90 transition-all flex items-center gap-2"
-              >
-                Get Started
-                <IconArrowRight 
-                  size={20} 
-                  className="group-hover:translate-x-1 transition-transform" 
-                />
-              </motion.button>
-            </Link>
-            <Link href="/services">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white border-2 border-primary text-primary rounded-full font-medium text-lg hover:bg-secondary transition-all"
-              >
-                Our Services
-              </motion.button>
-            </Link>
-          </motion.div>
-
-          {/* Trust indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-wrap justify-center gap-8 pt-12 text-sm text-muted-foreground"
-          >
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-accent-green rounded-full" />
-              <span>Board-Certified Staff</span>
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Content */}
+          <div>
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium mb-6"
+            >
+              <IconStar size={16} />
+              <span>South Florida&apos;s Premier ABA Provider</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-accent-blue rounded-full" />
-              <span>Evidence-Based Practices</span>
+
+            <h1
+              className="text-display font-sans mb-6 leading-tight"
+            >
+              It&apos;s not just about behavior.
+            </h1>
+
+            <p
+              className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-3xl"
+            >
+              Our mission is to provide individualized, research-based treatment to our clients, while maintaining autonomy and independence as the priority
+            </p>
+
+            <div
+              className="flex flex-wrap gap-4 mb-12"
+            >
+              <Link href="/getting-started">
+                <button className="group px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 hover:shadow-lg cursor-pointer flex items-center gap-2">
+                  Get Started
+                  <IconArrowRight size={20} className="group-hover:translate-x-1" />
+                </button>
+              </Link>
+              
+              <Link href="/services">
+                <button className="px-8 py-4 bg-white border-2 border-wellness-sand text-foreground rounded-full font-medium hover:border-primary hover:text-primary cursor-pointer">
+                  View Services
+                </button>
+              </Link>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-accent-lavender rounded-full" />
-              <span>Family-Centered Approach</span>
+
+            {/* Trust indicators */}
+            <div
+              className="flex flex-wrap gap-8"
+            >
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </div>
+              ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+
+          {/* Visual element */}
+          <div
+            className="relative"
+          >
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="relative h-64 rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/ig-0.jpg"
+                    alt="Child learning through play"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative h-48 rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/ig-3.jpg"
+                    alt="Therapy session"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="space-y-4 pt-8">
+                <div className="relative h-48 rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/ig-5.jpg"
+                    alt="Family engagement"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative h-64 rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/ig-7.jpg"
+                    alt="Child development activities"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            {/* Overlay card */}
+            <div
+              className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl"
+            >
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-2">
+                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-bold">5</div>
+                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white font-bold">0</div>
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold">0</div>
+                  <div className="w-10 h-10 rounded-full bg-wellness-coral flex items-center justify-center text-white font-bold">+</div>
+                </div>
+                <div>
+                  <p className="font-semibold">Families Transformed</p>
+                  <p className="text-sm text-muted-foreground">Join our growing community</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section>
   );
 }

@@ -4,7 +4,7 @@ import Navigation from '@/components/layout/navigation';
 import Footer from '@/components/layout/footer';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 import { IconPhone, IconMapPin, IconClock, IconMail, IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin } from '@tabler/icons-react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const locations = [
   {
@@ -43,6 +43,49 @@ const contactInfo = [
 ];
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    // Simulate form submission
+    try {
+      // In a real app, you would send this to your backend
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Reset form on success
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        service: '',
+        message: '',
+      });
+      setSubmitStatus('success');
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <Navigation />
@@ -51,7 +94,7 @@ export default function ContactPage() {
         <section className="py-20 bg-gradient-to-br from-pastel-blue/30 to-pastel-lavender/30">
           <div className="container">
             <ScrollReveal className="text-center">
-              <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6">
+              <h1 className="text-5xl md:text-6xl font-sans font-bold mb-6">
                 Get in <span className="text-gradient">Touch</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -69,8 +112,8 @@ export default function ContactPage() {
               {/* Contact Form */}
               <ScrollReveal>
                 <div className="bg-white rounded-3xl p-8 shadow-lg">
-                  <h2 className="text-3xl font-serif font-bold mb-6">Send Us a Message</h2>
-                  <form className="space-y-6">
+                  <h2 className="text-3xl font-sans font-bold mb-6">Send Us a Message</h2>
+                  <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="firstName" className="block text-sm font-medium mb-2">
@@ -79,8 +122,11 @@ export default function ContactPage() {
                         <input
                           type="text"
                           id="firstName"
-                          className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none"
                           placeholder="John"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          required
                         />
                       </div>
                       <div>
@@ -90,8 +136,11 @@ export default function ContactPage() {
                         <input
                           type="text"
                           id="lastName"
-                          className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none transition-colors"
+                          className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none"
                           placeholder="Doe"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          required
                         />
                       </div>
                     </div>
@@ -103,8 +152,11 @@ export default function ContactPage() {
                       <input
                         type="email"
                         id="email"
-                        className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none"
                         placeholder="john.doe@email.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
                       />
                     </div>
 
@@ -115,8 +167,11 @@ export default function ContactPage() {
                       <input
                         type="tel"
                         id="phone"
-                        className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none"
                         placeholder="(786) 860-5161"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        required
                       />
                     </div>
 
@@ -126,7 +181,10 @@ export default function ContactPage() {
                       </label>
                       <select
                         id="service"
-                        className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none"
+                        value={formData.service}
+                        onChange={handleInputChange}
+                        required
                       >
                         <option value="">Select a service</option>
                         <option value="home">Home-Based Therapy</option>
@@ -143,19 +201,39 @@ export default function ContactPage() {
                       <textarea
                         id="message"
                         rows={4}
-                        className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none transition-colors resize-none"
-                        placeholder="Tell us about your child\'s needs..."
+                        className="w-full px-4 py-3 bg-secondary rounded-xl border border-border focus:border-primary focus:outline-none resize-none"
+                        placeholder="Tell us about your child's needs..."
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
                       />
                     </div>
 
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                    <button
                       type="submit"
-                      className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all"
+                      className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isSubmitting}
                     >
-                      Send Message
-                    </motion.button>
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </button>
+                    
+                    {submitStatus === 'success' && (
+                      <div
+                        className="text-center text-success-foreground bg-success/20 border border-success-border rounded-lg p-3"
+                      >
+                        Thank you! We'll be in touch soon.
+                      </div>
+                    )}
+                    
+                    {submitStatus === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-center text-danger-foreground bg-danger/20 border border-danger-border rounded-lg p-3"
+                      >
+                        Something went wrong. Please try again or call us directly.
+                      </div>
+                    )}
                   </form>
                 </div>
               </ScrollReveal>
@@ -164,7 +242,7 @@ export default function ContactPage() {
               <div className="space-y-8">
                 <ScrollReveal delay={0.1}>
                   <div className="bg-pastel-peach/30 rounded-3xl p-8">
-                    <h3 className="text-2xl font-serif font-bold mb-6">Contact Information</h3>
+                    <h3 className="text-2xl font-sans font-bold mb-6">Contact Information</h3>
                     <div className="space-y-4">
                       {contactInfo.map((info) => (
                         <div key={info.label} className="flex items-start gap-4">
@@ -176,7 +254,7 @@ export default function ContactPage() {
                             {info.link ? (
                               <a
                                 href={info.link}
-                                className="text-muted-foreground hover:text-primary transition-colors"
+                                className="text-muted-foreground hover:text-primary"
                               >
                                 {info.value}
                               </a>
@@ -192,11 +270,11 @@ export default function ContactPage() {
 
                 <ScrollReveal delay={0.2}>
                   <div className="bg-pastel-lavender/30 rounded-3xl p-8">
-                    <h3 className="text-2xl font-serif font-bold mb-6">Our Locations</h3>
+                    <h3 className="text-2xl font-sans font-bold mb-6">Our Locations</h3>
                     <div className="space-y-6">
                       {locations.map((location) => (
                         <div key={location.name}>
-                          <h4 className="font-serif font-bold mb-2">{location.name}</h4>
+                          <h4 className="font-sans font-bold mb-2">{location.name}</h4>
                           <p className="text-muted-foreground mb-2">
                             {location.address}<br />
                             {location.city}
@@ -218,28 +296,28 @@ export default function ContactPage() {
 
                 <ScrollReveal delay={0.3}>
                   <div className="bg-pastel-blue/30 rounded-3xl p-8">
-                    <h3 className="text-2xl font-serif font-bold mb-6">Follow Us</h3>
+                    <h3 className="text-2xl font-sans font-bold mb-6">Follow Us</h3>
                     <p className="text-muted-foreground mb-4">
                       Stay connected for updates and resources
                     </p>
                     <div className="flex gap-4">
                       <a
                         href="#"
-                        className="p-3 bg-white rounded-lg hover:bg-secondary transition-colors"
+                        className="p-3 bg-white rounded-lg hover:bg-secondary"
                         aria-label="Facebook"
                       >
                         <IconBrandFacebook size={24} className="text-primary" />
                       </a>
                       <a
                         href="#"
-                        className="p-3 bg-white rounded-lg hover:bg-secondary transition-colors"
+                        className="p-3 bg-white rounded-lg hover:bg-secondary"
                         aria-label="Instagram"
                       >
                         <IconBrandInstagram size={24} className="text-primary" />
                       </a>
                       <a
                         href="#"
-                        className="p-3 bg-white rounded-lg hover:bg-secondary transition-colors"
+                        className="p-3 bg-white rounded-lg hover:bg-secondary"
                         aria-label="LinkedIn"
                       >
                         <IconBrandLinkedin size={24} className="text-primary" />
@@ -256,7 +334,7 @@ export default function ContactPage() {
         <section className="py-20 bg-gradient-to-b from-pastel-green/20 to-transparent">
           <div className="container">
             <ScrollReveal className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
                 Serving South Florida
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -270,7 +348,7 @@ export default function ContactPage() {
                 <div className="aspect-video bg-gradient-to-br from-pastel-blue to-pastel-green rounded-2xl flex items-center justify-center">
                   <div className="text-center">
                     <IconMapPin size={64} className="mx-auto mb-4 text-white/80" />
-                    <p className="text-white/80 font-serif text-xl">
+                    <p className="text-white/80 font-sans text-xl">
                       Interactive Map Coming Soon
                     </p>
                   </div>

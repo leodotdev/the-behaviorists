@@ -84,7 +84,7 @@ export default function JoinOurTeamPage() {
                 <IconSparkles size={16} className="text-accent-lavender" />
                 <span>Join Our Team</span>
               </div>
-              <h1 className="text-5xl md:text-6xl font-serif font-bold mb-6">
+              <h1 className="text-5xl md:text-6xl font-sans font-bold mb-6">
                 Make a <span className="text-gradient">Difference</span> Every Day
               </h1>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -100,7 +100,7 @@ export default function JoinOurTeamPage() {
         <section className="py-20">
           <div className="container">
             <ScrollReveal className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
                 Why Choose The Behaviorists?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -116,7 +116,7 @@ export default function JoinOurTeamPage() {
                     <div className="inline-flex p-4 bg-pastel-peach/50 rounded-2xl mb-4">
                       <benefit.icon size={32} className="text-primary" />
                     </div>
-                    <h3 className="text-xl font-serif font-bold mb-2">
+                    <h3 className="text-xl font-sans font-bold mb-2">
                       {benefit.title}
                     </h3>
                     <p className="text-muted-foreground text-sm">
@@ -134,7 +134,7 @@ export default function JoinOurTeamPage() {
           <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <ScrollReveal>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+                <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
                   A Culture of Growth and Support
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
@@ -158,7 +158,7 @@ export default function JoinOurTeamPage() {
                   <div className="bg-gradient-to-br from-pastel-green to-pastel-blue rounded-3xl aspect-square flex items-center justify-center">
                     <div className="text-center p-8">
                       <IconUsers size={80} className="mx-auto mb-4 text-white/80" />
-                      <p className="text-white/80 font-serif text-2xl">
+                      <p className="text-white/80 font-sans text-2xl">
                         Join a team that values your contribution
                       </p>
                     </div>
@@ -175,7 +175,7 @@ export default function JoinOurTeamPage() {
         <section className="py-20">
           <div className="container">
             <ScrollReveal className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
                 Current Opportunities
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -186,10 +186,10 @@ export default function JoinOurTeamPage() {
             <div className="max-w-4xl mx-auto space-y-6">
               {positions.map((position, index) => (
                 <ScrollReveal key={position.title} delay={index * 0.1}>
-                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="bg-white rounded-2xl p-8 shadow-lg">
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                       <div>
-                        <h3 className="text-2xl font-serif font-bold mb-2">
+                        <h3 className="text-2xl font-sans font-bold mb-2">
                           {position.title}
                         </h3>
                         <div className="flex flex-wrap gap-3 text-sm">
@@ -201,7 +201,7 @@ export default function JoinOurTeamPage() {
                           </span>
                         </div>
                       </div>
-                      <button className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-all">
+                      <button className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium cursor-pointer">
                         Apply Now
                       </button>
                     </div>
@@ -229,7 +229,7 @@ export default function JoinOurTeamPage() {
           <div className="container">
             <ScrollReveal>
               <div className="bg-gradient-to-br from-pastel-pink to-pastel-lavender rounded-3xl p-12 md:p-16 text-center">
-                <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-white">
+                <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6 text-white">
                   Ready to Start Your Journey With Us?
                 </h2>
                 <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
@@ -239,13 +239,13 @@ export default function JoinOurTeamPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a
                     href="mailto:careers@thebehaviorists.com"
-                    className="px-8 py-4 bg-white text-primary rounded-full font-medium hover:bg-white/90 transition-all"
+                    className="px-8 py-4 bg-white text-primary rounded-full font-medium cursor-pointer"
                   >
                     Submit Your Application
                   </a>
                   <a
                     href="/contact"
-                    className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white border-2 border-white/50 rounded-full font-medium hover:bg-white/30 transition-all"
+                    className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white border-2 border-white/50 rounded-full font-medium cursor-pointer"
                   >
                     Contact HR
                   </a>

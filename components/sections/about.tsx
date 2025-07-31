@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 import ScrollReveal from '../ui/scroll-reveal';
 import { IconHeart, IconBrain, IconChartLine, IconUsers } from '@tabler/icons-react';
 
@@ -29,30 +29,21 @@ const values = [
 
 export default function About() {
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background shapes */}
-      <motion.div
-        animate={{
-          rotate: [0, 360],
-        }}
-        transition={{
-          duration: 50,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-        className="absolute -top-32 -right-32 w-96 h-96 bg-pastel-pink/20 rounded-full blur-3xl"
-      />
-      
-      <div className="container relative z-10">
+    <section className="py-32 relative overflow-hidden bg-image-section blur-heavy noise-overlay" style={{ '--bg-image': 'url(/images/la-rel-easter-KuCGlBXjH_o-unsplash.jpg)' } as React.CSSProperties}>
+      <style jsx>{`
+        section::before {
+          background-image: var(--bg-image);
+        }
+      `}</style>
+      <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
             <ScrollReveal>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-                Dedicated to Making a
-                <span className="text-gradient"> Difference</span>
+              <h2 className="text-display mb-6">
+                Dedicated to Making a Difference
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg text-muted-foreground mb-12">
                 Since 2017, The Behaviorists has been committed to providing exceptional 
                 ABA therapy services throughout South Florida. Our board-certified team 
                 combines expertise with compassion to help children reach their full potential.
@@ -62,52 +53,63 @@ export default function About() {
             <div className="grid sm:grid-cols-2 gap-6">
               {values.map((value, index) => (
                 <ScrollReveal key={value.title} delay={index * 0.1}>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
+                  <div
                     className="flex gap-4"
                   >
                     <div className="flex-shrink-0">
-                      <div className="p-2 bg-pastel-lavender/50 rounded-lg">
-                        <value.icon size={24} className="text-accent-lavender" />
+                      <div className={`p-2.5 rounded-lg ${
+                        index % 2 === 0 ? 'bg-primary/10' : 'bg-secondary/10'
+                      }`}>
+                        <value.icon size={20} className={
+                          index % 2 === 0 ? 'text-primary' : 'text-secondary'
+                        } />
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-serif font-bold mb-1">{value.title}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="font-semibold mb-1">{value.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
                         {value.description}
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 </ScrollReveal>
               ))}
             </div>
           </div>
 
-          {/* Image placeholder */}
+          {/* Visual element */}
           <ScrollReveal delay={0.2}>
             <div className="relative">
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="relative bg-gradient-to-br from-pastel-blue to-pastel-lavender rounded-3xl aspect-square flex items-center justify-center"
-              >
-                <div className="text-center p-8">
-                  <IconHeart size={64} className="mx-auto mb-4 text-white/80" />
-                  <p className="text-white/80 font-serif text-xl">
-                    Empowering children and families through compassionate care
-                  </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="relative h-full rounded-2xl overflow-hidden">
+                  <Image
+                    src="/images/about-0.jpg"
+                    alt="Our team working with children"
+                    width={400}
+                    height={500}
+                    className="object-cover w-full h-full"
+                  />
                 </div>
-              </motion.div>
+                <div className="space-y-4">
+                  <div className="relative h-60 rounded-2xl overflow-hidden">
+                    <Image
+                      src="/images/about-1.jpg"
+                      alt="Therapy session in progress"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="bg-gradient-to-br from-wellness-mint to-wellness-sage rounded-2xl p-6 text-white">
+                    <div className="text-4xl font-bold mb-2">7+</div>
+                    <div className="text-lg">Years of Excellence</div>
+                    <div className="text-sm opacity-90 mt-2">Transforming lives since 2017</div>
+                  </div>
+                </div>
+              </div>
               
               {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent-peach/30 rounded-full blur-xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-accent-green/30 rounded-full blur-xl" />
+              <div className="absolute -top-8 -right-8 w-32 h-32 bg-wellness-peach/20 rounded-full blur-2xl" />
+              <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-wellness-lavender/20 rounded-full blur-2xl" />
             </div>
           </ScrollReveal>
         </div>
