@@ -79,7 +79,7 @@ export default function ContactPage() {
         message: '',
       });
       setSubmitStatus('success');
-    } catch (_error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

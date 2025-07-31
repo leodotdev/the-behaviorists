@@ -260,7 +260,7 @@ export default function AboutPage() {
                     <div>
                       <h3 className="font-semibold mb-1">Flexible Scheduling</h3>
                       <p className="text-muted-foreground text-sm">
-                        We work around your family's schedule and needs.
+                        We work around your family&apos;s schedule and needs.
                       </p>
                     </div>
                   </div>

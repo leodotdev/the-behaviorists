@@ -23,8 +23,8 @@ export default function Home() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
-  const [autoplayPaused, setAutoplayPaused] = useState(false);
-  const [reviewsAutoplayPaused, setReviewsAutoplayPaused] = useState(false);
+  const [autoplayPaused] = useState(false);
+  const [reviewsAutoplayPaused] = useState(false);
 
   const reviews = [
     {
