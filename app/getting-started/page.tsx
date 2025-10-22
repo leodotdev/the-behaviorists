@@ -1,278 +1,234 @@
-import Navigation from '@/components/layout/navigation';
-import Footer from '@/components/layout/footer';
-import ScrollReveal from '@/components/ui/scroll-reveal';
-import { IconPhone, IconClipboard, IconUsers, IconRocket, IconArrowRight, IconFileDescription, IconShieldCheck, IconCalendar } from '@tabler/icons-react';
+"use client";
 
-const steps = [
-  {
-    icon: IconPhone,
-    title: 'Initial Phone Interview',
-    description: 'We start with a brief phone conversation to understand your child&apos;s needs and answer your questions.',
-    details: [
-      'Discussion of your child&apos;s current needs',
-      'Overview of our services and approach',
-      'Insurance verification process',
-      'Scheduling preferences',
-    ],
-  },
-  {
-    icon: IconFileDescription,
-    title: 'Documentation & Approval',
-    description: 'We guide you through the necessary paperwork and work with your insurance for service approval.',
-    details: [
-      'Medical referral or prescription',
-      'Insurance authorization',
-      'Intake forms completion',
-      'Service agreement review',
-    ],
-  },
-  {
-    icon: IconUsers,
-    title: 'Comprehensive Assessment',
-    description: 'Our board-certified professionals conduct an in-depth evaluation to create a personalized treatment plan.',
-    details: [
-      'Developmental assessment',
-      'Behavioral observations',
-      'Family interview and goals',
-      'Customized treatment planning',
-    ],
-  },
-  {
-    icon: IconRocket,
-    title: 'Begin Therapy Services',
-    description: 'Start evidence-based ABA therapy with ongoing support and regular progress updates.',
-    details: [
-      'Matched with qualified therapists',
-      'Regular therapy sessions begin',
-      'Parent training and involvement',
-      'Continuous progress monitoring',
-    ],
-  },
-];
-
-const faqs = [
-  {
-    question: 'How long does the intake process take?',
-    answer: 'The typical intake process takes 2-4 weeks from initial contact to beginning services, depending on insurance approval and assessment scheduling.',
-  },
-  {
-    question: 'What insurance do you accept?',
-    answer: 'We work with most major insurance providers in Florida. Our intake team will verify your coverage during the initial phone interview.',
-  },
-  {
-    question: 'What ages do you serve?',
-    answer: 'We provide ABA therapy services for children from early intervention through adolescence, tailoring our approach to each developmental stage.',
-  },
-  {
-    question: 'How many hours of therapy will my child receive?',
-    answer: 'Therapy hours are determined based on the assessment results and insurance authorization, typically ranging from 10-40 hours per week.',
-  },
-];
+import { useState } from 'react';
+import Image from "next/image";
+import Navigation from "@/components/layout/navigation";
+import { IconLoader } from "@tabler/icons-react";
 
 export default function GettingStartedPage() {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      setMessage({ type: 'success', text: 'Thank you! We\'ll be in touch soon.' });
+      e.currentTarget.reset();
+    } catch (error) {
+      setMessage({ type: 'error', text: 'Something went wrong. Please try calling us instead.' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Navigation />
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-pastel-green/30 to-pastel-blue/30">
-          <div className="container">
-            <ScrollReveal className="text-center">
-              <h1 className="text-5xl md:text-6xl font-sans font-bold mb-6">
-                Getting Started is <span className="text-gradient">Simple</span>
+      <main className="min-h-screen bg-white">
+        {/* Full-Width Hero */}
+        <div className="relative w-full h-[80vh] overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/ig-4.jpg"
+              alt="Getting Started"
+              fill
+              className="object-cover"
+              style={{ filter: 'brightness(0.65) saturate(1.15)' }}
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          </div>
+
+          {/* Content */}
+          <div className="absolute inset-0 z-10 flex items-end">
+            <div className="container pb-16 md:pb-20">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold mb-4">
+                Getting Started
               </h1>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-                We&apos;ve streamlined our intake process to get your child the support they need 
-                as quickly as possible. Our caring team guides you through every step.
+              <p className="text-xl sm:text-2xl md:text-3xl text-white/90">
+                with The Behaviorists
               </p>
-              <a
-                href="tel:786-860-5161"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium cursor-pointer"
-              >
-                <IconPhone size={20} />
-                <span>Start with a Phone Call: 786-860-5161</span>
-              </a>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* Process Steps */}
-        <section className="py-20">
-          <div className="container">
-            <ScrollReveal className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
-                Your Journey With Us
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                From first contact to ongoing therapy, we&apos;re with you every step of the way.
-              </p>
-            </ScrollReveal>
-
-            <div className="max-w-4xl mx-auto">
-              {steps.map((step, index) => (
-                <ScrollReveal key={step.title} delay={index * 0.1}>
-                  <div className="relative">
-                    {/* Connection line */}
-                    {index < steps.length - 1 && (
-                      <div className="absolute left-10 top-24 w-0.5 h-full bg-gradient-to-b from-border to-transparent" />
-                    )}
-
-                    <div className="flex gap-6 mb-16">
-                      {/* Icon */}
-                      <div className="flex-shrink-0">
-                        <div className="w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center">
-                          <step.icon size={32} className="text-primary" />
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-sans font-bold mb-3">
-                          Step {index + 1}: {step.title}
-                        </h3>
-                        <p className="text-muted-foreground mb-4">
-                          {step.description}
-                        </p>
-                        
-                        <ul className="grid sm:grid-cols-2 gap-2">
-                          {step.details.map((detail, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <IconArrowRight size={16} className="text-accent-green flex-shrink-0 mt-0.5" />
-                              <span className="text-sm text-muted-foreground">{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Required Documents */}
-        <section className="py-20 bg-gradient-to-b from-pastel-lavender/20 to-transparent">
-          <div className="container">
-            <div className="max-w-4xl mx-auto">
-              <ScrollReveal>
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
-                  <div className="flex items-center gap-3 mb-6">
-                    <IconClipboard size={32} className="text-primary" />
-                    <h2 className="text-3xl font-sans font-bold">What You&apos;ll Need</h2>
-                  </div>
-                  
-                  <p className="text-muted-foreground mb-8">
-                    To expedite the intake process, please have the following documents ready:
-                  </p>
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 max-w-[960px] mx-auto p-4 md:p-8 w-full">
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <h3 className="font-sans font-bold text-lg mb-3">Required Documents</h3>
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3">
-                          <IconShieldCheck size={20} className="text-accent-green flex-shrink-0" />
-                          <div>
-                            <p className="font-medium">Insurance Card</p>
-                            <p className="text-sm text-muted-foreground">Front and back copies</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <IconFileDescription size={20} className="text-accent-green flex-shrink-0" />
-                          <div>
-                            <p className="font-medium">Medical Referral</p>
-                            <p className="text-sm text-muted-foreground">From pediatrician or specialist</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+          {/* Intro */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
+            <div className="text-lg font-semibold mb-3">We'll walk you through the process</div>
+          </div>
 
-                    <div className="space-y-4">
-                      <h3 className="font-sans font-bold text-lg mb-3">Helpful Information</h3>
-                      <div className="space-y-3">
-                        <div className="flex items-start gap-3">
-                          <IconFileDescription size={20} className="text-accent-blue flex-shrink-0" />
-                          <div>
-                            <p className="font-medium">Previous Evaluations</p>
-                            <p className="text-sm text-muted-foreground">Any recent assessments</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-3">
-                          <IconCalendar size={20} className="text-accent-blue flex-shrink-0" />
-                          <div>
-                            <p className="font-medium">Schedule Preferences</p>
-                            <p className="text-sm text-muted-foreground">Available days and times</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          {/* Process Steps */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-1 row-span-1">
+            <div className="text-2xl font-bold text-zinc-300 mb-2">01</div>
+            <p className="text-base text-zinc-600">
+              Call us or fill out the contact form below to briefly discuss your child's needs
+            </p>
+          </div>
+
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-1 row-span-1">
+            <div className="text-2xl font-bold text-zinc-300 mb-2">02</div>
+            <p className="text-base text-zinc-600">
+              We'll confirm the documentation requirements and initiate services with your insurance
+            </p>
+          </div>
+
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
+            <div className="text-2xl font-bold text-zinc-300 mb-2">03</div>
+            <p className="text-base text-zinc-600">
+              During the assessment, we'll discuss the best treatment plan for your child, pick a location, and recommend hours
+            </p>
+          </div>
+
+          {/* Insurance Section */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1 bg-lavender-100">
+            <div className="text-lg md:text-xl font-semibold mb-3">Accepted Insurance Plans</div>
+            <p className="text-base text-zinc-600 mb-4">
+              If you are interested in using your health insurance to cover the cost of ABA therapy,
+              we'll determine the documentation requirements set by your benefits plan. We'll work with
+              you to submit all paperwork on your behalf.
+            </p>
+            <div className="flex flex-wrap items-center gap-4 mb-4">
+              <Image
+                src="/images/logo-aetna.png"
+                alt="Aetna"
+                width={60}
+                height={20}
+                className="h-8 w-auto object-contain"
+              />
+              <Image
+                src="/images/logo-bcbs.png"
+                alt="Blue Cross Blue Shield"
+                width={60}
+                height={60}
+                className="h-8 w-auto object-contain"
+              />
+              <Image
+                src="/images/logo-cigna.png"
+                alt="Cigna"
+                width={60}
+                height={30}
+                className="h-8 w-auto object-contain"
+              />
+              <Image
+                src="/images/logo-medicaid.png"
+                alt="Florida Medicaid"
+                width={80}
+                height={30}
+                className="h-8 w-auto object-contain"
+              />
+              <Image
+                src="/images/logo-tricare.png"
+                alt="Tricare"
+                width={60}
+                height={30}
+                className="h-8 w-auto object-contain"
+              />
+            </div>
+            <p className="text-sm text-pink-600">
+              Don't see your plan on the list?<br />
+              Contact us today to discuss affordable payment options.
+            </p>
+          </div>
+
+          {/* Contact Form */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
+            <div className="text-lg font-semibold mb-4">Call us or fill out the form and we will call you</div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                name="childName"
+                placeholder="Child's Name"
+                required
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
+              <input
+                type="text"
+                name="parentName"
+                placeholder="Parent/Caregiver's Name"
+                required
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
+              <input
+                type="date"
+                name="childDOB"
+                placeholder="Child's Date of Birth"
+                required
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                required
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
+              <input
+                type="text"
+                name="diagnosis"
+                placeholder="Child's Diagnosis"
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
+              <input
+                type="text"
+                name="insurance"
+                placeholder="Insurance Provider Name"
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
+              <textarea
+                name="message"
+                placeholder="Message"
+                rows={4}
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none resize-none"
+              />
+
+              {message && (
+                <div className={`p-4 rounded-lg text-sm ${message.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+                  {message.text}
                 </div>
-              </ScrollReveal>
-            </div>
-          </div>
-        </section>
+              )}
 
-        {/* FAQs */}
-        <section className="py-20">
-          <div className="container">
-            <ScrollReveal className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Common questions about getting started with our services
-              </p>
-            </ScrollReveal>
-
-            <div className="max-w-3xl mx-auto space-y-6">
-              {faqs.map((faq, index) => (
-                <ScrollReveal key={index} delay={index * 0.1}>
-                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-border">
-                    <h3 className="font-sans font-bold text-lg mb-2">
-                      {faq.question}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full px-8 py-4 bg-zinc-900 text-white rounded-full font-medium hover:bg-zinc-800 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {loading && <IconLoader className="animate-spin" size={20} />}
+                {loading ? 'Sending...' : 'Submit'}
+              </button>
+            </form>
           </div>
-        </section>
 
-        {/* CTA */}
-        <section className="py-20 bg-gradient-to-b from-pastel-peach/20 to-transparent">
-          <div className="container">
-            <ScrollReveal className="text-center">
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
-                Ready to Take the First Step?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Our intake team is standing by to answer your questions and guide you 
-                through the process. Call us today to begin your journey.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="tel:786-860-5161"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium cursor-pointer"
-                >
-                  <IconPhone size={20} />
-                  <span>Call Now: 786-860-5161</span>
-                </a>
-                <a
-                  href="/contact"
-                  className="px-8 py-4 bg-white border-2 border-primary text-primary rounded-full font-medium cursor-pointer"
-                >
-                  Contact Form
-                </a>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
+        </div>
       </main>
-      <Footer />
     </>
   );
 }

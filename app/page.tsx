@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Navigation from "@/components/layout/navigation";
 import {
   IconPhone,
   IconMail,
@@ -141,90 +142,77 @@ export default function Home() {
 
   return (
     <>
-      <main className="min-h-screen bg-white">
-        {/* Sticky Header */}
-        <header className="sticky top-0 bg-white/80 backdrop-blur-md z-30">
-          <div className="max-w-3xl mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <h1 className="text-lg md:text-xl font-semibold">
-                The Behaviorists
-              </h1>
-              <button
-                onClick={() => setIsDrawerOpen(true)}
-                className="text-sm md:text-base bg-zinc-900 text-white px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-zinc-800 transition-colors"
-              >
-                Get Started
-              </button>
-            </div>
-          </div>
-        </header>
+      <Navigation />
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 max-w-3xl mx-auto p-4 md:p-8 w-full">
-          {/* Hero Carousel */}
+      {/* Full-Width Hero Carousel */}
+      <div className="relative w-full h-[80vh] overflow-hidden">
+        {/* Background Images */}
+        {slides.map((slide, index) => (
           <div
-            className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1 bg-zinc-900 text-white h-[50vh] min-h-[300px] text-left cursor-grab active:cursor-grabbing"
-            style={{ touchAction: "pan-y" }}
+            key={index}
+            className="absolute inset-0 z-0"
+            style={{
+              pointerEvents: "none",
+              opacity: currentSlide === index ? 1 : 0,
+              transition: "opacity 1s",
+            }}
           >
-            {/* Background Images */}
-            {slides.map((slide, index) => (
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover"
+              style={{ filter: slide.filter }}
+              priority={index === 0}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
+          </div>
+        ))}
+
+        {/* Progress Indicators */}
+        <div className="absolute top-24 left-0 right-0 z-20">
+          <div className="container flex gap-2">
+            {slides.map((_, index) => (
               <div
                 key={index}
-                className="absolute inset-0 z-0"
-                style={{
-                  pointerEvents: "none",
-                  opacity: currentSlide === index ? 1 : 0,
-                  transition: "opacity 1s",
-                }}
+                className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden"
               >
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  fill
-                  className="object-cover"
-                  style={{ filter: slide.filter }}
-                  priority={index === 0}
+                <div
+                  className="h-full bg-white"
+                  style={{
+                    width: currentSlide === index ? "100%" : "0%",
+                    transition:
+                      currentSlide === index
+                        ? `width ${slideDuration / 1000}s linear`
+                        : "none",
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
               </div>
             ))}
-
-            {/* Progress Indicators */}
-            <div className="absolute top-8 left-8 right-8 flex gap-1 z-20">
-              {slides.map((_, index) => (
-                <div
-                  key={index}
-                  className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden"
-                >
-                  <div
-                    className="h-full bg-white"
-                    style={{
-                      width: currentSlide === index ? "100%" : "0%",
-                      transition:
-                        currentSlide === index
-                          ? `width ${slideDuration / 1000}s linear`
-                          : "none",
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Content - positioned bottom left */}
-            <div className="absolute bottom-0 left-0 p-6 md:p-8 z-10 flex flex-col gap-2">
-              <h1
-                key={currentSlide}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white"
-              >
-                {slides[currentSlide].title}
-              </h1>
-              <p className="text-base text-white/90 max-w-xl">
-                Evidence-based ABA therapy for children with autism and
-                developmental disabilities in South Florida.
-              </p>
-            </div>
           </div>
+        </div>
+
+        {/* Content */}
+        <div className="absolute inset-0 z-10 flex items-end">
+          <div className="container pb-16 md:pb-20">
+            <h1
+              key={currentSlide}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold mb-4"
+            >
+              {slides[currentSlide].title}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90">
+              Evidence-based ABA therapy for children with autism and
+              developmental disabilities in South Florida.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <main className="min-h-screen bg-white">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 max-w-[960px] mx-auto p-4 md:p-8 w-full">
 
           {/* Quick Stats */}
           <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 row-span-1">
@@ -835,7 +823,7 @@ export default function Home() {
 
             {/* Modal */}
             <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-              <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden shadow-2xl">
+              <div className="bg-white rounded-2xl w-full max-w-[960px] max-h-[85vh] overflow-hidden shadow-2xl">
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 border-b border-zinc-100">
                   <h2 className="text-xl font-semibold">Privacy Policy</h2>
@@ -1062,7 +1050,7 @@ export default function Home() {
 
             {/* Modal */}
             <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
-              <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[85vh] overflow-hidden shadow-2xl">
+              <div className="bg-white rounded-2xl w-full max-w-[960px] max-h-[85vh] overflow-hidden shadow-2xl">
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 border-b border-zinc-100">
                   <h2 className="text-xl font-semibold">

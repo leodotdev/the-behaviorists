@@ -1,170 +1,118 @@
-import Navigation from '@/components/layout/navigation';
-import Footer from '@/components/layout/footer';
-import ScrollReveal from '@/components/ui/scroll-reveal';
-import Image from 'next/image';
-import { IconHome, IconSchool, IconBuildingHospital, IconCircleCheck, IconSparkles } from '@tabler/icons-react';
+"use client";
 
-const serviceDetails = [
-  {
-    id: 'home',
-    icon: IconHome,
-    title: 'Home-Based ABA Therapy',
-    description: 'Our home-based services bring evidence-based therapy directly to your family&apos;s natural environment.',
-    features: [
-      'Comfortable, familiar setting for your child',
-      'Direct parent training and involvement',
-      'Generalization of skills in daily routines',
-      'Flexible scheduling to fit family needs',
-      'Natural environment teaching opportunities',
-    ],
-    bgColor: 'bg-pastel-blue/50',
-    gradientFrom: 'from-pastel-blue',
-    gradientTo: 'to-pastel-blue/50',
-    image: '/images/ig-12.jpg',
-  },
-  {
-    id: 'school',
-    icon: IconSchool,
-    title: 'School-Based Support',
-    description: 'We collaborate with educational teams to ensure consistent support across all learning environments.',
-    features: [
-      'Direct collaboration with teachers and staff',
-      'Classroom behavior management strategies',
-      'Social skills development with peers',
-      'Academic support and accommodations',
-      'IEP meeting participation and advocacy',
-    ],
-    bgColor: 'bg-pastel-green/50',
-    gradientFrom: 'from-pastel-green',
-    gradientTo: 'to-pastel-green/50',
-    image: '/images/ig-13.jpg',
-  },
-  {
-    id: 'clinic',
-    icon: IconBuildingHospital,
-    title: 'Clinic-Based Services',
-    description: 'Our clinic provides a structured therapeutic environment with specialized resources and equipment.',
-    features: [
-      'State-of-the-art therapy facilities',
-      'Peer interaction opportunities',
-      'Structured learning environment',
-      'Access to specialized resources',
-      'Group therapy sessions available',
-    ],
-    bgColor: 'bg-pastel-lavender/50',
-    gradientFrom: 'from-pastel-lavender',
-    gradientTo: 'to-pastel-lavender/50',
-    image: '/images/ig-9.jpg',
-  },
+import Image from "next/image";
+import Link from "next/link";
+import Navigation from "@/components/layout/navigation";
+import { IconCircleCheck } from "@tabler/icons-react";
+
+const abaServices = [
+  { name: 'Toilet Training', emoji: '🧻' },
+  { name: 'Picky Eating', emoji: '🍝' },
+  { name: 'School Shadowing', emoji: '✏️' },
+  { name: 'Social Skills', emoji: '👥' },
+  { name: 'Behavior Reduction', emoji: '😊' },
+  { name: 'Augmentative/Alternative Communication Training', emoji: '💬' },
+  { name: 'Caregiver Training', emoji: '👨‍👩‍👧' },
+  { name: 'Functional Communication Training', emoji: '💭' },
+];
+
+const benefits = [
+  'Improve attention, focus, social skills and academics',
+  'Increase language and communication skills',
+  'Foster independence and increase self-esteem',
+  'Decrease dangerous and inappropriate behavior',
 ];
 
 export default function ServicesPage() {
   return (
     <>
       <Navigation />
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-pastel-peach/30 to-pastel-blue/30">
-          <div className="container">
-            <ScrollReveal className="text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                <IconSparkles size={16} className="text-accent-peach" />
-                <span>Our Services</span>
-              </div>
-              <h1 className="text-5xl md:text-6xl font-sans font-bold mb-6">
-                Comprehensive <span className="text-gradient">ABA Services</span>
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                We offer flexible service delivery options to meet your family&apos;s unique needs. 
-                Our board-certified professionals provide evidence-based ABA therapy in the 
-                setting that works best for your child.
-              </p>
-            </ScrollReveal>
+      <main className="min-h-screen bg-white">
+        {/* Full-Width Hero */}
+        <div className="relative w-full h-[80vh] overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/ig-3.jpg"
+              alt="Services"
+              fill
+              className="object-cover"
+              style={{ filter: 'brightness(0.7) saturate(1.2)' }}
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
-        </section>
 
-        {/* Service Details */}
-        <section className="py-20">
-          <div className="container">
-            <div className="space-y-24">
-              {serviceDetails.map((service, index) => (
-                <ScrollReveal key={service.id} delay={index * 0.1}>
-                  <div className={`grid lg:grid-cols-2 gap-12 items-center ${
-                    index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                  }`}>
-                    {/* Content */}
-                    <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                      <div className={`inline-flex p-3 ${service.bgColor} rounded-2xl mb-6`}>
-                        <service.icon size={40} className="text-primary" />
-                      </div>
-                      <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
-                        {service.title}
-                      </h2>
-                      <p className="text-lg text-muted-foreground mb-8">
-                        {service.description}
-                      </p>
-                      
-                      <ul className="space-y-3">
-                        {service.features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <IconCircleCheck size={20} className="text-accent-green flex-shrink-0 mt-0.5" />
-                            <span className="text-muted-foreground">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Visual */}
-                    <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                      <div className="relative aspect-square rounded-3xl overflow-hidden">
-                        <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent" />
-                      </div>
-                      <div className="absolute -top-4 -right-4 w-32 h-32 bg-wellness-coral/20 rounded-full blur-2xl" />
-                      <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-wellness-mint/20 rounded-full blur-2xl" />
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
+          {/* Content */}
+          <div className="absolute inset-0 z-10 flex items-end">
+            <div className="container pb-16 md:pb-20">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold mb-4">
+                Services by The Behaviorists
+              </h1>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Process CTA */}
-        <section className="py-20 bg-gradient-to-b from-pastel-yellow/20 to-transparent">
-          <div className="container">
-            <ScrollReveal className="text-center">
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
-                Ready to Get Started?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Our intake process is designed to be simple and supportive. 
-                Contact us today to discuss how we can help your child thrive.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/getting-started"
-                  className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-medium cursor-pointer"
-                >
-                  Learn About Our Process
-                </a>
-                <a
-                  href="tel:786-860-5161"
-                  className="px-8 py-4 bg-white border-2 border-primary text-primary rounded-full font-medium cursor-pointer"
-                >
-                  Call 786-860-5161
-                </a>
-              </div>
-            </ScrollReveal>
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 max-w-[960px] mx-auto p-4 md:p-8 w-full">
+
+          {/* Understanding ABA */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
+            <div className="text-lg md:text-xl font-semibold mb-3">
+              Understanding Applied Behavior Analysis
+            </div>
+            <div className="space-y-3 text-base text-zinc-600">
+              <p>Applied Behavior Analysis, or ABA therapy, is a therapy based on the science of behavior and learning.</p>
+              <p>We practice skills that the child has not achieved yet and implement interventions to reduce problem behavior.</p>
+              <p className="font-semibold text-zinc-900">Our goal is for our clients to be independent!</p>
+            </div>
           </div>
-        </section>
+
+          {/* How ABA Can Help */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1 bg-blue-50">
+            <div className="text-lg md:text-xl font-semibold mb-4">How ABA Can Help</div>
+            <ul className="space-y-3">
+              {benefits.map((benefit, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <IconCircleCheck size={20} className="text-blue-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-base text-zinc-700">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ABA Can Help With Header */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-full row-span-1 bg-lavender-100">
+            <div className="text-lg md:text-xl font-semibold">ABA Can Help With</div>
+          </div>
+
+          {/* ABA Services Grid */}
+          {abaServices.map((service, index) => (
+            <div
+              key={index}
+              className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 row-span-1"
+            >
+              <span className="text-2xl mb-2">{service.emoji}</span>
+              <div className="text-sm md:text-base font-medium text-zinc-700">{service.name}</div>
+            </div>
+          ))}
+
+          {/* CTA */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1 bg-teal-50">
+            <div className="text-lg md:text-xl font-semibold mb-3">Ready to get started?</div>
+            <p className="text-base text-zinc-600 mb-4">
+              Contact us today to learn how we can help your child thrive.
+            </p>
+            <Link
+              href="/getting-started"
+              className="inline-block bg-zinc-900 text-white px-6 py-3 rounded-full hover:bg-zinc-800 transition-colors text-center"
+            >
+              Click here to learn how
+            </Link>
+          </div>
+
+        </div>
       </main>
-      <Footer />
     </>
   );
 }

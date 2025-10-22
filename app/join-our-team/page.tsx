@@ -1,261 +1,231 @@
-import Navigation from '@/components/layout/navigation';
-import Footer from '@/components/layout/footer';
-import ScrollReveal from '@/components/ui/scroll-reveal';
-import { IconHeart, IconTrophy, IconUsers, IconSparkles, IconGrowth, IconCalendarEvent, IconShieldCheck } from '@tabler/icons-react';
+"use client";
 
-const benefits = [
-  {
-    icon: IconHeart,
-    title: 'Comprehensive Health Benefits',
-    description: 'Medical, dental, and vision coverage for you and your family',
-  },
-  {
-    icon: IconCalendarEvent,
-    title: 'Work-Life Balance',
-    description: 'Flexible scheduling and generous PTO to maintain healthy boundaries',
-  },
-  {
-    icon: IconGrowth,
-    title: 'Professional Development',
-    description: 'Continuing education support and career advancement opportunities',
-  },
-  {
-    icon: IconTrophy,
-    title: 'Competitive Compensation',
-    description: 'Industry-leading salaries with performance-based bonuses',
-  },
-];
-
-const positions = [
-  {
-    title: 'Board Certified Behavior Analyst (BCBA)',
-    type: 'Full-time',
-    location: 'South Florida',
-    requirements: [
-      'Active BCBA certification',
-      'Experience with autism and related disorders',
-      'Strong assessment and treatment planning skills',
-      'Excellent communication abilities',
-    ],
-  },
-  {
-    title: 'Registered Behavior Technician (RBT)',
-    type: 'Full-time / Part-time',
-    location: 'Multiple Locations',
-    requirements: [
-      'RBT certification (or willingness to obtain)',
-      'High school diploma or equivalent',
-      'Passion for working with children',
-      'Reliable transportation',
-    ],
-  },
-  {
-    title: 'BCaBA - Assistant Behavior Analyst',
-    type: 'Full-time',
-    location: 'Doral / Miami Springs',
-    requirements: [
-      'Active BCaBA certification',
-      'Experience in ABA therapy',
-      'Strong data collection and analysis skills',
-      'Team collaboration abilities',
-    ],
-  },
-];
-
-const values = [
-  'Client-centered approach',
-  'Evidence-based practices',
-  'Continuous learning',
-  'Team collaboration',
-  'Family involvement',
-  'Professional integrity',
-];
+import { useState } from 'react';
+import Image from "next/image";
+import Navigation from "@/components/layout/navigation";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconLoader } from "@tabler/icons-react";
 
 export default function JoinOurTeamPage() {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/join-team', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit application');
+      }
+
+      setMessage({ type: 'success', text: 'Thank you for your application! We\'ll review it and be in touch soon.' });
+      e.currentTarget.reset();
+    } catch (error) {
+      setMessage({ type: 'error', text: 'Something went wrong. Please try emailing your application to hello@the-behaviorists.com' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Navigation />
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-pastel-lavender/30 to-pastel-pink/30">
-          <div className="container">
-            <ScrollReveal className="text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                <IconSparkles size={16} className="text-accent-lavender" />
-                <span>Join Our Team</span>
-              </div>
-              <h1 className="text-5xl md:text-6xl font-sans font-bold mb-6">
-                Make a <span className="text-gradient">Difference</span> Every Day
+      <main className="min-h-screen bg-white">
+        {/* Full-Width Hero */}
+        <div className="relative w-full h-[80vh] overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/ig-6.jpg"
+              alt="Join Our Team"
+              fill
+              className="object-cover"
+              style={{ filter: 'brightness(0.7) saturate(1.2)' }}
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          </div>
+
+          {/* Content */}
+          <div className="absolute inset-0 z-10 flex items-end">
+            <div className="container pb-16 md:pb-20">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-bold mb-4">
+                Join Our Team
               </h1>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Join a passionate team dedicated to transforming lives through 
-                evidence-based ABA therapy. We&apos;re looking for compassionate professionals 
-                who share our commitment to excellence.
-              </p>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* Why Join Us */}
-        <section className="py-20">
-          <div className="container">
-            <ScrollReveal className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
-                Why Choose The Behaviorists?
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We invest in our team members because we know that happy, supported 
-                professionals provide the best care for our clients.
-              </p>
-            </ScrollReveal>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {benefits.map((benefit, index) => (
-                <ScrollReveal key={benefit.title} delay={index * 0.1}>
-                  <div className="text-center">
-                    <div className="inline-flex p-4 bg-pastel-peach/50 rounded-2xl mb-4">
-                      <benefit.icon size={32} className="text-primary" />
-                    </div>
-                    <h3 className="text-xl font-sans font-bold mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              ))}
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Our Culture */}
-        <section className="py-20 bg-gradient-to-b from-pastel-blue/20 to-transparent">
-          <div className="container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <ScrollReveal>
-                <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
-                  A Culture of Growth and Support
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  At The Behaviorists, we foster an environment where every team member 
-                  can thrive professionally and personally. Our collaborative approach 
-                  ensures you&apos;re never alone in your journey.
-                </p>
-                
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {values.map((value, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-accent-green rounded-full" />
-                      <span className="text-muted-foreground">{value}</span>
-                    </div>
-                  ))}
-                </div>
-              </ScrollReveal>
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 max-w-[960px] mx-auto p-4 md:p-8 w-full">
 
-              <ScrollReveal delay={0.2}>
-                <div className="relative">
-                  <div className="bg-gradient-to-br from-pastel-green to-pastel-blue rounded-3xl aspect-square flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <IconUsers size={80} className="mx-auto mb-4 text-white/80" />
-                      <p className="text-white/80 font-sans text-2xl">
-                        Join a team that values your contribution
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent-lavender/30 rounded-full blur-xl" />
-                  <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-accent-peach/30 rounded-full blur-xl" />
-                </div>
-              </ScrollReveal>
-            </div>
+          {/* Mission */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
+            <p className="text-base text-zinc-600 mb-3">
+              We are always accepting applications from talented professionals who are truly committed to making a difference for our clients.
+            </p>
+            <p className="text-base font-semibold text-zinc-900">
+              If you're interested in working with an ethical and supportive organization, apply today!
+            </p>
           </div>
-        </section>
 
-        {/* Open Positions */}
-        <section className="py-20">
-          <div className="container">
-            <ScrollReveal className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">
-                Current Opportunities
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We&apos;re always looking for talented individuals to join our growing team.
-              </p>
-            </ScrollReveal>
+          {/* Application Form */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
+            <div className="text-lg font-semibold mb-4">Application Form</div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="Legal First Name"
+                  required
+                  className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+                />
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Legal Last Name"
+                  required
+                  className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+                />
+              </div>
 
-            <div className="max-w-4xl mx-auto space-y-6">
-              {positions.map((position, index) => (
-                <ScrollReveal key={position.title} delay={index * 0.1}>
-                  <div className="bg-white rounded-2xl p-8 shadow-lg">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-2xl font-sans font-bold mb-2">
-                          {position.title}
-                        </h3>
-                        <div className="flex flex-wrap gap-3 text-sm">
-                          <span className="px-3 py-1 bg-pastel-blue/50 rounded-full">
-                            {position.type}
-                          </span>
-                          <span className="px-3 py-1 bg-pastel-green/50 rounded-full">
-                            {position.location}
-                          </span>
-                        </div>
-                      </div>
-                      <button className="px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium cursor-pointer">
-                        Apply Now
-                      </button>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium mb-3">Key Requirements:</h4>
-                      <ul className="space-y-2">
-                        {position.requirements.map((req, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <IconShieldCheck size={16} className="text-accent-green flex-shrink-0 mt-0.5" />
-                            <span className="text-sm text-muted-foreground">{req}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </section>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
 
-        {/* Application CTA */}
-        <section className="py-20 bg-gradient-to-b from-pastel-lavender/20 to-transparent">
-          <div className="container">
-            <ScrollReveal>
-              <div className="bg-gradient-to-br from-pastel-pink to-pastel-lavender rounded-3xl p-12 md:p-16 text-center">
-                <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6 text-white">
-                  Ready to Start Your Journey With Us?
-                </h2>
-                <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                  Take the first step toward a rewarding career where you can make 
-                  a real difference in children&apos;s lives every day.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a
-                    href="mailto:careers@thebehaviorists.com"
-                    className="px-8 py-4 bg-white text-primary rounded-full font-medium cursor-pointer"
-                  >
-                    Submit Your Application
-                  </a>
-                  <a
-                    href="/contact"
-                    className="px-8 py-4 bg-white/20 backdrop-blur-sm text-white border-2 border-white/50 rounded-full font-medium cursor-pointer"
-                  >
-                    Contact HR
-                  </a>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+                required
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              />
+
+              <select
+                name="position"
+                required
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none"
+              >
+                <option value="">Select the position you are applying to</option>
+                <option value="Registered Behavior Technician">Registered Behavior Technician</option>
+                <option value="BCaBA">BCaBA</option>
+                <option value="BCBA">BCBA</option>
+                <option value="Administrative Support">Administrative Support</option>
+              </select>
+
+              <div className="bg-white p-4 rounded-lg border border-zinc-200">
+                <p className="mb-3 text-sm font-medium">Do you have active credentials with the Behavior Analyst Certification Board?</p>
+                <div className="space-y-2">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="credentials"
+                      value="Yes"
+                      required
+                      className="w-4 h-4"
+                    />
+                    <span className="text-sm">Yes</span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="credentials"
+                      value="Not at this time"
+                      required
+                      className="w-4 h-4"
+                    />
+                    <span className="text-sm">Not at this time</span>
+                  </label>
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="credentials"
+                      value="N/A: I am applying for an administrative role"
+                      required
+                      className="w-4 h-4"
+                    />
+                    <span className="text-sm">N/A: I am applying for an administrative role</span>
+                  </label>
                 </div>
               </div>
-            </ScrollReveal>
+
+              <textarea
+                name="message"
+                placeholder="Tell us about yourself and why you want to join our team"
+                rows={5}
+                className="w-full px-4 py-3 bg-white rounded-lg border border-zinc-200 focus:border-zinc-400 focus:outline-none resize-none"
+              />
+
+              {message && (
+                <div className={`p-4 rounded-lg text-sm ${message.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+                  {message.text}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full px-8 py-4 bg-zinc-900 text-white rounded-full font-medium hover:bg-zinc-800 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {loading && <IconLoader className="animate-spin" size={20} />}
+                {loading ? 'Sending Application...' : 'Submit'}
+              </button>
+            </form>
           </div>
-        </section>
+
+          {/* Social Links */}
+          <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
+            <div className="text-lg font-semibold mb-4">Connect With Us</div>
+            <div className="flex gap-4">
+              <a
+                href="https://www.facebook.com/thebehaviorists"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white rounded-lg hover:bg-zinc-50 transition-colors"
+                aria-label="Facebook"
+              >
+                <IconBrandFacebook size={24} className="text-[#1877F2]" />
+              </a>
+              <a
+                href="https://www.instagram.com/thebehaviorists"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white rounded-lg hover:bg-zinc-50 transition-colors"
+                aria-label="Instagram"
+              >
+                <IconBrandInstagram size={24} className="text-[#E4405F]" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/thebehaviorists"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white rounded-lg hover:bg-zinc-50 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <IconBrandLinkedin size={24} className="text-[#0A66C2]" />
+              </a>
+            </div>
+          </div>
+
+        </div>
       </main>
-      <Footer />
     </>
   );
 }

@@ -56,19 +56,19 @@
 :root {
   --radius: 0.75rem;
   
-  /* Minimal Apple-inspired theme with zinc colors */
-  --background: #ffffff;
-  --foreground: #18181b;
-  --card: #fafafa;
-  --card-foreground: #18181b;
+  /* Minimal Apple-inspired theme with stone colors */
+  --background: #fafaf9;
+  --foreground: #1c1917;
+  --card: #fafaf9;
+  --card-foreground: #1c1917;
   --popover: #ffffff;
-  --popover-foreground: #18181b;
-  --primary: #18181b;
-  --primary-foreground: #fafafa;
-  --secondary: #71717a;
-  --secondary-foreground: #fafafa;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
+  --popover-foreground: #1c1917;
+  --primary: #1c1917;
+  --primary-foreground: #fafaf9;
+  --secondary: #78716c;
+  --secondary-foreground: #fafaf9;
+  --muted: #f5f5f4;
+  --muted-foreground: #78716c;
   --accent: #3b82f6;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
@@ -85,21 +85,21 @@
   --success: #d1fae5;
   --success-foreground: #059669;
   --success-border: #a7f3d0;
-  --border: #e4e4e7;
+  --border: #e7e5e4;
   --input: #ffffff;
-  --ring: #18181b;
+  --ring: #1c1917;
   
-  /* Zinc color palette */
-  --zinc-50: #fafafa;
-  --zinc-100: #f4f4f5;
-  --zinc-200: #e4e4e7;
-  --zinc-300: #d4d4d8;
-  --zinc-400: #a1a1aa;
-  --zinc-500: #71717a;
-  --zinc-600: #52525b;
-  --zinc-700: #3f3f46;
-  --zinc-800: #27272a;
-  --zinc-900: #18181b;
+  /* Stone color palette */
+  --stone-50: #fafaf9;
+  --stone-100: #f5f5f4;
+  --stone-200: #e7e5e4;
+  --stone-300: #d6d3d1;
+  --stone-400: #a8a29e;
+  --stone-500: #78716c;
+  --stone-600: #57534e;
+  --stone-700: #44403c;
+  --stone-800: #292524;
+  --stone-900: #1c1917;
   
   /* Wellness color palette */
   --wellness-cream: #fdf8f3;
@@ -189,7 +189,7 @@
   }
   
   body {
-    background-color: var(--background);
+    background-color: #fafaf9;
     color: var(--foreground);
     overscroll-behavior: none;
     font-family: var(--font-sans);
@@ -257,9 +257,15 @@
   }
   
   .container {
-    max-width: 1280px;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      padding: 0 2rem;
+    }
   }
   
   .container-narrow {
