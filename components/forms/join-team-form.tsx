@@ -30,7 +30,7 @@ export default function JoinTeamForm() {
 
       setMessage({ type: 'success', text: 'Thank you for your application! We\'ll review it and be in touch soon.' });
       e.currentTarget.reset();
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'Something went wrong. Please try emailing your application to hello@the-behaviorists.com' });
     } finally {
       setLoading(false);

@@ -32,7 +32,7 @@ export default function GettingStartedPage() {
 
       setMessage({ type: 'success', text: 'Thank you! We\'ll be in touch soon.' });
       e.currentTarget.reset();
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'Something went wrong. Please try calling us instead.' });
     } finally {
       setLoading(false);
@@ -76,28 +76,28 @@ export default function GettingStartedPage() {
 
           {/* Intro */}
           <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
-            <div className="text-lg font-semibold mb-3">We'll walk you through the process</div>
+            <div className="text-lg font-semibold mb-3">We&apos;ll walk you through the process</div>
           </div>
 
           {/* Process Steps */}
           <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-1 row-span-1">
             <div className="text-2xl font-bold text-zinc-300 mb-2">01</div>
             <p className="text-base text-zinc-600">
-              Call us or fill out the contact form below to briefly discuss your child's needs
+              Call us or fill out the contact form below to briefly discuss your child&apos;s needs
             </p>
           </div>
 
           <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-1 row-span-1">
             <div className="text-2xl font-bold text-zinc-300 mb-2">02</div>
             <p className="text-base text-zinc-600">
-              We'll confirm the documentation requirements and initiate services with your insurance
+              We&apos;ll confirm the documentation requirements and initiate services with your insurance
             </p>
           </div>
 
           <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
             <div className="text-2xl font-bold text-zinc-300 mb-2">03</div>
             <p className="text-base text-zinc-600">
-              During the assessment, we'll discuss the best treatment plan for your child, pick a location, and recommend hours
+              During the assessment, we&apos;ll discuss the best treatment plan for your child, pick a location, and recommend hours
             </p>
           </div>
 
@@ -106,7 +106,7 @@ export default function GettingStartedPage() {
             <div className="text-lg md:text-xl font-semibold mb-3">Accepted Insurance Plans</div>
             <p className="text-base text-zinc-600 mb-4">
               If you are interested in using your health insurance to cover the cost of ABA therapy,
-              we'll determine the documentation requirements set by your benefits plan. We'll work with
+              we&apos;ll determine the documentation requirements set by your benefits plan. We&apos;ll work with
               you to submit all paperwork on your behalf.
             </p>
             <div className="flex flex-wrap items-center gap-4 mb-4">
@@ -147,7 +147,7 @@ export default function GettingStartedPage() {
               />
             </div>
             <p className="text-sm text-pink-600">
-              Don't see your plan on the list?<br />
+              Don&apos;t see your plan on the list?<br />
               Contact us today to discuss affordable payment options.
             </p>
           </div>

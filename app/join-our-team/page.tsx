@@ -32,7 +32,7 @@ export default function JoinOurTeamPage() {
 
       setMessage({ type: 'success', text: 'Thank you for your application! We\'ll review it and be in touch soon.' });
       e.currentTarget.reset();
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'Something went wrong. Please try emailing your application to hello@the-behaviorists.com' });
     } finally {
       setLoading(false);
@@ -77,7 +77,7 @@ export default function JoinOurTeamPage() {
               We are always accepting applications from talented professionals who are truly committed to making a difference for our clients.
             </p>
             <p className="text-base font-semibold text-zinc-900">
-              If you're interested in working with an ethical and supportive organization, apply today!
+              If you&apos;re interested in working with an ethical and supportive organization, apply today!
             </p>
           </div>
 

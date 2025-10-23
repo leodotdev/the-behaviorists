@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
           <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
             <div className="text-lg font-semibold mb-3">1. Introduction</div>
             <p className="text-base text-zinc-600">
-              Welcome to The Behaviorists ("Company," "we," "our," "us"). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website hello@the-behaviorists.com.
+              Welcome to The Behaviorists (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; &quot;us&quot;). We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website hello@the-behaviorists.com.
             </p>
           </div>
 
@@ -107,7 +107,7 @@ export default function PrivacyPolicyPage() {
                 <p>Our website may contain links to third-party websites. We are not responsible for their privacy practices.</p>
               </div>
               <div>
-                <div className="font-semibold mb-1">8. Children's Privacy</div>
+                <div className="font-semibold mb-1">8. Children&apos;s Privacy</div>
                 <p>We do not knowingly collect personal information from children under 13 without parental consent.</p>
               </div>
               <div>

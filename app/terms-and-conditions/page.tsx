@@ -43,7 +43,7 @@ export default function TermsAndConditionsPage() {
           <div className="bg-zinc-100 rounded-lg md:rounded-xl p-4 md:p-8 overflow-hidden relative min-h-[120px] flex flex-col col-span-1 md:col-span-2 row-span-1">
             <div className="text-lg font-semibold mb-3">1. Introduction</div>
             <p className="text-base text-zinc-600">
-              Welcome to The Behaviorists ("Company," "we," "our," "us"). By accessing or using our website the-behaviorists.com, you agree to comply with and be bound by these Terms and Conditions. If you do not agree, please do not use our website.
+              Welcome to The Behaviorists (&quot;Company,&quot; &quot;we,&quot; &quot;our,&quot; &quot;us&quot;). By accessing or using our website the-behaviorists.com, you agree to comply with and be bound by these Terms and Conditions. If you do not agree, please do not use our website.
             </p>
           </div>
 

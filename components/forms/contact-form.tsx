@@ -34,7 +34,7 @@ export default function ContactForm({ variant = 'contact' }: ContactFormProps) {
 
       setMessage({ type: 'success', text: 'Thank you! We\'ll be in touch soon.' });
       e.currentTarget.reset();
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'Something went wrong. Please try calling us instead.' });
     } finally {
       setLoading(false);
