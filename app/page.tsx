@@ -115,7 +115,7 @@ const FeatureCard = ({
       <Link href={buttonHref}>
         <Button
           variant="outline"
-          className="rounded-full border-foreground/30 text-foreground hover:bg-foreground/10 btn-headspace"
+          className="rounded-full border-0 bg-white/80 text-foreground hover:bg-white btn-headspace"
         >
           {buttonText}
         </Button>
@@ -443,9 +443,9 @@ export default function Home() {
                   buttonText="Get started"
                   buttonHref="#contact"
                 >
-                  <div className="absolute bottom-4 right-4">
-                    <div className="w-24 h-24 bg-white/50 rounded-2xl flex items-center justify-center">
-                      <IconFAlarmClock size={48} />
+                  <div className="absolute bottom-0 right-0 w-40 h-40">
+                    <div className="w-32 h-32 bg-white/50 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                      <IconFAlarmClock size={64} />
                     </div>
                   </div>
                 </FeatureCard>
@@ -473,8 +473,10 @@ export default function Home() {
                   buttonText="Get started"
                   buttonHref="#contact"
                 >
-                  <div className="absolute bottom-4 right-4">
-                    <IconFBustsInSilhouette size={64} />
+                  <div className="absolute bottom-0 right-0 w-40 h-40">
+                    <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                      <IconFBustsInSilhouette size={64} />
+                    </div>
                   </div>
                 </FeatureCard>
               </>
@@ -501,8 +503,10 @@ export default function Home() {
                   buttonText="Get started"
                   buttonHref="#contact"
                 >
-                  <div className="absolute bottom-4 right-4">
-                    <IconFBullseye size={64} />
+                  <div className="absolute bottom-0 right-0 w-40 h-40">
+                    <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                      <IconFBullseye size={64} />
+                    </div>
                   </div>
                 </FeatureCard>
               </>
@@ -628,15 +632,15 @@ export default function Home() {
         </div>
 
         {/* Logo marquee */}
-        <div className="relative">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...Array(2)].map((_, setIndex) => (
-              <div key={setIndex} className="flex items-center gap-16 px-8">
-                <Image src="/images/logo-aetna.png" alt="Aetna" width={100} height={40} className="brightness-0 invert opacity-80" />
-                <Image src="/images/logo-bcbs.png" alt="BCBS" width={100} height={40} className="brightness-0 invert opacity-80" />
-                <Image src="/images/logo-cigna.png" alt="Cigna" width={100} height={40} className="brightness-0 invert opacity-80" />
-                <Image src="/images/logo-medicaid.png" alt="Medicaid" width={100} height={40} className="brightness-0 invert opacity-80" />
-                <Image src="/images/logo-tricare.png" alt="Tricare" width={100} height={40} className="brightness-0 invert opacity-80" />
+        <div className="relative w-full">
+          <div className="flex animate-marquee">
+            {[...Array(4)].map((_, setIndex) => (
+              <div key={setIndex} className="flex items-center shrink-0 gap-12 px-6">
+                <Image src="/images/logo-aetna.png" alt="Aetna" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+                <Image src="/images/logo-bcbs.png" alt="BCBS" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+                <Image src="/images/logo-cigna.png" alt="Cigna" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+                <Image src="/images/logo-medicaid.png" alt="Medicaid" width={160} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+                <Image src="/images/logo-tricare.png" alt="Tricare" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
               </div>
             ))}
           </div>
