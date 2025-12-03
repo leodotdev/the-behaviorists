@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx @opennextjs/cloudflare build",
+    "build": "next build",
+    "build:worker": "npx @opennextjs/cloudflare build",
     "start": "next start",
     "lint": "eslint",
-    "preview": "npx wrangler dev"
+    "preview": "npx wrangler dev",
+    "deploy": "npm run build:worker"
   },
   "dependencies": {
     "@fontsource/stack-sans-headline": "^5.2.1",
