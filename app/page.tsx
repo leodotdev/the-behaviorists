@@ -326,7 +326,7 @@ export default function Home() {
 
       {/* Hero Section - Headspace style with yellow/orange background */}
       <section className="bg-[#FFCE00] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-18">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up flex flex-col gap-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
@@ -381,7 +381,7 @@ export default function Home() {
       </section>
 
       {/* Category Buttons Section - Headspace style */}
-      <section className="py-16 bg-white">
+      <section className="py-18 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center">
             What kind of support are you looking for?
@@ -395,7 +395,7 @@ export default function Home() {
       </section>
 
       {/* Feature Cards Section - Headspace style */}
-      <section id="services" className="py-16 bg-white">
+      <section id="services" className="py-18 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
@@ -533,7 +533,7 @@ export default function Home() {
       </section>
 
       {/* ABA Helps Section - Headspace style grid */}
-      <section id="about" className="py-16 bg-[#f5f5f5]">
+      <section id="about" className="py-18 bg-[#F9F7F2]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
@@ -561,7 +561,7 @@ export default function Home() {
       </section>
 
       {/* Team Section - Headspace style carousel */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="py-18 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="text-center flex flex-col gap-6">
             <h2 className="font-bold text-3xl md:text-4xl">
@@ -618,7 +618,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials - Headspace style */}
-      <section className="py-20 bg-white relative">
+      <section className="py-18 bg-white relative">
         {/* Floating decorative elements */}
         <DecorativeBlob icon={<IconFOrangeHeart size={32} />} color="bg-[#EF89C4]" className="absolute top-20 left-10 animate-float hidden lg:flex" />
         <DecorativeBlob icon={<IconFBlueHeart size={32} />} color="bg-[#58A7FB]" className="absolute top-40 right-20 animate-float stagger-2 hidden lg:flex" />
@@ -647,7 +647,7 @@ export default function Home() {
       </section>
 
       {/* Insurance Marquee - Headspace style */}
-      <section className="py-16 bg-[#0C6FF9] text-white overflow-hidden flex flex-col gap-8">
+      <section className="py-18 bg-[#0C6FF9] text-white overflow-hidden flex flex-col gap-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-2">
           <h2 className="font-bold text-3xl md:text-4xl text-center">
             We accept most major insurance plans
@@ -678,7 +678,7 @@ export default function Home() {
       </section>
 
       {/* Getting Started Section - Headspace style */}
-      <section id="process" className="py-20 bg-white">
+      <section id="process" className="py-18 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
@@ -706,7 +706,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section - Headspace style */}
-      <section id="faq" className="py-20 bg-[#f5f5f5]">
+      <section id="faq" className="py-18 bg-[#F9F7F2]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <h2 className="font-bold text-3xl md:text-4xl text-center">
             Frequently asked questions
@@ -732,7 +732,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section - Headspace style */}
-      <section id="contact" className="py-20 bg-[#FF7E1D] relative overflow-hidden">
+      <section id="contact" className="py-18 bg-[#FF7E1D] relative overflow-hidden">
         {/* Decorative circle */}
         <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#FFCE00] rounded-full opacity-50" />
         <div className="absolute -left-10 -top-10 w-40 h-40 bg-[#FFCE00] rounded-full opacity-30" />
@@ -780,7 +780,7 @@ export default function Home() {
       </section>
 
       {/* Footer - Headspace style */}
-      <footer className="py-16 bg-[#393938] text-white">
+      <footer className="py-18 bg-[#393938] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="grid md:grid-cols-4 gap-12">
             <div className="md:col-span-2 flex flex-col gap-6">
