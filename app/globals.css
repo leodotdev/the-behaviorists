@@ -132,12 +132,22 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Apply squircle corners to all rounded elements */
+  [class*="rounded-"] {
+    corner-shape: squircle;
+  }
 }
 
 /* Custom utility classes */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Squircle corners utility */
+  .squircle {
+    corner-shape: squircle;
   }
 
   .scrollbar-hide {
