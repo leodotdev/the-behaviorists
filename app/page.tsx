@@ -21,6 +21,8 @@ import {
   X,
   Shield,
   CheckCircle,
+  Instagram,
+  Facebook,
 } from "lucide-react";
 
 // Fluent UI Emoji - Flat style
@@ -44,8 +46,6 @@ import IconFDizzy from "react-fluentui-emoji/lib/flat/icons/IconFDizzy";
 import IconFAlarmClock from "react-fluentui-emoji/lib/flat/icons/IconFAlarmClock";
 import IconFBrain from "react-fluentui-emoji/lib/flat/icons/IconFBrain";
 import IconFGrinningFaceWithSmilingEyes from "react-fluentui-emoji/lib/flat/icons/IconFGrinningFaceWithSmilingEyes";
-import IconFCameraWithFlash from "react-fluentui-emoji/lib/flat/icons/IconFCameraWithFlash";
-import IconFBlueBook from "react-fluentui-emoji/lib/flat/icons/IconFBlueBook";
 
 // Decorative blobs like Headspace
 const DecorativeBlob = ({
@@ -111,7 +111,7 @@ const FeatureCard = ({
   <div className={`${bgColor} rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col`}>
     <div className="flex-1">
       <h3 className="font-semibold text-3xl md:text-4xl mb-4 text-foreground">{title}</h3>
-      <p className="text-foreground/80 mb-6 max-w-md">{description}</p>
+      <p className="text-xl font-normal text-foreground/80 mb-6 max-w-md">{description}</p>
       <Link href={buttonHref}>
         <Button
           variant="outline"
@@ -332,7 +332,7 @@ export default function Home() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
                 It&apos;s not just about behavior.
               </h1>
-              <p className="text-xl text-foreground/80 mb-8 max-w-lg">
+              <p className="text-xl font-normal text-foreground/80 mb-8 max-w-lg leading-relaxed">
                 Our mission is to provide individualized, research-based treatment while maintaining autonomy and independence as the priority.
               </p>
               <Button
@@ -398,7 +398,7 @@ export default function Home() {
           <h2 className="font-semibold text-4xl md:text-5xl text-center mb-4">
             The therapy support for every moment
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-xl font-normal text-muted-foreground mb-12 max-w-2xl mx-auto">
             Evidence-based ABA therapy delivered with care in the setting that works best for your family.
           </p>
 
@@ -534,7 +534,7 @@ export default function Home() {
           <h2 className="font-semibold text-4xl md:text-5xl text-center mb-4">
             ABA can help with
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-xl font-normal text-muted-foreground mb-12 max-w-2xl mx-auto">
             Applied Behavior Analysis helps children build independence through evidence-based practices.
           </p>
 
@@ -556,25 +556,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experts Section - Headspace style */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-semibold text-4xl md:text-5xl mb-6">
-            Designed by experts, delivered with care
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Our board-certified team combines expertise with compassion. We use data to make decisions and always prioritize independence.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-[#1c1c1c] hover:bg-[#333] btn-headspace"
-          >
-            <Link href="#contact">Meet our team</Link>
-          </Button>
+      {/* Team Section - Headspace style carousel */}
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="font-semibold text-4xl md:text-5xl mb-6">
+              Meet our expert team
+            </h2>
+            <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
+              Board-certified professionals dedicated to helping your child reach their full potential.
+            </p>
+          </div>
+
+          {/* Team carousel */}
+          <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+            {[
+              { name: "Dr. Maria Rodriguez", role: "Clinical Director, BCBA-D", color: "bg-[#ffc933]" },
+              { name: "Carlos Martinez", role: "Executive Director", color: "bg-[#00a86b]" },
+              { name: "Dr. Sarah Chen", role: "Training Director, BCBA-D", color: "bg-[#9b7ed9]" },
+              { name: "Jessica Thompson", role: "Lead BCBA", color: "bg-[#f5c0c0]" },
+              { name: "Michael Davis", role: "Senior RBT Supervisor", color: "bg-[#3469d4]" },
+              { name: "Ana Garcia", role: "Family Support Coordinator", color: "bg-[#25b8a8]" },
+            ].map((member, index) => (
+              <div
+                key={index}
+                className={`${member.color} rounded-3xl p-6 min-w-[280px] snap-start flex flex-col`}
+              >
+                <div className="aspect-[3/4] rounded-2xl bg-white/20 mb-4 flex items-end justify-center overflow-hidden">
+                  <div className="w-32 h-32 bg-white/30 rounded-full mb-4" />
+                </div>
+                <h3 className="font-semibold text-xl text-foreground">{member.name}</h3>
+                <p className="text-foreground/70 text-sm">{member.role}</p>
+              </div>
+            ))}
+          </div>
 
           {/* Stats row */}
-          <div className="grid grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto text-center">
             <div>
               <div className="text-4xl md:text-5xl font-bold text-[#f47d31]">7+</div>
               <div className="text-muted-foreground">Years Experience</div>
@@ -608,7 +626,7 @@ export default function Home() {
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="border border-gray-200 rounded-2xl card-hover">
                 <CardContent className="p-6">
-                  <p className="text-lg mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
+                  <p className="text-xl font-normal mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
                   <div className="text-sm text-muted-foreground">
                     <span className="font-medium text-foreground">{testimonial.author}</span>
                     <span> on {testimonial.topic}</span>
@@ -633,14 +651,14 @@ export default function Home() {
 
         {/* Logo marquee */}
         <div className="relative w-full">
-          <div className="flex animate-marquee">
+          <div className="flex animate-marquee-fast">
             {[...Array(4)].map((_, setIndex) => (
-              <div key={setIndex} className="flex items-center shrink-0 gap-12 px-6">
-                <Image src="/images/logo-aetna.png" alt="Aetna" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+              <div key={setIndex} className="flex items-center shrink-0 gap-16 px-8">
+                <Image src="/images/logo-aetna.png" alt="Aetna" width={100} height={40} className="brightness-0 invert opacity-90 h-8 w-auto" />
                 <Image src="/images/logo-bcbs.png" alt="BCBS" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
-                <Image src="/images/logo-cigna.png" alt="Cigna" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+                <Image src="/images/logo-cigna.png" alt="Cigna" width={120} height={48} className="brightness-0 invert opacity-90 h-11 w-auto" />
                 <Image src="/images/logo-medicaid.png" alt="Medicaid" width={160} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
-                <Image src="/images/logo-tricare.png" alt="Tricare" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+                <Image src="/images/logo-tricare.png" alt="Tricare" width={120} height={48} className="brightness-0 invert opacity-90 h-10 w-auto" />
               </div>
             ))}
           </div>
@@ -657,7 +675,7 @@ export default function Home() {
           <h2 className="font-semibold text-4xl md:text-5xl text-center mb-4">
             Getting started is easy
           </h2>
-          <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+          <p className="text-center text-xl font-normal text-muted-foreground mb-16 max-w-2xl mx-auto">
             We&apos;ll walk you through the process. Starting therapy doesn&apos;t have to be overwhelming.
           </p>
 
@@ -667,8 +685,8 @@ export default function Home() {
                 <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#ffc933] flex items-center justify-center">
                   <step.icon className="w-10 h-10 text-foreground" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+                <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
+                <p className="text-xl font-normal text-muted-foreground">{step.description}</p>
               </div>
             ))}
           </div>
@@ -692,7 +710,7 @@ export default function Home() {
                 <AccordionTrigger className="text-left font-medium hover:no-underline py-5">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5">
+                <AccordionContent className="text-xl text-muted-foreground font-normal pb-5">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -711,7 +729,7 @@ export default function Home() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to get started?
           </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+          <p className="text-xl font-normal text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
             Take the first step toward helping your child reach their full potential. Contact us today for a free consultation.
           </p>
 
@@ -762,7 +780,7 @@ export default function Home() {
                 </div>
                 <span className="font-semibold text-lg">The Behaviorists</span>
               </div>
-              <p className="text-white/60 mb-6 max-w-sm">
+              <p className="text-xl font-normal text-white/60 mb-6 max-w-sm">
                 Providing exceptional ABA therapy services throughout South Florida since 2017.
               </p>
               <div className="flex gap-4">
@@ -772,7 +790,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
                 >
-                  <IconFCameraWithFlash size={20} />
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a
                   href="https://www.facebook.com/TheBehavioristsMiami/"
@@ -780,7 +798,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
                 >
-                  <IconFBlueBook size={20} />
+                  <Facebook className="w-5 h-5" />
                 </a>
               </div>
             </div>

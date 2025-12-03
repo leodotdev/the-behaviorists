@@ -98,6 +98,14 @@
     text-wrap: balance;
   }
 
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Semibold headings */
   .heading-semibold {
     font-weight: 600;
@@ -190,6 +198,10 @@
 
 .animate-marquee {
   animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-fast {
+  animation: marquee 20s linear infinite;
 }
 
 .animate-marquee-reverse {
