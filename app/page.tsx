@@ -237,7 +237,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Top Banner - Headspace style */}
-      <div className="bg-[#00a86b] text-white py-2 text-center text-sm">
+      <div className="bg-[#49A35B] text-white py-2 text-center text-sm">
         <Link href="#contact" className="hover:underline">
           Free consultation available: Start your child&apos;s journey today →
         </Link>
@@ -252,7 +252,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-[#f47d31] rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#FF7E1D] rounded-full flex items-center justify-center">
                 <Image
                   src="/logo-rainbow-mark.avif"
                   alt="The Behaviorists"
@@ -285,7 +285,7 @@ export default function Home() {
               </Link>
               <Button
                 asChild
-                className="rounded-full bg-[#3469d4] hover:bg-[#2a56b3] btn-headspace"
+                className="rounded-full bg-[#0C6FF9] hover:bg-[#0850FD] btn-headspace"
               >
                 <a href="tel:786-860-5161">Call Now</a>
               </Button>
@@ -316,7 +316,7 @@ export default function Home() {
               <Link href="#faq" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
                 Resources
               </Link>
-              <Button asChild className="w-full rounded-full bg-[#3469d4]">
+              <Button asChild className="w-full rounded-full bg-[#0C6FF9]">
                 <a href="tel:786-860-5161">Call Now</a>
               </Button>
             </div>
@@ -325,7 +325,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section - Headspace style with yellow/orange background */}
-      <section className="bg-[#ffc933] relative overflow-hidden">
+      <section className="bg-[#FFCE00] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up flex flex-col gap-6">
@@ -339,7 +339,7 @@ export default function Home() {
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full bg-[#1c1c1c] hover:bg-[#333] text-white btn-headspace px-8 w-fit"
+                  className="rounded-full bg-[#393938] hover:bg-[#2D2D2C] text-white btn-headspace px-8 w-fit"
                 >
                   <Link href="#contact" className="flex items-center gap-2">
                     Get started
@@ -354,14 +354,14 @@ export default function Home() {
 
             {/* Hero illustration - Orange circle with character */}
             <div className="relative flex justify-center items-center">
-              <div className="w-72 h-72 md:w-96 md:h-96 bg-[#f47d31] rounded-full relative animate-scale-in flex items-center justify-center">
+              <div className="w-72 h-72 md:w-96 md:h-96 bg-[#FF7E1D] rounded-full relative animate-scale-in flex items-center justify-center">
                 {/* Cute face on orange circle */}
                 <IconFSmilingFaceWithSmilingEyes size={120} />
                 {/* Floating elements */}
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center animate-float">
                   <IconFGlowingStar size={40} />
                 </div>
-                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[#3469d4] rounded-2xl shadow-lg flex items-center justify-center text-white animate-float stagger-2">
+                <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[#0C6FF9] rounded-2xl shadow-lg flex items-center justify-center text-white animate-float stagger-2">
                   <div className="text-center">
                     <div className="text-2xl font-semibold">500+</div>
                     <div className="text-xl font-normal">Families</div>
@@ -414,7 +414,7 @@ export default function Home() {
                 onClick={() => setActiveFeature(index)}
                 className={`px-6 py-3 rounded-full font-semibold transition-all ${
                   activeFeature === index
-                    ? "bg-[#1c1c1c] text-white"
+                    ? "bg-[#393938] text-white"
                     : "bg-gray-100 hover:bg-gray-200"
                 }`}
               >
@@ -428,20 +428,20 @@ export default function Home() {
             {activeFeature === 0 && (
               <>
                 <FeatureCard
-                  bgColor="bg-[#ffc933]"
+                  bgColor="bg-[#FFCE00]"
                   title="Comfortable learning at home"
                   description="Your child learns best in their natural environment. Our therapists come to you, working with your family to build skills that matter."
                   buttonText="Learn more"
                   buttonHref="#contact"
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
-                    <div className="w-32 h-32 bg-[#f47d31] rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                    <div className="w-32 h-32 bg-[#FF7E1D] rounded-full absolute bottom-4 right-4 flex items-center justify-center">
                       <IconFHouseWithGarden size={64} />
                     </div>
                   </div>
                 </FeatureCard>
                 <FeatureCard
-                  bgColor="bg-[#f5c0c0]"
+                  bgColor="bg-[#EF89C4]"
                   title="Flexible scheduling"
                   description="Sessions that fit your family's routine. Morning, afternoon, or evening - we work around your schedule."
                   buttonText="Get started"
@@ -458,7 +458,7 @@ export default function Home() {
             {activeFeature === 1 && (
               <>
                 <FeatureCard
-                  bgColor="bg-[#25b8a8]"
+                  bgColor="bg-[#72BFBA]"
                   title="School collaboration"
                   description="We work directly with teachers and staff to ensure consistent progress across all learning environments."
                   buttonText="Learn more"
@@ -471,7 +471,7 @@ export default function Home() {
                   </div>
                 </FeatureCard>
                 <FeatureCard
-                  bgColor="bg-[#9b7ed9]"
+                  bgColor="bg-[#9B75C1]"
                   title="Peer interaction"
                   description="Social skills develop naturally when your child learns alongside peers in the school setting."
                   buttonText="Get started"
@@ -488,7 +488,7 @@ export default function Home() {
             {activeFeature === 2 && (
               <>
                 <FeatureCard
-                  bgColor="bg-[#3469d4]"
+                  bgColor="bg-[#0C6FF9]"
                   title="Specialized resources"
                   description="Our therapy center is equipped with everything needed to support your child's development."
                   buttonText="Learn more"
@@ -501,7 +501,7 @@ export default function Home() {
                   </div>
                 </FeatureCard>
                 <FeatureCard
-                  bgColor="bg-[#00a86b]"
+                  bgColor="bg-[#49A35B]"
                   title="Group sessions"
                   description="Practice social skills in a structured environment with guided peer interaction."
                   buttonText="Get started"
@@ -524,7 +524,7 @@ export default function Home() {
                 key={index}
                 onClick={() => setActiveFeature(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  activeFeature === index ? "bg-[#1c1c1c] w-6" : "bg-gray-300"
+                  activeFeature === index ? "bg-[#393938] w-6" : "bg-gray-300"
                 }`}
               />
             ))}
@@ -576,12 +576,12 @@ export default function Home() {
         {/* Team carousel - full bleed */}
         <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide px-4 sm:px-6 lg:px-8">
           {[
-            { name: "Dr. Maria Rodriguez", role: "Clinical Director, BCBA-D", color: "bg-[#ffc933]" },
-            { name: "Carlos Martinez", role: "Executive Director", color: "bg-[#00a86b]" },
-            { name: "Dr. Sarah Chen", role: "Training Director, BCBA-D", color: "bg-[#9b7ed9]" },
-            { name: "Jessica Thompson", role: "Lead BCBA", color: "bg-[#f5c0c0]" },
-            { name: "Michael Davis", role: "Senior RBT Supervisor", color: "bg-[#3469d4]" },
-            { name: "Ana Garcia", role: "Family Support Coordinator", color: "bg-[#25b8a8]" },
+            { name: "Dr. Maria Rodriguez", role: "Clinical Director, BCBA-D", color: "bg-[#FFCE00]" },
+            { name: "Carlos Martinez", role: "Executive Director", color: "bg-[#49A35B]" },
+            { name: "Dr. Sarah Chen", role: "Training Director, BCBA-D", color: "bg-[#9B75C1]" },
+            { name: "Jessica Thompson", role: "Lead BCBA", color: "bg-[#EF89C4]" },
+            { name: "Michael Davis", role: "Senior RBT Supervisor", color: "bg-[#0C6FF9]" },
+            { name: "Ana Garcia", role: "Family Support Coordinator", color: "bg-[#72BFBA]" },
           ].map((member, index) => (
             <div
               key={index}
@@ -602,15 +602,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto text-center">
             <div>
-              <div className="text-4xl font-semibold text-[#f47d31]">7+</div>
+              <div className="text-4xl font-semibold text-[#FF7E1D]">7+</div>
               <div className="text-xl font-normal text-muted-foreground">Years Experience</div>
             </div>
             <div>
-              <div className="text-4xl font-semibold text-[#3469d4]">500+</div>
+              <div className="text-4xl font-semibold text-[#0C6FF9]">500+</div>
               <div className="text-xl font-normal text-muted-foreground">Families Served</div>
             </div>
             <div>
-              <div className="text-4xl font-semibold text-[#00a86b]">98%</div>
+              <div className="text-4xl font-semibold text-[#49A35B]">98%</div>
               <div className="text-xl font-normal text-muted-foreground">Satisfaction</div>
             </div>
           </div>
@@ -620,10 +620,10 @@ export default function Home() {
       {/* Testimonials - Headspace style */}
       <section className="py-20 bg-white relative">
         {/* Floating decorative elements */}
-        <DecorativeBlob icon={<IconFOrangeHeart size={32} />} color="bg-[#f5c0c0]" className="absolute top-20 left-10 animate-float hidden lg:flex" />
-        <DecorativeBlob icon={<IconFBlueHeart size={32} />} color="bg-[#c0d4f5]" className="absolute top-40 right-20 animate-float stagger-2 hidden lg:flex" />
-        <DecorativeBlob icon={<IconFGrinningFaceWithSmilingEyes size={32} />} color="bg-[#ffc933]" className="absolute bottom-20 left-1/4 animate-float stagger-3 hidden lg:flex" />
-        <DecorativeBlob icon={<IconFSparkles size={32} />} color="bg-[#9b7ed9]" className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex" />
+        <DecorativeBlob icon={<IconFOrangeHeart size={32} />} color="bg-[#EF89C4]" className="absolute top-20 left-10 animate-float hidden lg:flex" />
+        <DecorativeBlob icon={<IconFBlueHeart size={32} />} color="bg-[#58A7FB]" className="absolute top-40 right-20 animate-float stagger-2 hidden lg:flex" />
+        <DecorativeBlob icon={<IconFGrinningFaceWithSmilingEyes size={32} />} color="bg-[#FFCE00]" className="absolute bottom-20 left-1/4 animate-float stagger-3 hidden lg:flex" />
+        <DecorativeBlob icon={<IconFSparkles size={32} />} color="bg-[#9B75C1]" className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
           <h2 className="font-semibold text-4xl text-center">
@@ -647,7 +647,7 @@ export default function Home() {
       </section>
 
       {/* Insurance Marquee - Headspace style */}
-      <section className="py-16 bg-[#3469d4] text-white overflow-hidden flex flex-col gap-8">
+      <section className="py-16 bg-[#0C6FF9] text-white overflow-hidden flex flex-col gap-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-2">
           <h2 className="font-semibold text-4xl text-center">
             We accept most major insurance plans
@@ -692,7 +692,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
               <div key={index} className="text-center flex flex-col items-center gap-6">
-                <div className="w-20 h-20 rounded-full bg-[#ffc933] flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-[#FFCE00] flex items-center justify-center">
                   <step.icon className="w-10 h-10 text-foreground" />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -732,10 +732,10 @@ export default function Home() {
       </section>
 
       {/* CTA Section - Headspace style */}
-      <section id="contact" className="py-20 bg-[#f47d31] relative overflow-hidden">
+      <section id="contact" className="py-20 bg-[#FF7E1D] relative overflow-hidden">
         {/* Decorative circle */}
-        <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#ffc933] rounded-full opacity-50" />
-        <div className="absolute -left-10 -top-10 w-40 h-40 bg-[#ffc933] rounded-full opacity-30" />
+        <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#FFCE00] rounded-full opacity-50" />
+        <div className="absolute -left-10 -top-10 w-40 h-40 bg-[#FFCE00] rounded-full opacity-30" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col gap-10">
           <div className="flex flex-col gap-6">
@@ -752,7 +752,7 @@ export default function Home() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-full bg-white text-[#f47d31] hover:bg-white/90 btn-headspace px-8"
+                className="rounded-full bg-white text-[#FF7E1D] hover:bg-white/90 btn-headspace px-8"
               >
                 <a href="tel:786-860-5161" className="flex items-center gap-2">
                   <Phone className="w-5 h-5" />
@@ -762,7 +762,7 @@ export default function Home() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-full bg-[#1c1c1c] text-white hover:bg-[#333] btn-headspace px-8"
+                className="rounded-full bg-[#393938] text-white hover:bg-[#2D2D2C] btn-headspace px-8"
               >
                 <a href="mailto:hello@the-behaviorists.com" className="flex items-center gap-2">
                   <Mail className="w-5 h-5" />
@@ -780,12 +780,12 @@ export default function Home() {
       </section>
 
       {/* Footer - Headspace style */}
-      <footer className="py-16 bg-[#1c1c1c] text-white">
+      <footer className="py-16 bg-[#393938] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="grid md:grid-cols-4 gap-12">
             <div className="md:col-span-2 flex flex-col gap-6">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#f47d31] rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-[#FF7E1D] rounded-full flex items-center justify-center">
                   <Image
                     src="/logo-rainbow-mark.avif"
                     alt="The Behaviorists"
