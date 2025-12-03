@@ -571,33 +571,35 @@ export default function Home() {
               Board-certified professionals dedicated to helping your child reach their full potential.
             </p>
           </div>
+        </div>
 
-          {/* Team carousel */}
-          <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
-            {[
-              { name: "Dr. Maria Rodriguez", role: "Clinical Director, BCBA-D", color: "bg-[#ffc933]" },
-              { name: "Carlos Martinez", role: "Executive Director", color: "bg-[#00a86b]" },
-              { name: "Dr. Sarah Chen", role: "Training Director, BCBA-D", color: "bg-[#9b7ed9]" },
-              { name: "Jessica Thompson", role: "Lead BCBA", color: "bg-[#f5c0c0]" },
-              { name: "Michael Davis", role: "Senior RBT Supervisor", color: "bg-[#3469d4]" },
-              { name: "Ana Garcia", role: "Family Support Coordinator", color: "bg-[#25b8a8]" },
-            ].map((member, index) => (
-              <div
-                key={index}
-                className={`${member.color} rounded-3xl p-6 min-w-[280px] snap-start flex flex-col gap-4`}
-              >
-                <div className="aspect-[3/4] rounded-2xl bg-white/20 flex items-end justify-center overflow-hidden">
-                  <div className="w-32 h-32 bg-white/30 rounded-full -mb-4" />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h3 className="font-semibold text-2xl text-foreground">{member.name}</h3>
-                  <p className="text-foreground/70 text-xl font-normal">{member.role}</p>
-                </div>
+        {/* Team carousel - full bleed */}
+        <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide px-4 sm:px-6 lg:px-8">
+          {[
+            { name: "Dr. Maria Rodriguez", role: "Clinical Director, BCBA-D", color: "bg-[#ffc933]" },
+            { name: "Carlos Martinez", role: "Executive Director", color: "bg-[#00a86b]" },
+            { name: "Dr. Sarah Chen", role: "Training Director, BCBA-D", color: "bg-[#9b7ed9]" },
+            { name: "Jessica Thompson", role: "Lead BCBA", color: "bg-[#f5c0c0]" },
+            { name: "Michael Davis", role: "Senior RBT Supervisor", color: "bg-[#3469d4]" },
+            { name: "Ana Garcia", role: "Family Support Coordinator", color: "bg-[#25b8a8]" },
+          ].map((member, index) => (
+            <div
+              key={index}
+              className={`${member.color} rounded-3xl p-6 min-w-[280px] snap-start flex flex-col gap-4`}
+            >
+              <div className="aspect-[3/4] rounded-2xl bg-white/20 flex items-end justify-center overflow-hidden">
+                <div className="w-32 h-32 bg-white/30 rounded-full -mb-4" />
               </div>
-            ))}
-          </div>
+              <div className="flex flex-col gap-1">
+                <h3 className="font-semibold text-2xl text-foreground">{member.name}</h3>
+                <p className="text-foreground/70 text-xl font-normal">{member.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-          {/* Stats row */}
+        {/* Stats row */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto text-center">
             <div>
               <div className="text-4xl font-semibold text-[#f47d31]">7+</div>
@@ -644,35 +646,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Insurance Marquee - Headspace style */}
-      <section className="py-16 bg-[#3469d4] text-white overflow-hidden flex flex-col gap-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-2">
-          <h2 className="font-semibold text-4xl text-center">
-            We accept most major insurance plans
-          </h2>
-          <p className="text-center text-xl font-normal text-white/80">
-            We&apos;ll work with you to submit all paperwork on your behalf.
+      {/* Insurance Section - Headspace style */}
+      <section className="py-16 bg-[#3469d4] text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8">
+          <div className="flex flex-col gap-2 text-center">
+            <h2 className="font-semibold text-4xl">
+              We accept most major insurance plans
+            </h2>
+            <p className="text-xl font-normal text-white/80">
+              We&apos;ll work with you to submit all paperwork on your behalf.
+            </p>
+          </div>
+
+          {/* Logo row */}
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <Image src="/images/logo-aetna.png" alt="Aetna" width={100} height={40} className="brightness-0 invert opacity-90 h-8 w-auto" />
+            <Image src="/images/logo-bcbs.png" alt="BCBS" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+            <Image src="/images/logo-cigna.png" alt="Cigna" width={120} height={48} className="brightness-0 invert opacity-90 h-11 w-auto" />
+            <Image src="/images/logo-medicaid.png" alt="Medicaid" width={160} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+            <Image src="/images/logo-tricare.png" alt="Tricare" width={120} height={48} className="brightness-0 invert opacity-90 h-10 w-auto" />
+          </div>
+
+          <p className="text-center text-xl font-normal text-white/60">
+            Don&apos;t see your plan? Contact us to discuss affordable options.
           </p>
         </div>
-
-        {/* Logo marquee */}
-        <div className="relative w-full">
-          <div className="flex animate-marquee-fast">
-            {[...Array(4)].map((_, setIndex) => (
-              <div key={setIndex} className="flex items-center shrink-0 gap-16 px-8">
-                <Image src="/images/logo-aetna.png" alt="Aetna" width={100} height={40} className="brightness-0 invert opacity-90 h-8 w-auto" />
-                <Image src="/images/logo-bcbs.png" alt="BCBS" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
-                <Image src="/images/logo-cigna.png" alt="Cigna" width={120} height={48} className="brightness-0 invert opacity-90 h-11 w-auto" />
-                <Image src="/images/logo-medicaid.png" alt="Medicaid" width={160} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
-                <Image src="/images/logo-tricare.png" alt="Tricare" width={120} height={48} className="brightness-0 invert opacity-90 h-10 w-auto" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <p className="text-center text-xl font-normal text-white/60">
-          Don&apos;t see your plan? Contact us to discuss affordable options.
-        </p>
       </section>
 
       {/* Getting Started Section - Headspace style */}
