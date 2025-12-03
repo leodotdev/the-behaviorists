@@ -261,6 +261,16 @@
 .stagger-4 { animation-delay: 0.4s; }
 .stagger-5 { animation-delay: 0.5s; }
 
+/* Mesh gradient backgrounds */
+.mesh-gradient-hero {
+  background-color: #FFCE00;
+  background-image:
+    radial-gradient(at 0% 0%, #FFA441 0px, transparent 50%),
+    radial-gradient(at 100% 0%, #FFCE00 0px, transparent 50%),
+    radial-gradient(at 100% 100%, #FAE269 0px, transparent 50%),
+    radial-gradient(at 0% 100%, #FF7E1D 0px, transparent 60%);
+}
+
 /* Headspace-style card hover */
 .card-hover {
   transition: all 0.3s ease;

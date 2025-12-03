@@ -330,8 +330,8 @@ export default function Home() {
         )}
       </nav>
 
-      {/* Hero Section - Headspace style with yellow/orange background */}
-      <section className="bg-[#FFCE00] relative overflow-hidden">
+      {/* Hero Section - Headspace style with mesh gradient background */}
+      <section className="mesh-gradient-hero relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-18">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up flex flex-col gap-6">
