@@ -38,8 +38,14 @@ import IconFToilet from "react-fluentui-emoji/lib/flat/icons/IconFToilet";
 import IconFGreenSalad from "react-fluentui-emoji/lib/flat/icons/IconFGreenSalad";
 import IconFPencil from "react-fluentui-emoji/lib/flat/icons/IconFPencil";
 import IconFHandshake from "react-fluentui-emoji/lib/flat/icons/IconFHandshake";
-import IconFLeftSpeechBubble from "react-fluentui-emoji/lib/flat/icons/IconFLeftSpeechBubble";
-import IconFBullseye from "react-fluentui-emoji/lib/flat/icons/IconFBullseye";
+import IconFMegaphone from "react-fluentui-emoji/lib/flat/icons/IconFMegaphone";
+import IconFRocket from "react-fluentui-emoji/lib/flat/icons/IconFRocket";
+import IconFGraduationCap from "react-fluentui-emoji/lib/flat/icons/IconFGraduationCap";
+import IconFLightBulb from "react-fluentui-emoji/lib/flat/icons/IconFLightBulb";
+import IconFBackpack from "react-fluentui-emoji/lib/flat/icons/IconFBackpack";
+import IconFClappingHandsDefault from "react-fluentui-emoji/lib/flat/icons/IconFClappingHandsDefault";
+import IconFSeedling from "react-fluentui-emoji/lib/flat/icons/IconFSeedling";
+import IconFPuzzlePiece from "react-fluentui-emoji/lib/flat/icons/IconFPuzzlePiece";
 import IconFOrangeHeart from "react-fluentui-emoji/lib/flat/icons/IconFOrangeHeart";
 import IconFBlueHeart from "react-fluentui-emoji/lib/flat/icons/IconFBlueHeart";
 import IconFDizzy from "react-fluentui-emoji/lib/flat/icons/IconFDizzy";
@@ -138,12 +144,12 @@ const categoryButtons = [
 const abaHelps = [
   { icon: <IconFToilet size={32} />, label: "Toilet Training", color: "bg-gray-100" },
   { icon: <IconFGreenSalad size={32} />, label: "Picky Eating", color: "bg-green-100" },
-  { icon: <IconFPencil size={32} />, label: "School Shadowing", color: "bg-orange-100" },
-  { icon: <IconFHandshake size={32} />, label: "Social Skills", color: "bg-amber-100" },
-  { icon: <IconFGrinningFaceWithSmilingEyes size={32} />, label: "Behavior Support", color: "bg-yellow-100" },
-  { icon: <IconFLeftSpeechBubble size={32} />, label: "Communication", color: "bg-blue-100" },
-  { icon: <IconFPeopleHugging size={32} />, label: "Parent Training", color: "bg-purple-100" },
-  { icon: <IconFBullseye size={32} />, label: "Independence", color: "bg-red-100" },
+  { icon: <IconFBackpack size={32} />, label: "School Shadowing", color: "bg-orange-100" },
+  { icon: <IconFClappingHandsDefault size={32} />, label: "Social Skills", color: "bg-amber-100" },
+  { icon: <IconFLightBulb size={32} />, label: "Behavior Support", color: "bg-yellow-100" },
+  { icon: <IconFMegaphone size={32} />, label: "Communication", color: "bg-blue-100" },
+  { icon: <IconFGraduationCap size={32} />, label: "Parent Training", color: "bg-purple-100" },
+  { icon: <IconFRocket size={32} />, label: "Independence", color: "bg-red-100" },
 ];
 
 const testimonials = [
