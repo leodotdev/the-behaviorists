@@ -66,11 +66,7 @@ const DecorativeBlob = ({
   size?: string;
   iconSize?: number;
   className?: string;
-}) => (
-  <div className={`blob ${size} ${color} ${className}`}>
-    {icon}
-  </div>
-);
+}) => <div className={`blob ${size} ${color} ${className}`}>{icon}</div>;
 
 // Category button like Headspace
 const CategoryButton = ({
@@ -86,11 +82,13 @@ const CategoryButton = ({
 }) => (
   <button
     onClick={onClick}
-    className="flex items-center justify-between gap-4 px-6 py-4 border border-gray-200 rounded-2xl hover:border-gray-400 transition-all group bg-white"
+    className="flex items-center justify-between gap-4 px-6 py-4 border border-gray-200 rounded-4xl hover:border-gray-400 transition-all group bg-white"
   >
     <span className="font-semibold">{label}</span>
     <div className="flex items-center gap-2">
-      <div className={`w-10 h-10 ${color} rounded-full flex items-center justify-center`}>
+      <div
+        className={`w-10 h-10 ${color} rounded-full flex items-center justify-center`}
+      >
         {icon}
       </div>
       <ChevronRight className="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" />
@@ -114,10 +112,14 @@ const FeatureCard = ({
   buttonHref: string;
   children?: React.ReactNode;
 }) => (
-  <div className={`${bgColor} rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col`}>
+  <div
+    className={`${bgColor} rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col`}
+  >
     <div className="flex-1 flex flex-col gap-4">
       <h3 className="font-bold text-xl md:text-2xl text-foreground">{title}</h3>
-      <p className="text-base md:text-lg font-normal text-foreground/80 max-w-md">{description}</p>
+      <p className="text-base md:text-lg font-normal text-foreground/80 max-w-md">
+        {description}
+      </p>
       <Link href={buttonHref}>
         <Button
           variant="outline"
@@ -133,23 +135,79 @@ const FeatureCard = ({
 
 // Content data
 const categoryButtons = [
-  { label: "Home therapy", icon: <IconFHouseWithGarden size={24} />, color: "bg-[#FAE269]/30" },
-  { label: "School support", icon: <IconFBooks size={24} />, color: "bg-[#58A7FB]/20" },
-  { label: "Clinic services", icon: <IconFHospital size={24} />, color: "bg-[#F2AFD3]/30" },
-  { label: "Parent training", icon: <IconFPeopleHugging size={24} />, color: "bg-[#A273C6]/20" },
-  { label: "Social skills", icon: <IconFBustsInSilhouette size={24} />, color: "bg-[#9CCFCC]/30" },
-  { label: "Get started", icon: <IconFSparkles size={24} />, color: "bg-[#FFCE00]/20" },
+  {
+    label: "Home therapy",
+    icon: <IconFHouseWithGarden size={24} />,
+    color: "bg-[#FAE269]/30",
+  },
+  {
+    label: "School support",
+    icon: <IconFBooks size={24} />,
+    color: "bg-[#58A7FB]/20",
+  },
+  {
+    label: "Clinic services",
+    icon: <IconFHospital size={24} />,
+    color: "bg-[#F2AFD3]/30",
+  },
+  {
+    label: "Parent training",
+    icon: <IconFPeopleHugging size={24} />,
+    color: "bg-[#A273C6]/20",
+  },
+  {
+    label: "Social skills",
+    icon: <IconFBustsInSilhouette size={24} />,
+    color: "bg-[#9CCFCC]/30",
+  },
+  {
+    label: "Get started",
+    icon: <IconFSparkles size={24} />,
+    color: "bg-[#FFCE00]/20",
+  },
 ];
 
 const abaHelps = [
-  { icon: <IconFToilet size={32} />, label: "Toilet Training", color: "bg-[#F9F7F2]" },
-  { icon: <IconFGreenSalad size={32} />, label: "Picky Eating", color: "bg-[#71CB86]/20" },
-  { icon: <IconFBackpack size={32} />, label: "School Shadowing", color: "bg-[#FFA441]/20" },
-  { icon: <IconFClappingHandsDefault size={32} />, label: "Social Skills", color: "bg-[#FAE269]/30" },
-  { icon: <IconFLightBulb size={32} />, label: "Behavior Support", color: "bg-[#FFCE00]/20" },
-  { icon: <IconFMegaphone size={32} />, label: "Communication", color: "bg-[#58A7FB]/20" },
-  { icon: <IconFGraduationCap size={32} />, label: "Parent Training", color: "bg-[#A273C6]/20" },
-  { icon: <IconFRocket size={32} />, label: "Independence", color: "bg-[#F0949A]/30" },
+  {
+    icon: <IconFToilet size={32} />,
+    label: "Toilet Training",
+    color: "bg-[#F9F7F2]",
+  },
+  {
+    icon: <IconFGreenSalad size={32} />,
+    label: "Picky Eating",
+    color: "bg-[#71CB86]/20",
+  },
+  {
+    icon: <IconFBackpack size={32} />,
+    label: "School Shadowing",
+    color: "bg-[#FFA441]/20",
+  },
+  {
+    icon: <IconFClappingHandsDefault size={32} />,
+    label: "Social Skills",
+    color: "bg-[#FAE269]/30",
+  },
+  {
+    icon: <IconFLightBulb size={32} />,
+    label: "Behavior Support",
+    color: "bg-[#FFCE00]/20",
+  },
+  {
+    icon: <IconFMegaphone size={32} />,
+    label: "Communication",
+    color: "bg-[#58A7FB]/20",
+  },
+  {
+    icon: <IconFGraduationCap size={32} />,
+    label: "Parent Training",
+    color: "bg-[#A273C6]/20",
+  },
+  {
+    icon: <IconFRocket size={32} />,
+    label: "Independence",
+    color: "bg-[#F0949A]/30",
+  },
 ];
 
 const testimonials = [
@@ -182,7 +240,8 @@ const processSteps = [
   {
     icon: Shield,
     title: "Insurance check",
-    description: "We confirm documentation and initiate services with your insurance",
+    description:
+      "We confirm documentation and initiate services with your insurance",
   },
   {
     icon: CheckCircle,
@@ -271,22 +330,37 @@ export default function Home() {
 
             {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-6">
-              <Link href="#services" className="text-sm hover:text-primary transition-colors">
+              <Link
+                href="#services"
+                className="text-sm hover:text-primary transition-colors"
+              >
                 Services
               </Link>
-              <Link href="#about" className="text-sm hover:text-primary transition-colors">
+              <Link
+                href="#about"
+                className="text-sm hover:text-primary transition-colors"
+              >
                 About ABA
               </Link>
-              <Link href="#process" className="text-sm hover:text-primary transition-colors">
+              <Link
+                href="#process"
+                className="text-sm hover:text-primary transition-colors"
+              >
                 Getting Started
               </Link>
-              <Link href="#faq" className="text-sm hover:text-primary transition-colors">
+              <Link
+                href="#faq"
+                className="text-sm hover:text-primary transition-colors"
+              >
                 Resources
               </Link>
             </div>
 
             <div className="flex items-center gap-3">
-              <Link href="#contact" className="hidden sm:block text-sm hover:text-primary">
+              <Link
+                href="#contact"
+                className="hidden sm:block text-sm hover:text-primary"
+              >
                 Contact
               </Link>
               <Button
@@ -310,16 +384,32 @@ export default function Home() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t animate-fade-in">
             <div className="px-4 py-6 space-y-4">
-              <Link href="#services" className="block text-base md:text-lg font-normal" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                href="#services"
+                className="block text-base md:text-lg font-normal"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Services
               </Link>
-              <Link href="#about" className="block text-base md:text-lg font-normal" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                href="#about"
+                className="block text-base md:text-lg font-normal"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 About ABA
               </Link>
-              <Link href="#process" className="block text-base md:text-lg font-normal" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                href="#process"
+                className="block text-base md:text-lg font-normal"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Getting Started
               </Link>
-              <Link href="#faq" className="block text-base md:text-lg font-normal" onClick={() => setMobileMenuOpen(false)}>
+              <Link
+                href="#faq"
+                className="block text-base md:text-lg font-normal"
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Resources
               </Link>
               <Button asChild className="w-full rounded-full bg-[#0C6FF9]">
@@ -332,14 +422,16 @@ export default function Home() {
 
       {/* Hero Section - Headspace style with mesh gradient background */}
       <section className="mesh-gradient-hero relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-18">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up flex flex-col gap-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 It&apos;s not just about behavior.
               </h1>
               <p className="text-base md:text-lg font-normal text-foreground/80 max-w-lg leading-relaxed">
-                Our mission is to provide individualized, research-based treatment while maintaining autonomy and independence as the priority.
+                Our mission is to provide individualized, research-based
+                treatment while maintaining autonomy and independence as the
+                priority.
               </p>
               <div className="flex flex-col gap-4">
                 <Button
@@ -370,7 +462,9 @@ export default function Home() {
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[#0C6FF9] rounded-2xl shadow-lg flex items-center justify-center text-white animate-float stagger-2">
                   <div className="text-center">
                     <div className="text-xl md:text-2xl font-bold">500+</div>
-                    <div className="text-base md:text-lg font-normal">Families</div>
+                    <div className="text-base md:text-lg font-normal">
+                      Families
+                    </div>
                   </div>
                 </div>
               </div>
@@ -387,46 +481,54 @@ export default function Home() {
       </section>
 
       {/* Category Buttons Section - Headspace style */}
-      <section className="py-18 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center">
             What kind of support are you looking for?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {categoryButtons.map((cat, index) => (
-              <CategoryButton key={index} label={cat.label} icon={cat.icon} color={cat.color} />
+              <CategoryButton
+                key={index}
+                label={cat.label}
+                icon={cat.icon}
+                color={cat.color}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Feature Cards Section - Headspace style */}
-      <section id="services" className="py-18 bg-white">
+      <section id="services" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
               The therapy support for every moment
             </h2>
             <p className="text-base md:text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
-              Evidence-based ABA therapy delivered with care in the setting that works best for your family.
+              Evidence-based ABA therapy delivered with care in the setting that
+              works best for your family.
             </p>
           </div>
 
           {/* Feature tabs - Headspace style */}
           <div className="flex flex-wrap justify-center gap-3">
-            {["Home-based", "School-based", "Clinic-based"].map((tab, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveFeature(index)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all ${
-                  activeFeature === index
-                    ? "bg-[#393938] text-white"
-                    : "bg-[#F9F6F4] hover:bg-[#E9E7E2]"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+            {["Home-based", "School-based", "Clinic-based"].map(
+              (tab, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveFeature(index)}
+                  className={`px-6 py-3 rounded-full font-semibold transition-all ${
+                    activeFeature === index
+                      ? "bg-[#393938] text-white"
+                      : "bg-[#F9F6F4] hover:bg-[#E9E7E2]"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ),
+            )}
           </div>
 
           {/* Feature cards carousel */}
@@ -539,14 +641,15 @@ export default function Home() {
       </section>
 
       {/* ABA Helps Section - Headspace style grid */}
-      <section id="about" className="py-18 bg-[#F9F7F2]">
+      <section id="about" className="py-24 bg-[#F9F7F2]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
               ABA can help with
             </h2>
             <p className="text-base md:text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
-              Applied Behavior Analysis helps children build independence through evidence-based practices.
+              Applied Behavior Analysis helps children build independence
+              through evidence-based practices.
             </p>
           </div>
 
@@ -554,12 +657,16 @@ export default function Home() {
             {abaHelps.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 text-center card-hover cursor-pointer flex flex-col items-center gap-3"
+                className="bg-white rounded-4xl p-6 text-center card-hover cursor-pointer flex flex-col items-center gap-3"
               >
-                <div className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center`}>
+                <div
+                  className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center`}
+                >
                   {item.icon}
                 </div>
-                <span className="font-normal text-base md:text-lg">{item.label}</span>
+                <span className="font-normal text-base md:text-lg">
+                  {item.label}
+                </span>
               </div>
             ))}
           </div>
@@ -567,14 +674,15 @@ export default function Home() {
       </section>
 
       {/* Team Section - Headspace style carousel */}
-      <section className="py-18 bg-white overflow-hidden">
+      <section className="py-24 bg-white overflow-hidden flex flex-col gap-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="text-center flex flex-col gap-6">
             <h2 className="font-bold text-3xl md:text-4xl">
               Meet our expert team
             </h2>
             <p className="text-base md:text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
-              Board-certified professionals dedicated to helping your child reach their full potential.
+              Board-certified professionals dedicated to helping your child
+              reach their full potential.
             </p>
           </div>
         </div>
@@ -582,18 +690,48 @@ export default function Home() {
         {/* Team carousel - full bleed */}
         <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide px-4 sm:px-6 lg:px-8">
           {[
-            { name: "Dr. Maria Rodriguez", role: "Clinical Director, BCBA-D", color: "bg-[#FFCE00]", image: "/images/team/maria.jpg" },
-            { name: "Carlos Martinez", role: "Executive Director", color: "bg-[#49A35B]", image: "/images/team/carlos.jpg" },
-            { name: "Dr. Sarah Chen", role: "Training Director, BCBA-D", color: "bg-[#9B75C1]", image: "/images/team/sarah.jpg" },
-            { name: "Jessica Thompson", role: "Lead BCBA", color: "bg-[#EF89C4]", image: "/images/team/jessica.jpg" },
-            { name: "Michael Davis", role: "Senior RBT Supervisor", color: "bg-[#0C6FF9]", image: "/images/team/michael.jpg" },
-            { name: "Ana Garcia", role: "Family Support Coordinator", color: "bg-[#72BFBA]", image: "/images/team/ana.jpg" },
+            {
+              name: "Dr. Maria Rodriguez",
+              role: "Clinical Director, BCBA-D",
+              color: "bg-[#FFCE00]",
+              image: "/images/team/maria.jpg",
+            },
+            {
+              name: "Carlos Martinez",
+              role: "Executive Director",
+              color: "bg-[#49A35B]",
+              image: "/images/team/carlos.jpg",
+            },
+            {
+              name: "Dr. Sarah Chen",
+              role: "Training Director, BCBA-D",
+              color: "bg-[#9B75C1]",
+              image: "/images/team/sarah.jpg",
+            },
+            {
+              name: "Jessica Thompson",
+              role: "Lead BCBA",
+              color: "bg-[#EF89C4]",
+              image: "/images/team/jessica.jpg",
+            },
+            {
+              name: "Michael Davis",
+              role: "Senior RBT Supervisor",
+              color: "bg-[#0C6FF9]",
+              image: "/images/team/michael.jpg",
+            },
+            {
+              name: "Ana Garcia",
+              role: "Family Support Coordinator",
+              color: "bg-[#72BFBA]",
+              image: "/images/team/ana.jpg",
+            },
           ].map((member, index) => (
             <div
               key={index}
-              className={`${member.color} rounded-3xl p-6 min-w-[280px] snap-start flex flex-col gap-4`}
+              className={`${member.color} rounded-4xl p-6 min-w-[280px] snap-start flex flex-col gap-4`}
             >
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden">
+              <div className="aspect-[3/4] rounded overflow-hidden">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -603,8 +741,12 @@ export default function Home() {
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <h3 className="font-bold text-xl md:text-2xl text-foreground">{member.name}</h3>
-                <p className="text-foreground/70 text-base md:text-lg font-normal">{member.role}</p>
+                <h3 className="font-bold text-xl md:text-2xl text-foreground">
+                  {member.name}
+                </h3>
+                <p className="text-foreground/70 text-base md:text-lg font-normal">
+                  {member.role}
+                </p>
               </div>
             </div>
           ))}
@@ -614,28 +756,56 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-[#FF7E1D]">7+</div>
-              <div className="text-base md:text-lg font-normal text-muted-foreground">Years Experience</div>
+              <div className="text-3xl md:text-4xl font-bold text-[#FF7E1D]">
+                7+
+              </div>
+              <div className="text-base md:text-lg font-normal text-muted-foreground">
+                Years Experience
+              </div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-[#0C6FF9]">500+</div>
-              <div className="text-base md:text-lg font-normal text-muted-foreground">Families Served</div>
+              <div className="text-3xl md:text-4xl font-bold text-[#0C6FF9]">
+                500+
+              </div>
+              <div className="text-base md:text-lg font-normal text-muted-foreground">
+                Families Served
+              </div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-[#49A35B]">98%</div>
-              <div className="text-base md:text-lg font-normal text-muted-foreground">Satisfaction</div>
+              <div className="text-3xl md:text-4xl font-bold text-[#49A35B]">
+                98%
+              </div>
+              <div className="text-base md:text-lg font-normal text-muted-foreground">
+                Satisfaction
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials - Headspace style */}
-      <section className="py-18 bg-white relative">
+      <section className="py-24 bg-white relative">
         {/* Floating decorative elements */}
-        <DecorativeBlob icon={<IconFOrangeHeart size={32} />} color="bg-[#EF89C4]" className="absolute top-20 left-10 animate-float hidden lg:flex" />
-        <DecorativeBlob icon={<IconFBlueHeart size={32} />} color="bg-[#58A7FB]" className="absolute top-40 right-20 animate-float stagger-2 hidden lg:flex" />
-        <DecorativeBlob icon={<IconFGrinningFaceWithSmilingEyes size={32} />} color="bg-[#FFCE00]" className="absolute bottom-20 left-1/4 animate-float stagger-3 hidden lg:flex" />
-        <DecorativeBlob icon={<IconFSparkles size={32} />} color="bg-[#9B75C1]" className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex" />
+        <DecorativeBlob
+          icon={<IconFOrangeHeart size={32} />}
+          color="bg-[#EF89C4]"
+          className="absolute top-20 left-10 animate-float hidden lg:flex"
+        />
+        <DecorativeBlob
+          icon={<IconFBlueHeart size={32} />}
+          color="bg-[#58A7FB]"
+          className="absolute top-40 right-20 animate-float stagger-2 hidden lg:flex"
+        />
+        <DecorativeBlob
+          icon={<IconFGrinningFaceWithSmilingEyes size={32} />}
+          color="bg-[#FFCE00]"
+          className="absolute bottom-20 left-1/4 animate-float stagger-3 hidden lg:flex"
+        />
+        <DecorativeBlob
+          icon={<IconFSparkles size={32} />}
+          color="bg-[#9B75C1]"
+          className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex"
+        />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
           <h2 className="font-bold text-3xl md:text-4xl text-center">
@@ -644,11 +814,18 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border border-gray-200 rounded-2xl card-hover">
+              <Card
+                key={index}
+                className="border border-gray-200 rounded-2xl card-hover"
+              >
                 <CardContent className="p-6 flex flex-col gap-6">
-                  <p className="text-base md:text-lg font-normal">&ldquo;{testimonial.quote}&rdquo;</p>
+                  <p className="text-base md:text-lg font-normal">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
                   <div className="text-base md:text-lg font-normal text-muted-foreground">
-                    <span className="font-semibold text-foreground">{testimonial.author}</span>
+                    <span className="font-semibold text-foreground">
+                      {testimonial.author}
+                    </span>
                     <span> on {testimonial.topic}</span>
                   </div>
                 </CardContent>
@@ -659,7 +836,7 @@ export default function Home() {
       </section>
 
       {/* Insurance Marquee - Headspace style */}
-      <section className="py-18 bg-[#0C6FF9] text-white overflow-hidden flex flex-col gap-8">
+      <section className="py-24 bg-[#0C6FF9] text-white overflow-hidden flex flex-col gap-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-2">
           <h2 className="font-bold text-3xl md:text-4xl text-center">
             We accept most major insurance plans
@@ -673,12 +850,45 @@ export default function Home() {
         <div className="relative w-full">
           <div className="flex animate-marquee-fast">
             {[...Array(4)].map((_, setIndex) => (
-              <div key={setIndex} className="flex items-center shrink-0 gap-16 px-8">
-                <Image src="/images/logo-aetna.png" alt="Aetna" width={100} height={40} className="brightness-0 invert opacity-90 h-8 w-auto" />
-                <Image src="/images/logo-bcbs.png" alt="BCBS" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
-                <Image src="/images/logo-cigna.png" alt="Cigna" width={120} height={48} className="brightness-0 invert opacity-90 h-11 w-auto" />
-                <Image src="/images/logo-medicaid.png" alt="Medicaid" width={160} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
-                <Image src="/images/logo-tricare.png" alt="Tricare" width={120} height={48} className="brightness-0 invert opacity-90 h-10 w-auto" />
+              <div
+                key={setIndex}
+                className="flex items-center shrink-0 gap-16 px-8"
+              >
+                <Image
+                  src="/images/logo-aetna.png"
+                  alt="Aetna"
+                  width={100}
+                  height={40}
+                  className="brightness-0 invert opacity-90 h-8 w-auto"
+                />
+                <Image
+                  src="/images/logo-bcbs.png"
+                  alt="BCBS"
+                  width={140}
+                  height={56}
+                  className="brightness-0 invert opacity-90 h-12 w-auto"
+                />
+                <Image
+                  src="/images/logo-cigna.png"
+                  alt="Cigna"
+                  width={120}
+                  height={48}
+                  className="brightness-0 invert opacity-90 h-11 w-auto"
+                />
+                <Image
+                  src="/images/logo-medicaid.png"
+                  alt="Medicaid"
+                  width={160}
+                  height={56}
+                  className="brightness-0 invert opacity-90 h-12 w-auto"
+                />
+                <Image
+                  src="/images/logo-tricare.png"
+                  alt="Tricare"
+                  width={120}
+                  height={48}
+                  className="brightness-0 invert opacity-90 h-10 w-auto"
+                />
               </div>
             ))}
           </div>
@@ -690,26 +900,34 @@ export default function Home() {
       </section>
 
       {/* Getting Started Section - Headspace style */}
-      <section id="process" className="py-18 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
+      <section id="process" className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
               Getting started is easy
             </h2>
             <p className="text-base md:text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
-              We&apos;ll walk you through the process. Starting therapy doesn&apos;t have to be overwhelming.
+              We&apos;ll walk you through the process. Starting therapy
+              doesn&apos;t have to be overwhelming.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
-              <div key={index} className="text-center flex flex-col items-center gap-6">
+              <div
+                key={index}
+                className="text-center flex flex-col items-center gap-6"
+              >
                 <div className="w-20 h-20 rounded-full bg-[#FFCE00] flex items-center justify-center">
                   <step.icon className="w-10 h-10 text-foreground" />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl md:text-2xl font-bold">{step.title}</h3>
-                  <p className="text-base md:text-lg font-normal text-muted-foreground">{step.description}</p>
+                  <h3 className="text-xl md:text-2xl font-bold">
+                    {step.title}
+                  </h3>
+                  <p className="text-base md:text-lg font-normal text-muted-foreground">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -718,7 +936,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section - Headspace style */}
-      <section id="faq" className="py-18 bg-[#F9F7F2]">
+      <section id="faq" className="py-24 bg-[#F9F7F2]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <h2 className="font-bold text-3xl md:text-4xl text-center">
             Frequently asked questions
@@ -744,18 +962,18 @@ export default function Home() {
       </section>
 
       {/* CTA Section - Headspace style */}
-      <section id="contact" className="py-18 bg-[#FF7E1D] relative overflow-hidden">
-        {/* Decorative circle */}
-        <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#FFCE00] rounded-full opacity-50" />
-        <div className="absolute -left-10 -top-10 w-40 h-40 bg-[#FFCE00] rounded-full opacity-30" />
-
+      <section
+        id="contact"
+        className="py-24 bg-[#FF7E1D] relative overflow-hidden"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col gap-10">
           <div className="flex flex-col gap-6">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               Ready to get started?
             </h2>
             <p className="text-base md:text-lg font-normal text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Take the first step toward helping your child reach their full potential. Contact us today for a free consultation.
+              Take the first step toward helping your child reach their full
+              potential. Contact us today for a free consultation.
             </p>
           </div>
 
@@ -776,7 +994,10 @@ export default function Home() {
                 size="lg"
                 className="rounded-full bg-[#393938] text-white hover:bg-black btn-headspace px-8"
               >
-                <a href="mailto:hello@the-behaviorists.com" className="flex items-center gap-2">
+                <a
+                  href="mailto:hello@the-behaviorists.com"
+                  className="flex items-center gap-2"
+                >
                   <Mail className="w-5 h-5" />
                   Email us
                 </a>
@@ -792,7 +1013,7 @@ export default function Home() {
       </section>
 
       {/* Footer - Headspace style */}
-      <footer className="py-18 bg-[#393938] text-white">
+      <footer className="py-24 bg-[#393938] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="grid md:grid-cols-4 gap-12">
             <div className="md:col-span-2 flex flex-col gap-6">
@@ -806,10 +1027,13 @@ export default function Home() {
                     className="rounded-full"
                   />
                 </div>
-                <span className="font-bold text-lg md:text-xl">The Behaviorists</span>
+                <span className="font-bold text-lg md:text-xl">
+                  The Behaviorists
+                </span>
               </div>
               <p className="text-base md:text-lg font-normal text-white/60 max-w-sm">
-                Providing exceptional ABA therapy services throughout South Florida since 2017.
+                Providing exceptional ABA therapy services throughout South
+                Florida since 2017.
               </p>
               <div className="flex gap-4">
                 <a
@@ -834,10 +1058,38 @@ export default function Home() {
             <div className="flex flex-col gap-4">
               <h4 className="font-semibold">Quick Links</h4>
               <ul className="flex flex-col gap-2 text-white/60">
-                <li><Link href="#services" className="hover:text-white transition-colors">Services</Link></li>
-                <li><Link href="#about" className="hover:text-white transition-colors">About ABA</Link></li>
-                <li><Link href="#process" className="hover:text-white transition-colors">Getting Started</Link></li>
-                <li><Link href="#faq" className="hover:text-white transition-colors">FAQ</Link></li>
+                <li>
+                  <Link
+                    href="#services"
+                    className="hover:text-white transition-colors"
+                  >
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#about"
+                    className="hover:text-white transition-colors"
+                  >
+                    About ABA
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#process"
+                    className="hover:text-white transition-colors"
+                  >
+                    Getting Started
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#faq"
+                    className="hover:text-white transition-colors"
+                  >
+                    FAQ
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -846,15 +1098,29 @@ export default function Home() {
               <ul className="flex flex-col gap-2 text-white/60">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
-                  <a href="tel:786-860-5161" className="hover:text-white transition-colors">(786) 860-5161</a>
+                  <a
+                    href="tel:786-860-5161"
+                    className="hover:text-white transition-colors"
+                  >
+                    (786) 860-5161
+                  </a>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  <a href="mailto:hello@the-behaviorists.com" className="hover:text-white transition-colors">hello@the-behaviorists.com</a>
+                  <a
+                    href="mailto:hello@the-behaviorists.com"
+                    className="hover:text-white transition-colors"
+                  >
+                    hello@the-behaviorists.com
+                  </a>
                 </li>
                 <li className="flex items-start gap-2">
                   <MapPin className="w-4 h-4 mt-1" />
-                  <span>657 South Drive, Suite 403<br />Miami Springs, FL 33166</span>
+                  <span>
+                    657 South Drive, Suite 403
+                    <br />
+                    Miami Springs, FL 33166
+                  </span>
                 </li>
               </ul>
             </div>
@@ -862,11 +1128,16 @@ export default function Home() {
 
           <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/40">
-              © {new Date().getFullYear()} The Behaviorists. All rights reserved.
+              © {new Date().getFullYear()} The Behaviorists. All rights
+              reserved.
             </p>
             <div className="flex gap-6 text-sm text-white/40">
-              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="#" className="hover:text-white transition-colors">Terms & Conditions</Link>
+              <Link href="#" className="hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="#" className="hover:text-white transition-colors">
+                Terms & Conditions
+              </Link>
             </div>
           </div>
         </div>
