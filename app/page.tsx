@@ -515,7 +515,7 @@ export default function Home() {
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
                     <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
-                      <IconFBullseye size={64} />
+                      <IconFPeopleHugging size={64} />
                     </div>
                   </div>
                 </FeatureCard>
