@@ -82,7 +82,7 @@ const CategoryButton = ({
     onClick={onClick}
     className="flex items-center justify-between gap-4 px-6 py-4 border border-gray-200 rounded-2xl hover:border-gray-400 transition-all group bg-white"
   >
-    <span className="font-medium">{label}</span>
+    <span className="font-semibold">{label}</span>
     <div className="flex items-center gap-2">
       <div className={`w-10 h-10 ${color} rounded-full flex items-center justify-center`}>
         {icon}
@@ -110,7 +110,7 @@ const FeatureCard = ({
 }) => (
   <div className={`${bgColor} rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col`}>
     <div className="flex-1">
-      <h3 className="font-semibold text-3xl md:text-4xl mb-4 text-foreground">{title}</h3>
+      <h3 className="font-semibold text-2xl mb-4 text-foreground">{title}</h3>
       <p className="text-xl font-normal text-foreground/80 mb-6 max-w-md">{description}</p>
       <Link href={buttonHref}>
         <Button
@@ -304,16 +304,16 @@ export default function Home() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t animate-fade-in">
             <div className="px-4 py-6 space-y-4">
-              <Link href="#services" className="block text-lg" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="#services" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
                 Services
               </Link>
-              <Link href="#about" className="block text-lg" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="#about" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
                 About ABA
               </Link>
-              <Link href="#process" className="block text-lg" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="#process" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
                 Getting Started
               </Link>
-              <Link href="#faq" className="block text-lg" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="#faq" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
                 Resources
               </Link>
               <Button asChild className="w-full rounded-full bg-[#3469d4]">
@@ -329,7 +329,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
+              <h1 className="text-4xl font-semibold mb-6 text-foreground">
                 It&apos;s not just about behavior.
               </h1>
               <p className="text-xl font-normal text-foreground/80 mb-8 max-w-lg leading-relaxed">
@@ -338,14 +338,14 @@ export default function Home() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-full bg-[#1c1c1c] hover:bg-[#333] text-white btn-headspace text-lg px-8"
+                className="rounded-full bg-[#1c1c1c] hover:bg-[#333] text-white btn-headspace px-8"
               >
                 <Link href="#contact">
                   Get started
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-              <p className="text-sm text-foreground/60 mt-4">
+              <p className="text-xl font-normal text-foreground/60 mt-4">
                 Free consultation • BHCOE Accredited • Insurance accepted
               </p>
             </div>
@@ -361,8 +361,8 @@ export default function Home() {
                 </div>
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[#3469d4] rounded-2xl shadow-lg flex items-center justify-center text-white animate-float stagger-2">
                   <div className="text-center">
-                    <div className="text-2xl font-bold">500+</div>
-                    <div className="text-xs">Families</div>
+                    <div className="text-2xl font-semibold">500+</div>
+                    <div className="text-xl font-normal">Families</div>
                   </div>
                 </div>
               </div>
@@ -381,7 +381,7 @@ export default function Home() {
       {/* Category Buttons Section - Headspace style */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+          <h2 className="text-4xl font-semibold text-center mb-10">
             What kind of support are you looking for?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -395,7 +395,7 @@ export default function Home() {
       {/* Feature Cards Section - Headspace style */}
       <section id="services" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl md:text-5xl text-center mb-4">
+          <h2 className="font-semibold text-4xl text-center mb-4">
             The therapy support for every moment
           </h2>
           <p className="text-center text-xl font-normal text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -408,7 +408,7 @@ export default function Home() {
               <button
                 key={index}
                 onClick={() => setActiveFeature(index)}
-                className={`px-6 py-3 rounded-full font-medium transition-all ${
+                className={`px-6 py-3 rounded-full font-semibold transition-all ${
                   activeFeature === index
                     ? "bg-[#1c1c1c] text-white"
                     : "bg-gray-100 hover:bg-gray-200"
@@ -531,7 +531,7 @@ export default function Home() {
       {/* ABA Helps Section - Headspace style grid */}
       <section id="about" className="py-16 bg-[#f5f5f5]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl md:text-5xl text-center mb-4">
+          <h2 className="font-semibold text-4xl text-center mb-4">
             ABA can help with
           </h2>
           <p className="text-center text-xl font-normal text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -549,7 +549,7 @@ export default function Home() {
                     {item.icon}
                   </div>
                 </div>
-                <span className="font-medium text-sm">{item.label}</span>
+                <span className="font-normal text-xl">{item.label}</span>
               </div>
             ))}
           </div>
@@ -560,7 +560,7 @@ export default function Home() {
       <section className="py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-semibold text-4xl md:text-5xl mb-6">
+            <h2 className="font-semibold text-4xl mb-6">
               Meet our expert team
             </h2>
             <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
@@ -585,8 +585,8 @@ export default function Home() {
                 <div className="aspect-[3/4] rounded-2xl bg-white/20 mb-4 flex items-end justify-center overflow-hidden">
                   <div className="w-32 h-32 bg-white/30 rounded-full mb-4" />
                 </div>
-                <h3 className="font-semibold text-xl text-foreground">{member.name}</h3>
-                <p className="text-foreground/70 text-sm">{member.role}</p>
+                <h3 className="font-semibold text-2xl text-foreground">{member.name}</h3>
+                <p className="text-foreground/70 text-xl font-normal">{member.role}</p>
               </div>
             ))}
           </div>
@@ -594,16 +594,16 @@ export default function Home() {
           {/* Stats row */}
           <div className="grid grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto text-center">
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-[#f47d31]">7+</div>
-              <div className="text-muted-foreground">Years Experience</div>
+              <div className="text-4xl font-semibold text-[#f47d31]">7+</div>
+              <div className="text-xl font-normal text-muted-foreground">Years Experience</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-[#3469d4]">500+</div>
-              <div className="text-muted-foreground">Families Served</div>
+              <div className="text-4xl font-semibold text-[#3469d4]">500+</div>
+              <div className="text-xl font-normal text-muted-foreground">Families Served</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-[#00a86b]">98%</div>
-              <div className="text-muted-foreground">Satisfaction</div>
+              <div className="text-4xl font-semibold text-[#00a86b]">98%</div>
+              <div className="text-xl font-normal text-muted-foreground">Satisfaction</div>
             </div>
           </div>
         </div>
@@ -618,7 +618,7 @@ export default function Home() {
         <DecorativeBlob icon={<IconFSparkles size={32} />} color="bg-[#9b7ed9]" className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl md:text-5xl text-center mb-16">
+          <h2 className="font-semibold text-4xl text-center mb-16">
             Families are enjoying happier and healthier lives
           </h2>
 
@@ -627,8 +627,8 @@ export default function Home() {
               <Card key={index} className="border border-gray-200 rounded-2xl card-hover">
                 <CardContent className="p-6">
                   <p className="text-xl font-normal mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
-                  <div className="text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">{testimonial.author}</span>
+                  <div className="text-xl font-normal text-muted-foreground">
+                    <span className="font-semibold text-foreground">{testimonial.author}</span>
                     <span> on {testimonial.topic}</span>
                   </div>
                 </CardContent>
@@ -641,10 +641,10 @@ export default function Home() {
       {/* Insurance Marquee - Headspace style */}
       <section className="py-16 bg-[#3469d4] text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <h2 className="font-semibold text-3xl md:text-4xl text-center mb-2">
+          <h2 className="font-semibold text-4xl text-center mb-2">
             We accept most major insurance plans
           </h2>
-          <p className="text-center text-white/80">
+          <p className="text-center text-xl font-normal text-white/80">
             We&apos;ll work with you to submit all paperwork on your behalf.
           </p>
         </div>
@@ -664,7 +664,7 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="text-center text-white/60 mt-8 text-sm">
+        <p className="text-center text-xl font-normal text-white/60 mt-8">
           Don&apos;t see your plan? Contact us to discuss affordable options.
         </p>
       </section>
@@ -672,7 +672,7 @@ export default function Home() {
       {/* Getting Started Section - Headspace style */}
       <section id="process" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl md:text-5xl text-center mb-4">
+          <h2 className="font-semibold text-4xl text-center mb-4">
             Getting started is easy
           </h2>
           <p className="text-center text-xl font-normal text-muted-foreground mb-16 max-w-2xl mx-auto">
@@ -696,7 +696,7 @@ export default function Home() {
       {/* FAQ Section - Headspace style */}
       <section id="faq" className="py-20 bg-[#f5f5f5]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl md:text-5xl text-center mb-12">
+          <h2 className="font-semibold text-4xl text-center mb-12">
             Frequently asked questions
           </h2>
 
@@ -707,7 +707,7 @@ export default function Home() {
                 value={`item-${index}`}
                 className="bg-white rounded-2xl px-6 border-0 shadow-sm"
               >
-                <AccordionTrigger className="text-left font-medium hover:no-underline py-5">
+                <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-xl text-muted-foreground font-normal pb-5">
@@ -726,7 +726,7 @@ export default function Home() {
         <div className="absolute -left-10 -top-10 w-40 h-40 bg-[#ffc933] rounded-full opacity-30" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-4xl font-semibold text-white mb-6">
             Ready to get started?
           </h2>
           <p className="text-xl font-normal text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -737,7 +737,7 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="rounded-full bg-white text-[#f47d31] hover:bg-white/90 btn-headspace text-lg px-8"
+              className="rounded-full bg-white text-[#f47d31] hover:bg-white/90 btn-headspace px-8"
             >
               <a href="tel:786-860-5161">
                 <Phone className="w-5 h-5 mr-2" />
@@ -747,7 +747,7 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="rounded-full bg-[#1c1c1c] text-white hover:bg-[#333] btn-headspace text-lg px-8"
+              className="rounded-full bg-[#1c1c1c] text-white hover:bg-[#333] btn-headspace px-8"
             >
               <a href="mailto:hello@the-behaviorists.com">
                 <Mail className="w-5 h-5 mr-2" />
@@ -778,7 +778,7 @@ export default function Home() {
                     className="rounded-full"
                   />
                 </div>
-                <span className="font-semibold text-lg">The Behaviorists</span>
+                <span className="font-semibold text-xl">The Behaviorists</span>
               </div>
               <p className="text-xl font-normal text-white/60 mb-6 max-w-sm">
                 Providing exceptional ABA therapy services throughout South Florida since 2017.
