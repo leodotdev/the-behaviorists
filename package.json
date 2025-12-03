@@ -8,8 +8,8 @@
     "build:worker": "npx @opennextjs/cloudflare build",
     "start": "next start",
     "lint": "eslint",
-    "preview": "npx wrangler dev",
-    "deploy": "npm run build:worker"
+    "preview": "npx wrangler pages dev out",
+    "deploy": "npm run build && npx wrangler pages deploy out"
   },
   "dependencies": {
     "@fontsource/stack-sans-headline": "^5.2.1",
