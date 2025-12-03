@@ -109,9 +109,9 @@ const FeatureCard = ({
   children?: React.ReactNode;
 }) => (
   <div className={`${bgColor} rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col`}>
-    <div className="flex-1">
-      <h3 className="font-semibold text-2xl mb-4 text-foreground">{title}</h3>
-      <p className="text-xl font-normal text-foreground/80 mb-6 max-w-md">{description}</p>
+    <div className="flex-1 flex flex-col gap-4">
+      <h3 className="font-semibold text-2xl text-foreground">{title}</h3>
+      <p className="text-xl font-normal text-foreground/80 max-w-md">{description}</p>
       <Link href={buttonHref}>
         <Button
           variant="outline"
@@ -328,26 +328,28 @@ export default function Home() {
       <section className="bg-[#ffc933] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-up">
-              <h1 className="text-4xl font-semibold mb-6 text-foreground">
+            <div className="animate-slide-up flex flex-col gap-6">
+              <h1 className="text-4xl font-semibold text-foreground">
                 It&apos;s not just about behavior.
               </h1>
-              <p className="text-xl font-normal text-foreground/80 mb-8 max-w-lg leading-relaxed">
+              <p className="text-xl font-normal text-foreground/80 max-w-lg leading-relaxed">
                 Our mission is to provide individualized, research-based treatment while maintaining autonomy and independence as the priority.
               </p>
-              <Button
-                asChild
-                size="lg"
-                className="rounded-full bg-[#1c1c1c] hover:bg-[#333] text-white btn-headspace px-8"
-              >
-                <Link href="#contact">
-                  Get started
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-              <p className="text-xl font-normal text-foreground/60 mt-4">
-                Free consultation • BHCOE Accredited • Insurance accepted
-              </p>
+              <div className="flex flex-col gap-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="rounded-full bg-[#1c1c1c] hover:bg-[#333] text-white btn-headspace px-8 w-fit"
+                >
+                  <Link href="#contact" className="flex items-center gap-2">
+                    Get started
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+                <p className="text-xl font-normal text-foreground/60">
+                  Free consultation • BHCOE Accredited • Insurance accepted
+                </p>
+              </div>
             </div>
 
             {/* Hero illustration - Orange circle with character */}
@@ -380,8 +382,8 @@ export default function Home() {
 
       {/* Category Buttons Section - Headspace style */}
       <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-semibold text-center mb-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+          <h2 className="text-4xl font-semibold text-center">
             What kind of support are you looking for?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -394,16 +396,18 @@ export default function Home() {
 
       {/* Feature Cards Section - Headspace style */}
       <section id="services" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl text-center mb-4">
-            The therapy support for every moment
-          </h2>
-          <p className="text-center text-xl font-normal text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Evidence-based ABA therapy delivered with care in the setting that works best for your family.
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+          <div className="flex flex-col gap-4 text-center">
+            <h2 className="font-semibold text-4xl">
+              The therapy support for every moment
+            </h2>
+            <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
+              Evidence-based ABA therapy delivered with care in the setting that works best for your family.
+            </p>
+          </div>
 
           {/* Feature tabs - Headspace style */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
+          <div className="flex flex-wrap justify-center gap-3">
             {["Home-based", "School-based", "Clinic-based"].map((tab, index) => (
               <button
                 key={index}
@@ -514,7 +518,7 @@ export default function Home() {
           </div>
 
           {/* Carousel dots */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-2">
             {[0, 1, 2].map((index) => (
               <button
                 key={index}
@@ -530,24 +534,24 @@ export default function Home() {
 
       {/* ABA Helps Section - Headspace style grid */}
       <section id="about" className="py-16 bg-[#f5f5f5]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl text-center mb-4">
-            ABA can help with
-          </h2>
-          <p className="text-center text-xl font-normal text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Applied Behavior Analysis helps children build independence through evidence-based practices.
-          </p>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+          <div className="flex flex-col gap-4 text-center">
+            <h2 className="font-semibold text-4xl">
+              ABA can help with
+            </h2>
+            <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
+              Applied Behavior Analysis helps children build independence through evidence-based practices.
+            </p>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {abaHelps.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 text-center card-hover cursor-pointer"
+                className="bg-white rounded-2xl p-6 text-center card-hover cursor-pointer flex flex-col items-center gap-3"
               >
-                <div className="mb-3 flex justify-center">
-                  <div className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center`}>
-                    {item.icon}
-                  </div>
+                <div className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center`}>
+                  {item.icon}
                 </div>
                 <span className="font-normal text-xl">{item.label}</span>
               </div>
@@ -558,9 +562,9 @@ export default function Home() {
 
       {/* Team Section - Headspace style carousel */}
       <section className="py-20 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-semibold text-4xl mb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+          <div className="text-center flex flex-col gap-6">
+            <h2 className="font-semibold text-4xl">
               Meet our expert team
             </h2>
             <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
@@ -580,19 +584,21 @@ export default function Home() {
             ].map((member, index) => (
               <div
                 key={index}
-                className={`${member.color} rounded-3xl p-6 min-w-[280px] snap-start flex flex-col`}
+                className={`${member.color} rounded-3xl p-6 min-w-[280px] snap-start flex flex-col gap-4`}
               >
-                <div className="aspect-[3/4] rounded-2xl bg-white/20 mb-4 flex items-end justify-center overflow-hidden">
-                  <div className="w-32 h-32 bg-white/30 rounded-full mb-4" />
+                <div className="aspect-[3/4] rounded-2xl bg-white/20 flex items-end justify-center overflow-hidden">
+                  <div className="w-32 h-32 bg-white/30 rounded-full -mb-4" />
                 </div>
-                <h3 className="font-semibold text-2xl text-foreground">{member.name}</h3>
-                <p className="text-foreground/70 text-xl font-normal">{member.role}</p>
+                <div className="flex flex-col gap-1">
+                  <h3 className="font-semibold text-2xl text-foreground">{member.name}</h3>
+                  <p className="text-foreground/70 text-xl font-normal">{member.role}</p>
+                </div>
               </div>
             ))}
           </div>
 
           {/* Stats row */}
-          <div className="grid grid-cols-3 gap-8 mt-16 max-w-3xl mx-auto text-center">
+          <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto text-center">
             <div>
               <div className="text-4xl font-semibold text-[#f47d31]">7+</div>
               <div className="text-xl font-normal text-muted-foreground">Years Experience</div>
@@ -617,16 +623,16 @@ export default function Home() {
         <DecorativeBlob icon={<IconFGrinningFaceWithSmilingEyes size={32} />} color="bg-[#ffc933]" className="absolute bottom-20 left-1/4 animate-float stagger-3 hidden lg:flex" />
         <DecorativeBlob icon={<IconFSparkles size={32} />} color="bg-[#9b7ed9]" className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex" />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl text-center mb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
+          <h2 className="font-semibold text-4xl text-center">
             Families are enjoying happier and healthier lives
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="border border-gray-200 rounded-2xl card-hover">
-                <CardContent className="p-6">
-                  <p className="text-xl font-normal mb-6">&ldquo;{testimonial.quote}&rdquo;</p>
+                <CardContent className="p-6 flex flex-col gap-6">
+                  <p className="text-xl font-normal">&ldquo;{testimonial.quote}&rdquo;</p>
                   <div className="text-xl font-normal text-muted-foreground">
                     <span className="font-semibold text-foreground">{testimonial.author}</span>
                     <span> on {testimonial.topic}</span>
@@ -639,9 +645,9 @@ export default function Home() {
       </section>
 
       {/* Insurance Marquee - Headspace style */}
-      <section className="py-16 bg-[#3469d4] text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-          <h2 className="font-semibold text-4xl text-center mb-2">
+      <section className="py-16 bg-[#3469d4] text-white overflow-hidden flex flex-col gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-2">
+          <h2 className="font-semibold text-4xl text-center">
             We accept most major insurance plans
           </h2>
           <p className="text-center text-xl font-normal text-white/80">
@@ -664,29 +670,33 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="text-center text-xl font-normal text-white/60 mt-8">
+        <p className="text-center text-xl font-normal text-white/60">
           Don&apos;t see your plan? Contact us to discuss affordable options.
         </p>
       </section>
 
       {/* Getting Started Section - Headspace style */}
       <section id="process" className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl text-center mb-4">
-            Getting started is easy
-          </h2>
-          <p className="text-center text-xl font-normal text-muted-foreground mb-16 max-w-2xl mx-auto">
-            We&apos;ll walk you through the process. Starting therapy doesn&apos;t have to be overwhelming.
-          </p>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
+          <div className="flex flex-col gap-4 text-center">
+            <h2 className="font-semibold text-4xl">
+              Getting started is easy
+            </h2>
+            <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
+              We&apos;ll walk you through the process. Starting therapy doesn&apos;t have to be overwhelming.
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[#ffc933] flex items-center justify-center">
+              <div key={index} className="text-center flex flex-col items-center gap-6">
+                <div className="w-20 h-20 rounded-full bg-[#ffc933] flex items-center justify-center">
                   <step.icon className="w-10 h-10 text-foreground" />
                 </div>
-                <h3 className="text-2xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-xl font-normal text-muted-foreground">{step.description}</p>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-2xl font-semibold">{step.title}</h3>
+                  <p className="text-xl font-normal text-muted-foreground">{step.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -695,12 +705,12 @@ export default function Home() {
 
       {/* FAQ Section - Headspace style */}
       <section id="faq" className="py-20 bg-[#f5f5f5]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-semibold text-4xl text-center mb-12">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+          <h2 className="font-semibold text-4xl text-center">
             Frequently asked questions
           </h2>
 
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion type="single" collapsible className="flex flex-col gap-3">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
@@ -725,50 +735,54 @@ export default function Home() {
         <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#ffc933] rounded-full opacity-50" />
         <div className="absolute -left-10 -top-10 w-40 h-40 bg-[#ffc933] rounded-full opacity-30" />
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl font-semibold text-white mb-6">
-            Ready to get started?
-          </h2>
-          <p className="text-xl font-normal text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Take the first step toward helping your child reach their full potential. Contact us today for a free consultation.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button
-              asChild
-              size="lg"
-              className="rounded-full bg-white text-[#f47d31] hover:bg-white/90 btn-headspace px-8"
-            >
-              <a href="tel:786-860-5161">
-                <Phone className="w-5 h-5 mr-2" />
-                (786) 860-5161
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              className="rounded-full bg-[#1c1c1c] text-white hover:bg-[#333] btn-headspace px-8"
-            >
-              <a href="mailto:hello@the-behaviorists.com">
-                <Mail className="w-5 h-5 mr-2" />
-                Email us
-              </a>
-            </Button>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col gap-10">
+          <div className="flex flex-col gap-6">
+            <h2 className="text-4xl font-semibold text-white">
+              Ready to get started?
+            </h2>
+            <p className="text-xl font-normal text-white/90 max-w-2xl mx-auto leading-relaxed">
+              Take the first step toward helping your child reach their full potential. Contact us today for a free consultation.
+            </p>
           </div>
 
-          <div className="flex items-center justify-center gap-2 text-white/80">
-            <MapPin className="w-5 h-5" />
-            <span>657 South Drive, Suite 403 • Miami Springs, FL 33166</span>
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-white text-[#f47d31] hover:bg-white/90 btn-headspace px-8"
+              >
+                <a href="tel:786-860-5161" className="flex items-center gap-2">
+                  <Phone className="w-5 h-5" />
+                  (786) 860-5161
+                </a>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-[#1c1c1c] text-white hover:bg-[#333] btn-headspace px-8"
+              >
+                <a href="mailto:hello@the-behaviorists.com" className="flex items-center gap-2">
+                  <Mail className="w-5 h-5" />
+                  Email us
+                </a>
+              </Button>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 text-white/80">
+              <MapPin className="w-5 h-5" />
+              <span>657 South Drive, Suite 403 • Miami Springs, FL 33166</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer - Headspace style */}
       <footer className="py-16 bg-[#1c1c1c] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+          <div className="grid md:grid-cols-4 gap-12">
+            <div className="md:col-span-2 flex flex-col gap-6">
+              <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-[#f47d31] rounded-full flex items-center justify-center">
                   <Image
                     src="/logo-rainbow-mark.avif"
@@ -780,7 +794,7 @@ export default function Home() {
                 </div>
                 <span className="font-semibold text-xl">The Behaviorists</span>
               </div>
-              <p className="text-xl font-normal text-white/60 mb-6 max-w-sm">
+              <p className="text-xl font-normal text-white/60 max-w-sm">
                 Providing exceptional ABA therapy services throughout South Florida since 2017.
               </p>
               <div className="flex gap-4">
@@ -803,9 +817,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-white/60">
+            <div className="flex flex-col gap-4">
+              <h4 className="font-semibold">Quick Links</h4>
+              <ul className="flex flex-col gap-2 text-white/60">
                 <li><Link href="#services" className="hover:text-white transition-colors">Services</Link></li>
                 <li><Link href="#about" className="hover:text-white transition-colors">About ABA</Link></li>
                 <li><Link href="#process" className="hover:text-white transition-colors">Getting Started</Link></li>
@@ -813,9 +827,9 @@ export default function Home() {
               </ul>
             </div>
 
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2 text-white/60">
+            <div className="flex flex-col gap-4">
+              <h4 className="font-semibold">Contact</h4>
+              <ul className="flex flex-col gap-2 text-white/60">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4" />
                   <a href="tel:786-860-5161" className="hover:text-white transition-colors">(786) 860-5161</a>
