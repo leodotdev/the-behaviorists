@@ -110,8 +110,8 @@ const FeatureCard = ({
 }) => (
   <div className={`${bgColor} rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col`}>
     <div className="flex-1 flex flex-col gap-4">
-      <h3 className="font-semibold text-2xl text-foreground">{title}</h3>
-      <p className="text-xl font-normal text-foreground/80 max-w-md">{description}</p>
+      <h3 className="font-bold text-xl md:text-2xl text-foreground">{title}</h3>
+      <p className="text-base md:text-lg font-normal text-foreground/80 max-w-md">{description}</p>
       <Link href={buttonHref}>
         <Button
           variant="outline"
@@ -304,16 +304,16 @@ export default function Home() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t animate-fade-in">
             <div className="px-4 py-6 space-y-4">
-              <Link href="#services" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="#services" className="block text-base md:text-lg font-normal" onClick={() => setMobileMenuOpen(false)}>
                 Services
               </Link>
-              <Link href="#about" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="#about" className="block text-base md:text-lg font-normal" onClick={() => setMobileMenuOpen(false)}>
                 About ABA
               </Link>
-              <Link href="#process" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="#process" className="block text-base md:text-lg font-normal" onClick={() => setMobileMenuOpen(false)}>
                 Getting Started
               </Link>
-              <Link href="#faq" className="block text-xl font-normal" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="#faq" className="block text-base md:text-lg font-normal" onClick={() => setMobileMenuOpen(false)}>
                 Resources
               </Link>
               <Button asChild className="w-full rounded-full bg-[#0C6FF9]">
@@ -329,10 +329,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-slide-up flex flex-col gap-6">
-              <h1 className="text-4xl font-semibold text-foreground">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 It&apos;s not just about behavior.
               </h1>
-              <p className="text-xl font-normal text-foreground/80 max-w-lg leading-relaxed">
+              <p className="text-base md:text-lg font-normal text-foreground/80 max-w-lg leading-relaxed">
                 Our mission is to provide individualized, research-based treatment while maintaining autonomy and independence as the priority.
               </p>
               <div className="flex flex-col gap-4">
@@ -346,7 +346,7 @@ export default function Home() {
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
-                <p className="text-xl font-normal text-foreground/60">
+                <p className="text-sm md:text-base font-normal text-foreground/60">
                   Free consultation • BHCOE Accredited • Insurance accepted
                 </p>
               </div>
@@ -363,8 +363,8 @@ export default function Home() {
                 </div>
                 <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[#0C6FF9] rounded-2xl shadow-lg flex items-center justify-center text-white animate-float stagger-2">
                   <div className="text-center">
-                    <div className="text-2xl font-semibold">500+</div>
-                    <div className="text-xl font-normal">Families</div>
+                    <div className="text-xl md:text-2xl font-bold">500+</div>
+                    <div className="text-base md:text-lg font-normal">Families</div>
                   </div>
                 </div>
               </div>
@@ -383,7 +383,7 @@ export default function Home() {
       {/* Category Buttons Section - Headspace style */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
-          <h2 className="text-4xl font-semibold text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">
             What kind of support are you looking for?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -398,10 +398,10 @@ export default function Home() {
       <section id="services" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
           <div className="flex flex-col gap-4 text-center">
-            <h2 className="font-semibold text-4xl">
+            <h2 className="font-bold text-3xl md:text-4xl">
               The therapy support for every moment
             </h2>
-            <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
               Evidence-based ABA therapy delivered with care in the setting that works best for your family.
             </p>
           </div>
@@ -536,10 +536,10 @@ export default function Home() {
       <section id="about" className="py-16 bg-[#f5f5f5]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
-            <h2 className="font-semibold text-4xl">
+            <h2 className="font-bold text-3xl md:text-4xl">
               ABA can help with
             </h2>
-            <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
               Applied Behavior Analysis helps children build independence through evidence-based practices.
             </p>
           </div>
@@ -553,7 +553,7 @@ export default function Home() {
                 <div className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center`}>
                   {item.icon}
                 </div>
-                <span className="font-normal text-xl">{item.label}</span>
+                <span className="font-normal text-base md:text-lg">{item.label}</span>
               </div>
             ))}
           </div>
@@ -564,10 +564,10 @@ export default function Home() {
       <section className="py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="text-center flex flex-col gap-6">
-            <h2 className="font-semibold text-4xl">
+            <h2 className="font-bold text-3xl md:text-4xl">
               Meet our expert team
             </h2>
-            <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
               Board-certified professionals dedicated to helping your child reach their full potential.
             </p>
           </div>
@@ -591,8 +591,8 @@ export default function Home() {
                 <div className="w-32 h-32 bg-white/30 rounded-full -mb-4" />
               </div>
               <div className="flex flex-col gap-1">
-                <h3 className="font-semibold text-2xl text-foreground">{member.name}</h3>
-                <p className="text-foreground/70 text-xl font-normal">{member.role}</p>
+                <h3 className="font-bold text-xl md:text-2xl text-foreground">{member.name}</h3>
+                <p className="text-foreground/70 text-base md:text-lg font-normal">{member.role}</p>
               </div>
             </div>
           ))}
@@ -602,16 +602,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto text-center">
             <div>
-              <div className="text-4xl font-semibold text-[#FF7E1D]">7+</div>
-              <div className="text-xl font-normal text-muted-foreground">Years Experience</div>
+              <div className="text-3xl md:text-4xl font-bold text-[#FF7E1D]">7+</div>
+              <div className="text-base md:text-lg font-normal text-muted-foreground">Years Experience</div>
             </div>
             <div>
-              <div className="text-4xl font-semibold text-[#0C6FF9]">500+</div>
-              <div className="text-xl font-normal text-muted-foreground">Families Served</div>
+              <div className="text-3xl md:text-4xl font-bold text-[#0C6FF9]">500+</div>
+              <div className="text-base md:text-lg font-normal text-muted-foreground">Families Served</div>
             </div>
             <div>
-              <div className="text-4xl font-semibold text-[#49A35B]">98%</div>
-              <div className="text-xl font-normal text-muted-foreground">Satisfaction</div>
+              <div className="text-3xl md:text-4xl font-bold text-[#49A35B]">98%</div>
+              <div className="text-base md:text-lg font-normal text-muted-foreground">Satisfaction</div>
             </div>
           </div>
         </div>
@@ -626,7 +626,7 @@ export default function Home() {
         <DecorativeBlob icon={<IconFSparkles size={32} />} color="bg-[#9B75C1]" className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
-          <h2 className="font-semibold text-4xl text-center">
+          <h2 className="font-bold text-3xl md:text-4xl text-center">
             Families are enjoying happier and healthier lives
           </h2>
 
@@ -634,8 +634,8 @@ export default function Home() {
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="border border-gray-200 rounded-2xl card-hover">
                 <CardContent className="p-6 flex flex-col gap-6">
-                  <p className="text-xl font-normal">&ldquo;{testimonial.quote}&rdquo;</p>
-                  <div className="text-xl font-normal text-muted-foreground">
+                  <p className="text-base md:text-lg font-normal">&ldquo;{testimonial.quote}&rdquo;</p>
+                  <div className="text-base md:text-lg font-normal text-muted-foreground">
                     <span className="font-semibold text-foreground">{testimonial.author}</span>
                     <span> on {testimonial.topic}</span>
                   </div>
@@ -649,10 +649,10 @@ export default function Home() {
       {/* Insurance Marquee - Headspace style */}
       <section className="py-16 bg-[#0C6FF9] text-white overflow-hidden flex flex-col gap-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-2">
-          <h2 className="font-semibold text-4xl text-center">
+          <h2 className="font-bold text-3xl md:text-4xl text-center">
             We accept most major insurance plans
           </h2>
-          <p className="text-center text-xl font-normal text-white/80">
+          <p className="text-center text-base md:text-lg font-normal text-white/80">
             We&apos;ll work with you to submit all paperwork on your behalf.
           </p>
         </div>
@@ -672,7 +672,7 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="text-center text-xl font-normal text-white/60">
+        <p className="text-center text-base md:text-lg font-normal text-white/60">
           Don&apos;t see your plan? Contact us to discuss affordable options.
         </p>
       </section>
@@ -681,10 +681,10 @@ export default function Home() {
       <section id="process" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
           <div className="flex flex-col gap-4 text-center">
-            <h2 className="font-semibold text-4xl">
+            <h2 className="font-bold text-3xl md:text-4xl">
               Getting started is easy
             </h2>
-            <p className="text-xl font-normal text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg font-normal text-muted-foreground max-w-2xl mx-auto">
               We&apos;ll walk you through the process. Starting therapy doesn&apos;t have to be overwhelming.
             </p>
           </div>
@@ -696,8 +696,8 @@ export default function Home() {
                   <step.icon className="w-10 h-10 text-foreground" />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-2xl font-semibold">{step.title}</h3>
-                  <p className="text-xl font-normal text-muted-foreground">{step.description}</p>
+                  <h3 className="text-xl md:text-2xl font-bold">{step.title}</h3>
+                  <p className="text-base md:text-lg font-normal text-muted-foreground">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -708,7 +708,7 @@ export default function Home() {
       {/* FAQ Section - Headspace style */}
       <section id="faq" className="py-20 bg-[#f5f5f5]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
-          <h2 className="font-semibold text-4xl text-center">
+          <h2 className="font-bold text-3xl md:text-4xl text-center">
             Frequently asked questions
           </h2>
 
@@ -719,10 +719,10 @@ export default function Home() {
                 value={`item-${index}`}
                 className="bg-white rounded-2xl px-6 border-0 shadow-sm"
               >
-                <AccordionTrigger className="text-left font-semibold hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-base md:text-lg font-bold hover:no-underline py-5">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-xl text-muted-foreground font-normal pb-5">
+                <AccordionContent className="text-base md:text-lg text-muted-foreground font-normal pb-5">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -739,10 +739,10 @@ export default function Home() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col gap-10">
           <div className="flex flex-col gap-6">
-            <h2 className="text-4xl font-semibold text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
               Ready to get started?
             </h2>
-            <p className="text-xl font-normal text-white/90 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg font-normal text-white/90 max-w-2xl mx-auto leading-relaxed">
               Take the first step toward helping your child reach their full potential. Contact us today for a free consultation.
             </p>
           </div>
@@ -794,9 +794,9 @@ export default function Home() {
                     className="rounded-full"
                   />
                 </div>
-                <span className="font-semibold text-xl">The Behaviorists</span>
+                <span className="font-bold text-lg md:text-xl">The Behaviorists</span>
               </div>
-              <p className="text-xl font-normal text-white/60 max-w-sm">
+              <p className="text-base md:text-lg font-normal text-white/60 max-w-sm">
                 Providing exceptional ABA therapy services throughout South Florida since 2017.
               </p>
               <div className="flex gap-4">
