@@ -646,31 +646,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Insurance Section - Headspace style */}
-      <section className="py-16 bg-[#3469d4] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8">
-          <div className="flex flex-col gap-2 text-center">
-            <h2 className="font-semibold text-4xl">
-              We accept most major insurance plans
-            </h2>
-            <p className="text-xl font-normal text-white/80">
-              We&apos;ll work with you to submit all paperwork on your behalf.
-            </p>
-          </div>
-
-          {/* Logo row */}
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <Image src="/images/logo-aetna.png" alt="Aetna" width={100} height={40} className="brightness-0 invert opacity-90 h-8 w-auto" />
-            <Image src="/images/logo-bcbs.png" alt="BCBS" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
-            <Image src="/images/logo-cigna.png" alt="Cigna" width={120} height={48} className="brightness-0 invert opacity-90 h-11 w-auto" />
-            <Image src="/images/logo-medicaid.png" alt="Medicaid" width={160} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
-            <Image src="/images/logo-tricare.png" alt="Tricare" width={120} height={48} className="brightness-0 invert opacity-90 h-10 w-auto" />
-          </div>
-
-          <p className="text-center text-xl font-normal text-white/60">
-            Don&apos;t see your plan? Contact us to discuss affordable options.
+      {/* Insurance Marquee - Headspace style */}
+      <section className="py-16 bg-[#3469d4] text-white overflow-hidden flex flex-col gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-2">
+          <h2 className="font-semibold text-4xl text-center">
+            We accept most major insurance plans
+          </h2>
+          <p className="text-center text-xl font-normal text-white/80">
+            We&apos;ll work with you to submit all paperwork on your behalf.
           </p>
         </div>
+
+        {/* Logo marquee */}
+        <div className="relative w-full">
+          <div className="flex animate-marquee-fast">
+            {[...Array(4)].map((_, setIndex) => (
+              <div key={setIndex} className="flex items-center shrink-0 gap-16 px-8">
+                <Image src="/images/logo-aetna.png" alt="Aetna" width={100} height={40} className="brightness-0 invert opacity-90 h-8 w-auto" />
+                <Image src="/images/logo-bcbs.png" alt="BCBS" width={140} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+                <Image src="/images/logo-cigna.png" alt="Cigna" width={120} height={48} className="brightness-0 invert opacity-90 h-11 w-auto" />
+                <Image src="/images/logo-medicaid.png" alt="Medicaid" width={160} height={56} className="brightness-0 invert opacity-90 h-12 w-auto" />
+                <Image src="/images/logo-tricare.png" alt="Tricare" width={120} height={48} className="brightness-0 invert opacity-90 h-10 w-auto" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className="text-center text-xl font-normal text-white/60">
+          Don&apos;t see your plan? Contact us to discuss affordable options.
+        </p>
       </section>
 
       {/* Getting Started Section - Headspace style */}
