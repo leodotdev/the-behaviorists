@@ -582,19 +582,25 @@ export default function Home() {
         {/* Team carousel - full bleed */}
         <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide px-4 sm:px-6 lg:px-8">
           {[
-            { name: "Dr. Maria Rodriguez", role: "Clinical Director, BCBA-D", color: "bg-[#FFCE00]" },
-            { name: "Carlos Martinez", role: "Executive Director", color: "bg-[#49A35B]" },
-            { name: "Dr. Sarah Chen", role: "Training Director, BCBA-D", color: "bg-[#9B75C1]" },
-            { name: "Jessica Thompson", role: "Lead BCBA", color: "bg-[#EF89C4]" },
-            { name: "Michael Davis", role: "Senior RBT Supervisor", color: "bg-[#0C6FF9]" },
-            { name: "Ana Garcia", role: "Family Support Coordinator", color: "bg-[#72BFBA]" },
+            { name: "Dr. Maria Rodriguez", role: "Clinical Director, BCBA-D", color: "bg-[#FFCE00]", image: "/images/team/maria.jpg" },
+            { name: "Carlos Martinez", role: "Executive Director", color: "bg-[#49A35B]", image: "/images/team/carlos.jpg" },
+            { name: "Dr. Sarah Chen", role: "Training Director, BCBA-D", color: "bg-[#9B75C1]", image: "/images/team/sarah.jpg" },
+            { name: "Jessica Thompson", role: "Lead BCBA", color: "bg-[#EF89C4]", image: "/images/team/jessica.jpg" },
+            { name: "Michael Davis", role: "Senior RBT Supervisor", color: "bg-[#0C6FF9]", image: "/images/team/michael.jpg" },
+            { name: "Ana Garcia", role: "Family Support Coordinator", color: "bg-[#72BFBA]", image: "/images/team/ana.jpg" },
           ].map((member, index) => (
             <div
               key={index}
               className={`${member.color} rounded-3xl p-6 min-w-[280px] snap-start flex flex-col gap-4`}
             >
-              <div className="aspect-[3/4] rounded-2xl bg-white/20 flex items-end justify-center overflow-hidden">
-                <div className="w-32 h-32 bg-white/30 rounded-full -mb-4" />
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={280}
+                  height={373}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex flex-col gap-1">
                 <h3 className="font-bold text-xl md:text-2xl text-foreground">{member.name}</h3>
