@@ -76,7 +76,7 @@ const DecorativeBlob = ({
 const CategoryButton = ({
   label,
   icon,
-  color = "bg-gray-100",
+  color = "bg-[#F9F6F4]",
   onClick,
 }: {
   label: string;
@@ -133,23 +133,23 @@ const FeatureCard = ({
 
 // Content data
 const categoryButtons = [
-  { label: "Home therapy", icon: <IconFHouseWithGarden size={24} />, color: "bg-amber-100" },
-  { label: "School support", icon: <IconFBooks size={24} />, color: "bg-blue-100" },
-  { label: "Clinic services", icon: <IconFHospital size={24} />, color: "bg-pink-100" },
-  { label: "Parent training", icon: <IconFPeopleHugging size={24} />, color: "bg-purple-100" },
-  { label: "Social skills", icon: <IconFBustsInSilhouette size={24} />, color: "bg-teal-100" },
-  { label: "Get started", icon: <IconFSparkles size={24} />, color: "bg-yellow-100" },
+  { label: "Home therapy", icon: <IconFHouseWithGarden size={24} />, color: "bg-[#FAE269]/30" },
+  { label: "School support", icon: <IconFBooks size={24} />, color: "bg-[#58A7FB]/20" },
+  { label: "Clinic services", icon: <IconFHospital size={24} />, color: "bg-[#F2AFD3]/30" },
+  { label: "Parent training", icon: <IconFPeopleHugging size={24} />, color: "bg-[#A273C6]/20" },
+  { label: "Social skills", icon: <IconFBustsInSilhouette size={24} />, color: "bg-[#9CCFCC]/30" },
+  { label: "Get started", icon: <IconFSparkles size={24} />, color: "bg-[#FFCE00]/20" },
 ];
 
 const abaHelps = [
-  { icon: <IconFToilet size={32} />, label: "Toilet Training", color: "bg-gray-100" },
-  { icon: <IconFGreenSalad size={32} />, label: "Picky Eating", color: "bg-green-100" },
-  { icon: <IconFBackpack size={32} />, label: "School Shadowing", color: "bg-orange-100" },
-  { icon: <IconFClappingHandsDefault size={32} />, label: "Social Skills", color: "bg-amber-100" },
-  { icon: <IconFLightBulb size={32} />, label: "Behavior Support", color: "bg-yellow-100" },
-  { icon: <IconFMegaphone size={32} />, label: "Communication", color: "bg-blue-100" },
-  { icon: <IconFGraduationCap size={32} />, label: "Parent Training", color: "bg-purple-100" },
-  { icon: <IconFRocket size={32} />, label: "Independence", color: "bg-red-100" },
+  { icon: <IconFToilet size={32} />, label: "Toilet Training", color: "bg-[#F9F7F2]" },
+  { icon: <IconFGreenSalad size={32} />, label: "Picky Eating", color: "bg-[#71CB86]/20" },
+  { icon: <IconFBackpack size={32} />, label: "School Shadowing", color: "bg-[#FFA441]/20" },
+  { icon: <IconFClappingHandsDefault size={32} />, label: "Social Skills", color: "bg-[#FAE269]/30" },
+  { icon: <IconFLightBulb size={32} />, label: "Behavior Support", color: "bg-[#FFCE00]/20" },
+  { icon: <IconFMegaphone size={32} />, label: "Communication", color: "bg-[#58A7FB]/20" },
+  { icon: <IconFGraduationCap size={32} />, label: "Parent Training", color: "bg-[#A273C6]/20" },
+  { icon: <IconFRocket size={32} />, label: "Independence", color: "bg-[#F0949A]/30" },
 ];
 
 const testimonials = [
@@ -345,7 +345,7 @@ export default function Home() {
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full bg-[#393938] hover:bg-[#2D2D2C] text-white btn-headspace px-8 w-fit"
+                  className="rounded-full bg-[#393938] hover:bg-black text-white btn-headspace px-8 w-fit"
                 >
                   <Link href="#contact" className="flex items-center gap-2">
                     Get started
@@ -421,7 +421,7 @@ export default function Home() {
                 className={`px-6 py-3 rounded-full font-semibold transition-all ${
                   activeFeature === index
                     ? "bg-[#393938] text-white"
-                    : "bg-gray-100 hover:bg-gray-200"
+                    : "bg-[#F9F6F4] hover:bg-[#E9E7E2]"
                 }`}
               >
                 {tab}
@@ -530,7 +530,7 @@ export default function Home() {
                 key={index}
                 onClick={() => setActiveFeature(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  activeFeature === index ? "bg-[#393938] w-6" : "bg-gray-300"
+                  activeFeature === index ? "bg-[#393938] w-6" : "bg-[#D7D5D3]"
                 }`}
               />
             ))}
@@ -768,7 +768,7 @@ export default function Home() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-full bg-[#393938] text-white hover:bg-[#2D2D2C] btn-headspace px-8"
+                className="rounded-full bg-[#393938] text-white hover:bg-black btn-headspace px-8"
               >
                 <a href="mailto:hello@the-behaviorists.com" className="flex items-center gap-2">
                   <Mail className="w-5 h-5" />
