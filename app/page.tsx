@@ -157,9 +157,10 @@ const ConfigPanel = ({
 
   return (
     <div
-      className={`fixed bottom-4 right-4 z-50 bg-white text-gray-900 rounded-2xl shadow-2xl border border-gray-200 transition-all duration-300 ${
+      className={`fixed bottom-4 right-4 z-50 rounded-2xl shadow-2xl transition-all duration-300 ${
         minimized ? "w-12 h-12" : "w-80"
       }`}
+      style={{ backgroundColor: "#ffffff", color: "#111827", borderColor: "#e5e7eb", borderWidth: "1px", borderStyle: "solid" }}
     >
       {minimized ? (
         <button
@@ -858,7 +859,7 @@ export default function Home() {
       </section>
 
       {/* Feature Cards Section - Headspace style */}
-      <section id="services" className="py-24 bg-white">
+      <section id="services" className="py-24 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
@@ -879,8 +880,8 @@ export default function Home() {
                   onClick={() => setActiveFeature(index)}
                   className={`px-6 py-3 rounded-full font-semibold transition-all ${
                     activeFeature === index
-                      ? "bg-[#393938] text-white"
-                      : "bg-[#F9F6F4] hover:bg-[#E9E7E2]"
+                      ? "bg-foreground text-background"
+                      : "bg-muted hover:bg-border"
                   }`}
                 >
                   {tab}
@@ -994,7 +995,7 @@ export default function Home() {
                 key={index}
                 onClick={() => setActiveFeature(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
-                  activeFeature === index ? "bg-[#393938] w-6" : "bg-[#D7D5D3]"
+                  activeFeature === index ? "bg-foreground w-6" : "bg-border"
                 }`}
               />
             ))}
@@ -1003,7 +1004,7 @@ export default function Home() {
       </section>
 
       {/* ABA Helps Section - Headspace style grid */}
-      <section id="about" className="py-24 bg-[#F9F7F2]">
+      <section id="about" className="py-24 bg-muted">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
@@ -1178,7 +1179,7 @@ export default function Home() {
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="border border-gray-200 rounded-2xl card-hover"
+                className="border border-border rounded-2xl card-hover"
               >
                 <CardContent className="p-6 flex flex-col gap-6">
                   <p className="text-base md:text-lg font-normal">
@@ -1262,7 +1263,7 @@ export default function Home() {
       </section>
 
       {/* Getting Started Section - Headspace style */}
-      <section id="process" className="py-24 bg-white">
+      <section id="process" className="py-24 bg-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="flex flex-col gap-4 text-center">
             <h2 className="font-bold text-3xl md:text-4xl">
@@ -1298,7 +1299,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section - Headspace style */}
-      <section id="faq" className="py-24 bg-[#F9F7F2]">
+      <section id="faq" className="py-24 bg-muted">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <h2 className="font-bold text-3xl md:text-4xl text-center">
             Frequently asked questions
