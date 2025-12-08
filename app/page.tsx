@@ -144,7 +144,7 @@ const ConfigPanel = ({
 }: {
   config: {
     borderRadius: number;
-    colorScheme: "default" | "warm" | "cool" | "muted";
+    colorScheme: "default" | "warm" | "dark";
     font: "stack" | "bricolage";
     showAnimations: boolean;
     showDecorations: boolean;
@@ -208,45 +208,39 @@ const ConfigPanel = ({
               <label className="text-xs font-medium text-gray-700">
                 Color Scheme
               </label>
-              <div className="grid grid-cols-2 gap-2">
-                {(["default", "warm", "cool", "muted"] as const).map(
-                  (scheme) => (
-                    <label
-                      key={scheme}
-                      className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer border transition-all ${
-                        config.colorScheme === scheme
-                          ? "border-[#FF7E1D] bg-orange-50"
-                          : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        name="colorScheme"
-                        value={scheme}
-                        checked={config.colorScheme === scheme}
-                        onChange={(e) =>
-                          setConfig((c) => ({
-                            ...c,
-                            colorScheme: e.target.value as typeof scheme,
-                          }))
-                        }
-                        className="sr-only"
-                      />
-                      <div
-                        className={`w-4 h-4 rounded-full ${
-                          scheme === "default"
-                            ? "bg-[#FF7E1D]"
-                            : scheme === "warm"
-                              ? "bg-[#E1894B]"
-                              : scheme === "cool"
-                                ? "bg-[#0C6FF9]"
-                                : "bg-[#9EA3B1]"
-                        }`}
-                      />
-                      <span className="text-xs capitalize">{scheme}</span>
-                    </label>
-                  )
-                )}
+              <div className="flex flex-col gap-2">
+                {(
+                  [
+                    { key: "default", label: "Light", color: "bg-[#FF7E1D]" },
+                    { key: "warm", label: "Warm", color: "bg-[#E1894B]" },
+                    { key: "dark", label: "Dark", color: "bg-[#393938]" },
+                  ] as const
+                ).map(({ key, label, color }) => (
+                  <label
+                    key={key}
+                    className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer border transition-all ${
+                      config.colorScheme === key
+                        ? "border-[#FF7E1D] bg-orange-50"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="colorScheme"
+                      value={key}
+                      checked={config.colorScheme === key}
+                      onChange={(e) =>
+                        setConfig((c) => ({
+                          ...c,
+                          colorScheme: e.target.value as typeof key,
+                        }))
+                      }
+                      className="sr-only"
+                    />
+                    <div className={`w-4 h-4 rounded-full ${color}`} />
+                    <span className="text-xs">{label}</span>
+                  </label>
+                ))}
               </div>
             </div>
 
@@ -518,7 +512,7 @@ export default function Home() {
   const [activeFeature, setActiveFeature] = useState(0);
   const [config, setConfig] = useState({
     borderRadius: 24,
-    colorScheme: "default" as "default" | "warm" | "cool" | "muted",
+    colorScheme: "default" as "default" | "warm" | "dark",
     font: "stack" as "stack" | "bricolage",
     showAnimations: true,
     showDecorations: true,
@@ -541,6 +535,39 @@ export default function Home() {
         : '"Stack Sans Headline"';
     document.documentElement.style.setProperty("--active-font", fontValue);
   }, [config.font]);
+
+  // Apply color scheme
+  useEffect(() => {
+    const root = document.documentElement;
+    if (config.colorScheme === "dark") {
+      root.style.setProperty("--background", "#1a1a1a");
+      root.style.setProperty("--foreground", "#ffffff");
+      root.style.setProperty("--muted", "#2a2a2a");
+      root.style.setProperty("--muted-foreground", "#a0a0a0");
+      root.style.setProperty("--card", "#242424");
+      root.style.setProperty("--card-foreground", "#ffffff");
+      root.style.setProperty("--border", "#333333");
+    } else if (config.colorScheme === "warm") {
+      root.style.setProperty("--background", "#FDF8F3");
+      root.style.setProperty("--foreground", "#4A3728");
+      root.style.setProperty("--muted", "#F5EDE4");
+      root.style.setProperty("--muted-foreground", "#7D6B5D");
+      root.style.setProperty("--card", "#FFFAF5");
+      root.style.setProperty("--card-foreground", "#4A3728");
+      root.style.setProperty("--border", "#E8DDD0");
+      root.style.setProperty("--primary", "#E07B3C");
+    } else {
+      // Default/Light
+      root.style.setProperty("--background", "#ffffff");
+      root.style.setProperty("--foreground", "#393938");
+      root.style.setProperty("--muted", "#F9F7F2");
+      root.style.setProperty("--muted-foreground", "#5B6073");
+      root.style.setProperty("--card", "#ffffff");
+      root.style.setProperty("--card-foreground", "#393938");
+      root.style.setProperty("--border", "#E9E7E2");
+      root.style.setProperty("--primary", "#FF7E1D");
+    }
+  }, [config.colorScheme]);
 
   useEffect(() => {
     const handleScroll = () => {
