@@ -109,6 +109,7 @@ const FeatureCard = ({
   children,
   darkBg = false,
   isDarkMode = false,
+  darkText = false,
 }: {
   bgColor: string;
   darkModeBgColor?: string;
@@ -119,30 +120,37 @@ const FeatureCard = ({
   children?: React.ReactNode;
   darkBg?: boolean;
   isDarkMode?: boolean;
-}) => (
-  <div
-    className="rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col"
-    style={{ backgroundColor: isDarkMode && darkModeBgColor ? darkModeBgColor : undefined }}
-  >
-    {/* Apply bgColor class only when not using dark mode inline style */}
-    {(!isDarkMode || !darkModeBgColor) && <div className={`absolute inset-0 ${bgColor}`} />}
-    <div className="relative flex-1 flex flex-col gap-4">
-      <h3 className={`font-bold text-xl md:text-2xl ${darkBg || isDarkMode ? "text-white" : "text-foreground"}`}>{title}</h3>
-      <p className={`text-base md:text-lg font-normal max-w-md ${darkBg || isDarkMode ? "text-white/90" : "text-foreground/80"}`}>
-        {description}
-      </p>
-      <Link href={buttonHref}>
-        <Button
-          variant="outline"
-          className={`rounded-full border-0 btn-headspace ${isDarkMode ? "bg-white/20 text-white hover:bg-white/30" : "bg-white/80 text-foreground hover:bg-white"}`}
-        >
-          {buttonText}
-        </Button>
-      </Link>
+  darkText?: boolean;
+}) => {
+  // Determine text color: dark mode always uses white, otherwise use darkText setting
+  const useWhiteText = isDarkMode || (darkBg && !darkText);
+  const useDarkText = !isDarkMode && darkText;
+
+  return (
+    <div
+      className="rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col"
+      style={{ backgroundColor: isDarkMode && darkModeBgColor ? darkModeBgColor : undefined }}
+    >
+      {/* Apply bgColor class only when not using dark mode inline style */}
+      {(!isDarkMode || !darkModeBgColor) && <div className={`absolute inset-0 ${bgColor}`} />}
+      <div className="relative flex-1 flex flex-col gap-4">
+        <h3 className={`font-bold text-xl md:text-2xl ${useWhiteText ? "text-white" : useDarkText ? "text-gray-900" : "text-foreground"}`}>{title}</h3>
+        <p className={`text-base md:text-lg font-normal max-w-md ${useWhiteText ? "text-white/90" : useDarkText ? "text-gray-800" : "text-foreground/80"}`}>
+          {description}
+        </p>
+        <Link href={buttonHref}>
+          <Button
+            variant="outline"
+            className={`rounded-full border-0 btn-headspace ${useWhiteText ? "bg-white/20 text-white hover:bg-white/30" : "bg-white/80 text-foreground hover:bg-white"}`}
+          >
+            {buttonText}
+          </Button>
+        </Link>
+      </div>
+      <div className="relative">{children}</div>
     </div>
-    <div className="relative">{children}</div>
-  </div>
-);
+  );
+};
 
 // Config Panel Component
 const ConfigPanel = ({
@@ -564,6 +572,26 @@ export default function Home() {
     document.documentElement.style.setProperty("--active-font", fontValue);
   }, [config.font]);
 
+  // Apply animations toggle
+  useEffect(() => {
+    const root = document.documentElement;
+    if (config.showAnimations) {
+      root.classList.remove("no-animations");
+    } else {
+      root.classList.add("no-animations");
+    }
+  }, [config.showAnimations]);
+
+  // Apply compact mode
+  useEffect(() => {
+    const root = document.documentElement;
+    if (config.compactMode) {
+      root.classList.add("compact-mode");
+    } else {
+      root.classList.remove("compact-mode");
+    }
+  }, [config.compactMode]);
+
   // Apply color scheme
   useEffect(() => {
     const root = document.documentElement;
@@ -855,12 +883,16 @@ export default function Home() {
                 </div>
               </div>
               {/* Decorative stars */}
-              <div className="absolute top-0 right-1/4 animate-bounce-gentle">
-                <IconFSparkles size={28} />
-              </div>
-              <div className="absolute bottom-1/4 right-0 animate-bounce-gentle stagger-2">
-                <IconFDizzy size={24} />
-              </div>
+              {config.showDecorations && (
+                <>
+                  <div className="absolute top-0 right-1/4 animate-bounce-gentle">
+                    <IconFSparkles size={28} />
+                  </div>
+                  <div className="absolute bottom-1/4 right-0 animate-bounce-gentle stagger-2">
+                    <IconFDizzy size={24} />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -925,6 +957,7 @@ export default function Home() {
                   bgColor="bg-[#FFCE00]"
                   darkModeBgColor="#3d3520"
                   isDarkMode={config.colorScheme === "dark"}
+                  darkText={config.darkFeatureCards}
                   title="Comfortable learning at home"
                   description="Your child learns best in their natural environment. Our therapists come to you, working with your family to build skills that matter."
                   buttonText="Learn more"
@@ -940,6 +973,7 @@ export default function Home() {
                   bgColor="bg-[#EF89C4]"
                   darkModeBgColor="#4a2a3d"
                   isDarkMode={config.colorScheme === "dark"}
+                  darkText={config.darkFeatureCards}
                   title="Flexible scheduling"
                   description="Sessions that fit your family's routine. Morning, afternoon, or evening - we work around your schedule."
                   buttonText="Get started"
@@ -959,6 +993,7 @@ export default function Home() {
                   bgColor="bg-[#72BFBA]"
                   darkModeBgColor="#1e3a38"
                   isDarkMode={config.colorScheme === "dark"}
+                  darkText={config.darkFeatureCards}
                   title="School collaboration"
                   description="We work directly with teachers and staff to ensure consistent progress across all learning environments."
                   buttonText="Learn more"
@@ -975,6 +1010,7 @@ export default function Home() {
                   bgColor="bg-[#9B75C1]"
                   darkModeBgColor="#2d1f3d"
                   isDarkMode={config.colorScheme === "dark"}
+                  darkText={config.darkFeatureCards}
                   title="Peer interaction"
                   description="Social skills develop naturally when your child learns alongside peers in the school setting."
                   buttonText="Get started"
@@ -995,6 +1031,7 @@ export default function Home() {
                   bgColor="bg-[#0C6FF9]"
                   darkModeBgColor="#0a2540"
                   isDarkMode={config.colorScheme === "dark"}
+                  darkText={config.darkFeatureCards}
                   title="Specialized resources"
                   description="Our therapy center is equipped with everything needed to support your child's development."
                   buttonText="Learn more"
@@ -1011,6 +1048,7 @@ export default function Home() {
                   bgColor="bg-[#49A35B]"
                   darkModeBgColor="#1a3320"
                   isDarkMode={config.colorScheme === "dark"}
+                  darkText={config.darkFeatureCards}
                   title="Group sessions"
                   description="Practice social skills in a structured environment with guided peer interaction."
                   buttonText="Get started"
@@ -1188,26 +1226,30 @@ export default function Home() {
       {/* Testimonials - Headspace style */}
       <section className="py-24 bg-background relative">
         {/* Floating decorative elements */}
-        <DecorativeBlob
-          icon={<IconFOrangeHeart size={32} />}
-          color="bg-[#EF89C4]"
-          className="absolute top-20 left-10 animate-float hidden lg:flex"
-        />
-        <DecorativeBlob
-          icon={<IconFBlueHeart size={32} />}
-          color="bg-[#58A7FB]"
-          className="absolute top-40 right-20 animate-float stagger-2 hidden lg:flex"
-        />
-        <DecorativeBlob
-          icon={<IconFGrinningFaceWithSmilingEyes size={32} />}
-          color="bg-[#FFCE00]"
-          className="absolute bottom-20 left-1/4 animate-float stagger-3 hidden lg:flex"
-        />
-        <DecorativeBlob
-          icon={<IconFSparkles size={32} />}
-          color="bg-[#9B75C1]"
-          className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex"
-        />
+        {config.showDecorations && (
+          <>
+            <DecorativeBlob
+              icon={<IconFOrangeHeart size={32} />}
+              color="bg-[#EF89C4]"
+              className="absolute top-20 left-10 animate-float hidden lg:flex"
+            />
+            <DecorativeBlob
+              icon={<IconFBlueHeart size={32} />}
+              color="bg-[#58A7FB]"
+              className="absolute top-40 right-20 animate-float stagger-2 hidden lg:flex"
+            />
+            <DecorativeBlob
+              icon={<IconFGrinningFaceWithSmilingEyes size={32} />}
+              color="bg-[#FFCE00]"
+              className="absolute bottom-20 left-1/4 animate-float stagger-3 hidden lg:flex"
+            />
+            <DecorativeBlob
+              icon={<IconFSparkles size={32} />}
+              color="bg-[#9B75C1]"
+              className="absolute bottom-40 right-1/4 animate-float stagger-4 hidden lg:flex"
+            />
+          </>
+        )}
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-16">
           <h2 className="font-bold text-3xl md:text-4xl text-center">
