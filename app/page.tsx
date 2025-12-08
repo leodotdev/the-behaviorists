@@ -101,39 +101,46 @@ const CategoryButton = ({
 // Feature card like Headspace
 const FeatureCard = ({
   bgColor,
+  darkModeBgColor,
   title,
   description,
   buttonText,
   buttonHref,
   children,
   darkBg = false,
+  isDarkMode = false,
 }: {
   bgColor: string;
+  darkModeBgColor?: string;
   title: string;
   description: string;
   buttonText: string;
   buttonHref: string;
   children?: React.ReactNode;
   darkBg?: boolean;
+  isDarkMode?: boolean;
 }) => (
   <div
-    className={`${bgColor} rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col`}
+    className="rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col"
+    style={{ backgroundColor: isDarkMode && darkModeBgColor ? darkModeBgColor : undefined }}
   >
-    <div className="flex-1 flex flex-col gap-4">
-      <h3 className={`font-bold text-xl md:text-2xl ${darkBg ? "text-white" : "text-foreground"}`}>{title}</h3>
-      <p className={`text-base md:text-lg font-normal max-w-md ${darkBg ? "text-white/90" : "text-foreground/80"}`}>
+    {/* Apply bgColor class only when not using dark mode inline style */}
+    {(!isDarkMode || !darkModeBgColor) && <div className={`absolute inset-0 ${bgColor}`} />}
+    <div className="relative flex-1 flex flex-col gap-4">
+      <h3 className={`font-bold text-xl md:text-2xl ${darkBg || isDarkMode ? "text-white" : "text-foreground"}`}>{title}</h3>
+      <p className={`text-base md:text-lg font-normal max-w-md ${darkBg || isDarkMode ? "text-white/90" : "text-foreground/80"}`}>
         {description}
       </p>
       <Link href={buttonHref}>
         <Button
           variant="outline"
-          className="rounded-full border-0 bg-white/80 text-foreground hover:bg-white btn-headspace"
+          className={`rounded-full border-0 btn-headspace ${isDarkMode ? "bg-white/20 text-white hover:bg-white/30" : "bg-white/80 text-foreground hover:bg-white"}`}
         >
           {buttonText}
         </Button>
       </Link>
     </div>
-    {children}
+    <div className="relative">{children}</div>
   </div>
 );
 
@@ -896,26 +903,30 @@ export default function Home() {
               <>
                 <FeatureCard
                   bgColor="bg-[#FFCE00]"
+                  darkModeBgColor="#3d3520"
+                  isDarkMode={config.colorScheme === "dark"}
                   title="Comfortable learning at home"
                   description="Your child learns best in their natural environment. Our therapists come to you, working with your family to build skills that matter."
                   buttonText="Learn more"
                   buttonHref="#contact"
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
-                    <div className="w-32 h-32 bg-[#FF7E1D] rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                    <div className={`w-32 h-32 rounded-full absolute bottom-4 right-4 flex items-center justify-center ${config.colorScheme === "dark" ? "bg-[#5a4a2a]" : "bg-[#FF7E1D]"}`}>
                       <IconFHouseWithGarden size={64} />
                     </div>
                   </div>
                 </FeatureCard>
                 <FeatureCard
                   bgColor="bg-[#EF89C4]"
+                  darkModeBgColor="#4a2a3d"
+                  isDarkMode={config.colorScheme === "dark"}
                   title="Flexible scheduling"
                   description="Sessions that fit your family's routine. Morning, afternoon, or evening - we work around your schedule."
                   buttonText="Get started"
                   buttonHref="#contact"
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
-                    <div className="w-32 h-32 bg-white/50 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                    <div className={`w-32 h-32 rounded-full absolute bottom-4 right-4 flex items-center justify-center ${config.colorScheme === "dark" ? "bg-white/10" : "bg-white/50"}`}>
                       <IconFAlarmClock size={64} />
                     </div>
                   </div>
@@ -926,6 +937,8 @@ export default function Home() {
               <>
                 <FeatureCard
                   bgColor="bg-[#72BFBA]"
+                  darkModeBgColor="#1e3a38"
+                  isDarkMode={config.colorScheme === "dark"}
                   title="School collaboration"
                   description="We work directly with teachers and staff to ensure consistent progress across all learning environments."
                   buttonText="Learn more"
@@ -933,13 +946,15 @@ export default function Home() {
                   darkBg
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
-                    <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                    <div className={`w-32 h-32 rounded-full absolute bottom-4 right-4 flex items-center justify-center ${config.colorScheme === "dark" ? "bg-white/10" : "bg-white/30"}`}>
                       <IconFBooks size={64} />
                     </div>
                   </div>
                 </FeatureCard>
                 <FeatureCard
                   bgColor="bg-[#9B75C1]"
+                  darkModeBgColor="#2d1f3d"
+                  isDarkMode={config.colorScheme === "dark"}
                   title="Peer interaction"
                   description="Social skills develop naturally when your child learns alongside peers in the school setting."
                   buttonText="Get started"
@@ -947,7 +962,7 @@ export default function Home() {
                   darkBg
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
-                    <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                    <div className={`w-32 h-32 rounded-full absolute bottom-4 right-4 flex items-center justify-center ${config.colorScheme === "dark" ? "bg-white/10" : "bg-white/30"}`}>
                       <IconFBustsInSilhouette size={64} />
                     </div>
                   </div>
@@ -958,6 +973,8 @@ export default function Home() {
               <>
                 <FeatureCard
                   bgColor="bg-[#0C6FF9]"
+                  darkModeBgColor="#0a2540"
+                  isDarkMode={config.colorScheme === "dark"}
                   title="Specialized resources"
                   description="Our therapy center is equipped with everything needed to support your child's development."
                   buttonText="Learn more"
@@ -965,13 +982,15 @@ export default function Home() {
                   darkBg
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
-                    <div className="w-32 h-32 bg-white/20 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                    <div className={`w-32 h-32 rounded-full absolute bottom-4 right-4 flex items-center justify-center ${config.colorScheme === "dark" ? "bg-white/10" : "bg-white/20"}`}>
                       <IconFHospital size={64} />
                     </div>
                   </div>
                 </FeatureCard>
                 <FeatureCard
                   bgColor="bg-[#49A35B]"
+                  darkModeBgColor="#1a3320"
+                  isDarkMode={config.colorScheme === "dark"}
                   title="Group sessions"
                   description="Practice social skills in a structured environment with guided peer interaction."
                   buttonText="Get started"
@@ -979,7 +998,7 @@ export default function Home() {
                   darkBg
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
-                    <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
+                    <div className={`w-32 h-32 rounded-full absolute bottom-4 right-4 flex items-center justify-center ${config.colorScheme === "dark" ? "bg-white/10" : "bg-white/30"}`}>
                       <IconFPeopleHugging size={64} />
                     </div>
                   </div>
