@@ -104,6 +104,7 @@ const FeatureCard = ({
   buttonText,
   buttonHref,
   children,
+  darkBg = false,
 }: {
   bgColor: string;
   title: string;
@@ -111,13 +112,14 @@ const FeatureCard = ({
   buttonText: string;
   buttonHref: string;
   children?: React.ReactNode;
+  darkBg?: boolean;
 }) => (
   <div
     className={`${bgColor} rounded-3xl p-8 md:p-12 relative overflow-hidden min-h-[400px] flex flex-col`}
   >
     <div className="flex-1 flex flex-col gap-4">
-      <h3 className="font-bold text-xl md:text-2xl text-foreground">{title}</h3>
-      <p className="text-base md:text-lg font-normal text-foreground/80 max-w-md">
+      <h3 className={`font-bold text-xl md:text-2xl ${darkBg ? "text-white" : "text-foreground"}`}>{title}</h3>
+      <p className={`text-base md:text-lg font-normal max-w-md ${darkBg ? "text-white/90" : "text-foreground/80"}`}>
         {description}
       </p>
       <Link href={buttonHref}>
@@ -571,6 +573,7 @@ export default function Home() {
                   description="We work directly with teachers and staff to ensure consistent progress across all learning environments."
                   buttonText="Learn more"
                   buttonHref="#contact"
+                  darkBg
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
                     <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
@@ -584,6 +587,7 @@ export default function Home() {
                   description="Social skills develop naturally when your child learns alongside peers in the school setting."
                   buttonText="Get started"
                   buttonHref="#contact"
+                  darkBg
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
                     <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
@@ -601,6 +605,7 @@ export default function Home() {
                   description="Our therapy center is equipped with everything needed to support your child's development."
                   buttonText="Learn more"
                   buttonHref="#contact"
+                  darkBg
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
                     <div className="w-32 h-32 bg-white/20 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
@@ -614,6 +619,7 @@ export default function Home() {
                   description="Practice social skills in a structured environment with guided peer interaction."
                   buttonText="Get started"
                   buttonHref="#contact"
+                  darkBg
                 >
                   <div className="absolute bottom-0 right-0 w-40 h-40">
                     <div className="w-32 h-32 bg-white/30 rounded-full absolute bottom-4 right-4 flex items-center justify-center">
