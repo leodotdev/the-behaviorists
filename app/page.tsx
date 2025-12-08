@@ -958,8 +958,19 @@ export default function Home() {
       </section>
 
       {/* Category Buttons Section - Headspace style */}
-      <section className="py-24 bg-background">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+      <section className="py-24 bg-background relative overflow-hidden">
+        {/* Decorative elements */}
+        {config.showDecorations && (
+          <>
+            <div className="absolute top-16 left-8 animate-float hidden lg:block">
+              <IconFSeedling size={32} />
+            </div>
+            <div className="absolute bottom-20 right-12 animate-float stagger-3 hidden lg:block">
+              <IconFPuzzlePiece size={28} />
+            </div>
+          </>
+        )}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10 relative z-10">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold text-center">
               What kind of support are you looking for?
@@ -980,8 +991,25 @@ export default function Home() {
       </section>
 
       {/* Feature Cards Section - Headspace style */}
-      <section id="services" className="py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+      <section id="services" className="py-24 bg-card relative overflow-hidden">
+        {/* Decorative elements */}
+        {config.showDecorations && (
+          <>
+            <div className="absolute top-24 right-16 animate-float stagger-2 hidden lg:block">
+              <IconFRocket size={36} />
+            </div>
+            <div className="absolute bottom-32 left-12 animate-bounce-gentle hidden lg:block">
+              <IconFHandshake size={32} />
+            </div>
+            <DecorativeBlob
+              icon={<IconFLightBulb size={24} />}
+              color="bg-[#FAE269]/40"
+              size="w-14 h-14"
+              className="absolute top-40 left-20 animate-float-slow hidden xl:flex"
+            />
+          </>
+        )}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10 relative z-10">
           <Reveal>
             <div className="flex flex-col gap-4 text-center">
               <h2 className="font-bold text-3xl md:text-4xl">
@@ -1145,8 +1173,25 @@ export default function Home() {
       </section>
 
       {/* ABA Helps Section - Headspace style grid */}
-      <section id="about" className="py-24 bg-muted">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+      <section id="about" className="py-24 bg-muted relative overflow-hidden">
+        {/* Decorative elements */}
+        {config.showDecorations && (
+          <>
+            <DecorativeBlob
+              icon={<IconFBrain size={28} />}
+              color="bg-[#A273C6]/30"
+              size="w-16 h-16"
+              className="absolute top-20 right-16 animate-float hidden lg:flex"
+            />
+            <div className="absolute bottom-24 left-8 animate-bounce-gentle stagger-2 hidden lg:block">
+              <IconFPencil size={28} />
+            </div>
+            <div className="absolute top-1/2 right-8 animate-float-slow hidden xl:block">
+              <IconFSparkles size={24} />
+            </div>
+          </>
+        )}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 relative z-10">
           <Reveal>
             <div className="flex flex-col gap-4 text-center">
               <h2 className="font-bold text-3xl md:text-4xl">
@@ -1420,8 +1465,25 @@ export default function Home() {
       </section>
 
       {/* Getting Started Section - Headspace style */}
-      <section id="process" className="py-24 bg-card">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+      <section id="process" className="py-24 bg-card relative overflow-hidden">
+        {/* Decorative elements */}
+        {config.showDecorations && (
+          <>
+            <DecorativeBlob
+              icon={<IconFGraduationCap size={28} />}
+              color="bg-[#71CB86]/30"
+              size="w-16 h-16"
+              className="absolute top-16 left-12 animate-float hidden lg:flex"
+            />
+            <div className="absolute bottom-20 right-16 animate-bounce-gentle stagger-3 hidden lg:block">
+              <IconFClappingHandsDefault size={32} />
+            </div>
+            <div className="absolute top-1/3 right-8 animate-float-slow stagger-2 hidden xl:block">
+              <IconFGlowingStar size={28} />
+            </div>
+          </>
+        )}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 relative z-10">
           <Reveal>
             <div className="flex flex-col gap-4 text-center">
               <h2 className="font-bold text-3xl md:text-4xl">
@@ -1457,8 +1519,25 @@ export default function Home() {
       </section>
 
       {/* FAQ Section - Headspace style */}
-      <section id="faq" className="py-24 bg-muted">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+      <section id="faq" className="py-24 bg-muted relative overflow-hidden">
+        {/* Decorative elements */}
+        {config.showDecorations && (
+          <>
+            <div className="absolute top-20 left-16 animate-float hidden lg:block">
+              <IconFBooks size={32} />
+            </div>
+            <DecorativeBlob
+              icon={<IconFMegaphone size={24} />}
+              color="bg-[#F2AFD3]/40"
+              size="w-14 h-14"
+              className="absolute bottom-24 right-12 animate-bounce-gentle stagger-2 hidden lg:flex"
+            />
+            <div className="absolute top-1/2 right-20 animate-float-slow hidden xl:block">
+              <IconFSmilingFaceWithSmilingEyes size={28} />
+            </div>
+          </>
+        )}
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12 relative z-10">
           <Reveal>
             <h2 className="font-bold text-3xl md:text-4xl text-center">
               Frequently asked questions
