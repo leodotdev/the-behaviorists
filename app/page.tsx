@@ -150,7 +150,7 @@ const ConfigPanel = ({
   setConfig,
 }: {
   config: {
-    borderRadius: number;
+    cornerStyle: "squircle" | "rounded";
     colorScheme: "default" | "warm" | "dark";
     font: "stack" | "bricolage";
     showAnimations: boolean;
@@ -191,24 +191,38 @@ const ConfigPanel = ({
             </button>
           </div>
           <div className="p-4 space-y-5 max-h-[70vh] overflow-y-auto">
-            {/* Border Radius Slider */}
+            {/* Corner Style */}
             <div className="space-y-2">
               <label className="text-xs font-medium text-gray-700">
-                Border Radius: {config.borderRadius}px
+                Corner Style
               </label>
-              <input
-                type="range"
-                min="0"
-                max="48"
-                value={config.borderRadius}
-                onChange={(e) =>
-                  setConfig((c) => ({
-                    ...c,
-                    borderRadius: parseInt(e.target.value),
-                  }))
-                }
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#FF7E1D]"
-              />
+              <div className="grid grid-cols-2 gap-2">
+                {(["squircle", "rounded"] as const).map((style) => (
+                  <label
+                    key={style}
+                    className={`flex items-center justify-center p-2 rounded-lg cursor-pointer border transition-all text-xs ${
+                      config.cornerStyle === style
+                        ? "border-[#FF7E1D] bg-orange-50"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="cornerStyle"
+                      value={style}
+                      checked={config.cornerStyle === style}
+                      onChange={(e) =>
+                        setConfig((c) => ({
+                          ...c,
+                          cornerStyle: e.target.value as typeof style,
+                        }))
+                      }
+                      className="sr-only"
+                    />
+                    <span>{style === "squircle" ? "Squircle" : "Rounded"}</span>
+                  </label>
+                ))}
+              </div>
             </div>
 
             {/* Color Scheme Radio */}
@@ -349,7 +363,7 @@ const ConfigPanel = ({
             <button
               onClick={() =>
                 setConfig({
-                  borderRadius: 24,
+                  cornerStyle: "squircle",
                   colorScheme: "default",
                   font: "stack",
                   showAnimations: true,
@@ -519,7 +533,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const [config, setConfig] = useState({
-    borderRadius: 24,
+    cornerStyle: "squircle" as "squircle" | "rounded",
     colorScheme: "default" as "default" | "warm" | "dark",
     font: "stack" as "stack" | "bricolage",
     showAnimations: true,
@@ -528,13 +542,19 @@ export default function Home() {
     darkFeatureCards: true,
   });
 
-  // Apply config to CSS variables
+  // Apply corner style
   useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--radius",
-      `${config.borderRadius}px`
-    );
-  }, [config.borderRadius]);
+    const root = document.documentElement;
+    if (config.cornerStyle === "rounded") {
+      root.style.setProperty("--radius", "9999px");
+      root.classList.remove("squircle-corners");
+      root.classList.add("rounded-corners");
+    } else {
+      root.style.setProperty("--radius", "1.5rem");
+      root.classList.remove("rounded-corners");
+      root.classList.add("squircle-corners");
+    }
+  }, [config.cornerStyle]);
 
   useEffect(() => {
     const fontValue =

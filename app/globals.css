@@ -135,9 +135,15 @@
     @apply bg-background text-foreground;
   }
 
-  /* Apply squircle corners to all rounded elements */
+  /* Apply squircle corners by default */
   [class*="rounded-"] {
     corner-shape: squircle;
+  }
+
+  /* Disable squircle corners when rounded-corners class is on html */
+  .rounded-corners [class*="rounded-"],
+  .rounded-corners [class*="rounded-"] * {
+    corner-shape: round;
   }
 }
 
