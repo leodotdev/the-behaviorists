@@ -23,6 +23,8 @@ import {
   CheckCircle,
   Instagram,
   Facebook,
+  Settings,
+  Minus,
 } from "lucide-react";
 
 // Fluent UI Emoji - Flat style
@@ -134,6 +136,194 @@ const FeatureCard = ({
     {children}
   </div>
 );
+
+// Config Panel Component
+const ConfigPanel = ({
+  config,
+  setConfig,
+}: {
+  config: {
+    borderRadius: number;
+    colorScheme: "default" | "warm" | "cool" | "muted";
+    showAnimations: boolean;
+    showDecorations: boolean;
+    compactMode: boolean;
+    darkFeatureCards: boolean;
+  };
+  setConfig: React.Dispatch<React.SetStateAction<typeof config>>;
+}) => {
+  const [minimized, setMinimized] = useState(false);
+
+  return (
+    <div
+      className={`fixed bottom-4 right-4 z-50 bg-white rounded-2xl shadow-2xl border border-gray-200 transition-all duration-300 ${
+        minimized ? "w-12 h-12" : "w-80"
+      }`}
+    >
+      {minimized ? (
+        <button
+          onClick={() => setMinimized(false)}
+          className="w-full h-full flex items-center justify-center hover:bg-gray-50 rounded-2xl"
+        >
+          <Settings className="w-5 h-5 text-gray-600" />
+        </button>
+      ) : (
+        <>
+          <div className="flex items-center justify-between p-4 border-b border-gray-100">
+            <div className="flex items-center gap-2">
+              <Settings className="w-4 h-4 text-gray-500" />
+              <span className="font-semibold text-sm">Design Config</span>
+            </div>
+            <button
+              onClick={() => setMinimized(true)}
+              className="p-1 hover:bg-gray-100 rounded"
+            >
+              <Minus className="w-4 h-4 text-gray-500" />
+            </button>
+          </div>
+          <div className="p-4 space-y-5 max-h-[70vh] overflow-y-auto">
+            {/* Border Radius Slider */}
+            <div className="space-y-2">
+              <label className="text-xs font-medium text-gray-700">
+                Border Radius: {config.borderRadius}px
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="48"
+                value={config.borderRadius}
+                onChange={(e) =>
+                  setConfig((c) => ({
+                    ...c,
+                    borderRadius: parseInt(e.target.value),
+                  }))
+                }
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#FF7E1D]"
+              />
+            </div>
+
+            {/* Color Scheme Radio */}
+            <div className="space-y-2">
+              <label className="text-xs font-medium text-gray-700">
+                Color Scheme
+              </label>
+              <div className="grid grid-cols-2 gap-2">
+                {(["default", "warm", "cool", "muted"] as const).map(
+                  (scheme) => (
+                    <label
+                      key={scheme}
+                      className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer border transition-all ${
+                        config.colorScheme === scheme
+                          ? "border-[#FF7E1D] bg-orange-50"
+                          : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="colorScheme"
+                        value={scheme}
+                        checked={config.colorScheme === scheme}
+                        onChange={(e) =>
+                          setConfig((c) => ({
+                            ...c,
+                            colorScheme: e.target.value as typeof scheme,
+                          }))
+                        }
+                        className="sr-only"
+                      />
+                      <div
+                        className={`w-4 h-4 rounded-full ${
+                          scheme === "default"
+                            ? "bg-[#FF7E1D]"
+                            : scheme === "warm"
+                              ? "bg-[#E1894B]"
+                              : scheme === "cool"
+                                ? "bg-[#0C6FF9]"
+                                : "bg-[#9EA3B1]"
+                        }`}
+                      />
+                      <span className="text-xs capitalize">{scheme}</span>
+                    </label>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Toggles */}
+            <div className="space-y-3">
+              <label className="text-xs font-medium text-gray-700">
+                Options
+              </label>
+              {[
+                {
+                  key: "showAnimations",
+                  label: "Animations",
+                },
+                {
+                  key: "showDecorations",
+                  label: "Decorative Elements",
+                },
+                {
+                  key: "compactMode",
+                  label: "Compact Spacing",
+                },
+                {
+                  key: "darkFeatureCards",
+                  label: "Dark Card Text",
+                },
+              ].map(({ key, label }) => (
+                <label
+                  key={key}
+                  className="flex items-center justify-between cursor-pointer"
+                >
+                  <span className="text-xs text-gray-600">{label}</span>
+                  <div
+                    className={`relative w-10 h-5 rounded-full transition-colors ${
+                      config[key as keyof typeof config]
+                        ? "bg-[#FF7E1D]"
+                        : "bg-gray-300"
+                    }`}
+                    onClick={() =>
+                      setConfig((c) => ({
+                        ...c,
+                        [key]: !c[key as keyof typeof c],
+                      }))
+                    }
+                  >
+                    <div
+                      className={`absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform ${
+                        config[key as keyof typeof config]
+                          ? "translate-x-5"
+                          : "translate-x-0.5"
+                      }`}
+                    />
+                  </div>
+                </label>
+              ))}
+            </div>
+
+            {/* Reset Button */}
+            <button
+              onClick={() =>
+                setConfig({
+                  borderRadius: 24,
+                  colorScheme: "default",
+                  showAnimations: true,
+                  showDecorations: true,
+                  compactMode: false,
+                  darkFeatureCards: true,
+                })
+              }
+              className="w-full py-2 text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+            >
+              Reset to Defaults
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 // Content data
 const categoryButtons = [
@@ -284,6 +474,22 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
+  const [config, setConfig] = useState({
+    borderRadius: 24,
+    colorScheme: "default" as "default" | "warm" | "cool" | "muted",
+    showAnimations: true,
+    showDecorations: true,
+    compactMode: false,
+    darkFeatureCards: true,
+  });
+
+  // Apply config to CSS variables
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--radius",
+      `${config.borderRadius}px`
+    );
+  }, [config.borderRadius]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1148,6 +1354,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Config Panel */}
+      <ConfigPanel config={config} setConfig={setConfig} />
     </div>
   );
 }
