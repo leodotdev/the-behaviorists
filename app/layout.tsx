@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import { Bricolage_Grotesque } from "next/font/google";
 import "@fontsource/stack-sans-headline/400.css";
 import "@fontsource/stack-sans-headline/500.css";
 import "@fontsource/stack-sans-headline/600.css";
 import "./globals.css";
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "The Behaviorists | Evidence-Based ABA Therapy in South Florida",
@@ -43,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${bricolage.variable}`}>
       <body className="font-sans antialiased">
         {children}
       </body>

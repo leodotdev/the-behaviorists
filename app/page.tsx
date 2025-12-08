@@ -145,6 +145,7 @@ const ConfigPanel = ({
   config: {
     borderRadius: number;
     colorScheme: "default" | "warm" | "cool" | "muted";
+    font: "stack" | "bricolage";
     showAnimations: boolean;
     showDecorations: boolean;
     compactMode: boolean;
@@ -249,6 +250,46 @@ const ConfigPanel = ({
               </div>
             </div>
 
+            {/* Font Toggle */}
+            <div className="space-y-2">
+              <label className="text-xs font-medium text-gray-700">
+                Font Family
+              </label>
+              <div className="grid grid-cols-2 gap-2">
+                {(["stack", "bricolage"] as const).map((font) => (
+                  <label
+                    key={font}
+                    className={`flex items-center justify-center p-2 rounded-lg cursor-pointer border transition-all text-xs ${
+                      config.font === font
+                        ? "border-[#FF7E1D] bg-orange-50"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                    style={{
+                      fontFamily:
+                        font === "bricolage"
+                          ? "var(--font-bricolage)"
+                          : '"Stack Sans Headline"',
+                    }}
+                  >
+                    <input
+                      type="radio"
+                      name="font"
+                      value={font}
+                      checked={config.font === font}
+                      onChange={(e) =>
+                        setConfig((c) => ({
+                          ...c,
+                          font: e.target.value as typeof font,
+                        }))
+                      }
+                      className="sr-only"
+                    />
+                    <span>{font === "stack" ? "Stack Sans" : "Bricolage"}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
             {/* Toggles */}
             <div className="space-y-3">
               <label className="text-xs font-medium text-gray-700">
@@ -308,6 +349,7 @@ const ConfigPanel = ({
                 setConfig({
                   borderRadius: 24,
                   colorScheme: "default",
+                  font: "stack",
                   showAnimations: true,
                   showDecorations: true,
                   compactMode: false,
@@ -477,6 +519,7 @@ export default function Home() {
   const [config, setConfig] = useState({
     borderRadius: 24,
     colorScheme: "default" as "default" | "warm" | "cool" | "muted",
+    font: "stack" as "stack" | "bricolage",
     showAnimations: true,
     showDecorations: true,
     compactMode: false,
@@ -490,6 +533,14 @@ export default function Home() {
       `${config.borderRadius}px`
     );
   }, [config.borderRadius]);
+
+  useEffect(() => {
+    const fontValue =
+      config.font === "bricolage"
+        ? "var(--font-bricolage)"
+        : '"Stack Sans Headline"';
+    document.documentElement.style.setProperty("--active-font", fontValue);
+  }, [config.font]);
 
   useEffect(() => {
     const handleScroll = () => {
