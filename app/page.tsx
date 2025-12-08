@@ -84,7 +84,7 @@ const CategoryButton = ({
 }) => (
   <button
     onClick={onClick}
-    className="flex items-center justify-between gap-4 px-6 py-4 border border-gray-200 rounded-4xl hover:border-gray-400 transition-all group bg-white"
+    className="flex items-center justify-between gap-4 px-6 py-4 border border-border rounded-4xl hover:border-muted-foreground transition-all group bg-card"
   >
     <span className="font-semibold">{label}</span>
     <div className="flex items-center gap-2">
@@ -157,7 +157,7 @@ const ConfigPanel = ({
 
   return (
     <div
-      className={`fixed bottom-4 right-4 z-50 bg-white rounded-2xl shadow-2xl border border-gray-200 transition-all duration-300 ${
+      className={`fixed bottom-4 right-4 z-50 bg-white text-gray-900 rounded-2xl shadow-2xl border border-gray-200 transition-all duration-300 ${
         minimized ? "w-12 h-12" : "w-80"
       }`}
     >
@@ -208,17 +208,17 @@ const ConfigPanel = ({
               <label className="text-xs font-medium text-gray-700">
                 Color Scheme
               </label>
-              <div className="flex flex-col gap-2">
+              <div className="grid grid-cols-3 gap-2">
                 {(
                   [
                     { key: "default", label: "Light", color: "bg-[#FF7E1D]" },
-                    { key: "warm", label: "Warm", color: "bg-[#E1894B]" },
-                    { key: "dark", label: "Dark", color: "bg-[#393938]" },
+                    { key: "warm", label: "Warm", color: "bg-[#C4704A]" },
+                    { key: "dark", label: "Dark", color: "bg-[#1a1a1a]" },
                   ] as const
                 ).map(({ key, label, color }) => (
                   <label
                     key={key}
-                    className={`flex items-center gap-2 p-2 rounded-lg cursor-pointer border transition-all ${
+                    className={`flex flex-col items-center gap-1 p-2 rounded-lg cursor-pointer border transition-all ${
                       config.colorScheme === key
                         ? "border-[#FF7E1D] bg-orange-50"
                         : "border-gray-200 hover:border-gray-300"
@@ -237,8 +237,8 @@ const ConfigPanel = ({
                       }
                       className="sr-only"
                     />
-                    <div className={`w-4 h-4 rounded-full ${color}`} />
-                    <span className="text-xs">{label}</span>
+                    <div className={`w-6 h-6 rounded-full ${color}`} />
+                    <span className="text-[10px]">{label}</span>
                   </label>
                 ))}
               </div>
@@ -540,32 +540,104 @@ export default function Home() {
   useEffect(() => {
     const root = document.documentElement;
     if (config.colorScheme === "dark") {
-      root.style.setProperty("--background", "#1a1a1a");
-      root.style.setProperty("--foreground", "#ffffff");
-      root.style.setProperty("--muted", "#2a2a2a");
-      root.style.setProperty("--muted-foreground", "#a0a0a0");
-      root.style.setProperty("--card", "#242424");
-      root.style.setProperty("--card-foreground", "#ffffff");
-      root.style.setProperty("--border", "#333333");
+      // Dark mode - full inversion with tasteful dark colors
+      root.style.setProperty("--background", "#0f0f0f");
+      root.style.setProperty("--foreground", "#f5f5f5");
+      root.style.setProperty("--muted", "#1a1a1a");
+      root.style.setProperty("--muted-foreground", "#a3a3a3");
+      root.style.setProperty("--card", "#171717");
+      root.style.setProperty("--card-foreground", "#f5f5f5");
+      root.style.setProperty("--popover", "#171717");
+      root.style.setProperty("--popover-foreground", "#f5f5f5");
+      root.style.setProperty("--border", "#262626");
+      root.style.setProperty("--input", "#262626");
+      root.style.setProperty("--primary", "#FF9F4A");
+      root.style.setProperty("--primary-foreground", "#0f0f0f");
+      root.style.setProperty("--secondary", "#3B82F6");
+      root.style.setProperty("--secondary-foreground", "#f5f5f5");
+      root.style.setProperty("--accent", "#FFCE00");
+      root.style.setProperty("--accent-foreground", "#0f0f0f");
+      root.style.setProperty("--ring", "#FF9F4A");
+      // Headspace colors - slightly brighter for dark mode
+      root.style.setProperty("--hs-orange", "#FF9F4A");
+      root.style.setProperty("--hs-yellow", "#FFD93D");
+      root.style.setProperty("--hs-blue", "#3B82F6");
+      root.style.setProperty("--hs-green", "#4ADE80");
+      root.style.setProperty("--hs-pink", "#F472B6");
+      root.style.setProperty("--hs-purple", "#A78BFA");
+      root.style.setProperty("--hs-teal", "#5EEAD4");
+      root.style.setProperty("--hs-bg-1", "#1a1a1a");
+      root.style.setProperty("--hs-bg-2", "#171717");
+      root.style.setProperty("--hs-text-main", "#f5f5f5");
+      root.style.setProperty("--hs-text-secondary", "#a3a3a3");
+      root.style.setProperty("--hs-border", "#262626");
+      root.classList.add("dark-mode");
     } else if (config.colorScheme === "warm") {
-      root.style.setProperty("--background", "#FDF8F3");
-      root.style.setProperty("--foreground", "#4A3728");
-      root.style.setProperty("--muted", "#F5EDE4");
-      root.style.setProperty("--muted-foreground", "#7D6B5D");
-      root.style.setProperty("--card", "#FFFAF5");
-      root.style.setProperty("--card-foreground", "#4A3728");
-      root.style.setProperty("--border", "#E8DDD0");
-      root.style.setProperty("--primary", "#E07B3C");
+      // Warm mode - earthy, cozy tones
+      root.style.setProperty("--background", "#FBF7F2");
+      root.style.setProperty("--foreground", "#3D2E1F");
+      root.style.setProperty("--muted", "#F3EBE0");
+      root.style.setProperty("--muted-foreground", "#6B5744");
+      root.style.setProperty("--card", "#FFFBF7");
+      root.style.setProperty("--card-foreground", "#3D2E1F");
+      root.style.setProperty("--popover", "#FFFBF7");
+      root.style.setProperty("--popover-foreground", "#3D2E1F");
+      root.style.setProperty("--border", "#E6D9C8");
+      root.style.setProperty("--input", "#E6D9C8");
+      root.style.setProperty("--primary", "#C4704A");
+      root.style.setProperty("--primary-foreground", "#FFFBF7");
+      root.style.setProperty("--secondary", "#8B6B4A");
+      root.style.setProperty("--secondary-foreground", "#FFFBF7");
+      root.style.setProperty("--accent", "#E6B84A");
+      root.style.setProperty("--accent-foreground", "#3D2E1F");
+      root.style.setProperty("--ring", "#C4704A");
+      // Headspace colors - warmer variants
+      root.style.setProperty("--hs-orange", "#C4704A");
+      root.style.setProperty("--hs-yellow", "#D4A84A");
+      root.style.setProperty("--hs-blue", "#5B8BAA");
+      root.style.setProperty("--hs-green", "#6B9B6A");
+      root.style.setProperty("--hs-pink", "#C48B9A");
+      root.style.setProperty("--hs-purple", "#8B7399");
+      root.style.setProperty("--hs-teal", "#6B9B95");
+      root.style.setProperty("--hs-bg-1", "#F3EBE0");
+      root.style.setProperty("--hs-bg-2", "#F0E8DB");
+      root.style.setProperty("--hs-text-main", "#3D2E1F");
+      root.style.setProperty("--hs-text-secondary", "#6B5744");
+      root.style.setProperty("--hs-border", "#E6D9C8");
+      root.classList.remove("dark-mode");
     } else {
-      // Default/Light
+      // Default/Light - original Headspace colors
       root.style.setProperty("--background", "#ffffff");
       root.style.setProperty("--foreground", "#393938");
       root.style.setProperty("--muted", "#F9F7F2");
       root.style.setProperty("--muted-foreground", "#5B6073");
       root.style.setProperty("--card", "#ffffff");
       root.style.setProperty("--card-foreground", "#393938");
+      root.style.setProperty("--popover", "#ffffff");
+      root.style.setProperty("--popover-foreground", "#393938");
       root.style.setProperty("--border", "#E9E7E2");
+      root.style.setProperty("--input", "#E9E7E2");
       root.style.setProperty("--primary", "#FF7E1D");
+      root.style.setProperty("--primary-foreground", "#ffffff");
+      root.style.setProperty("--secondary", "#0C6FF9");
+      root.style.setProperty("--secondary-foreground", "#ffffff");
+      root.style.setProperty("--accent", "#FFCE00");
+      root.style.setProperty("--accent-foreground", "#393938");
+      root.style.setProperty("--ring", "#FF7E1D");
+      // Headspace colors - original
+      root.style.setProperty("--hs-orange", "#FF7E1D");
+      root.style.setProperty("--hs-yellow", "#FFCE00");
+      root.style.setProperty("--hs-blue", "#0C6FF9");
+      root.style.setProperty("--hs-green", "#49A35B");
+      root.style.setProperty("--hs-pink", "#EF89C4");
+      root.style.setProperty("--hs-purple", "#9B75C1");
+      root.style.setProperty("--hs-teal", "#72BFBA");
+      root.style.setProperty("--hs-bg-1", "#F9F7F2");
+      root.style.setProperty("--hs-bg-2", "#F9F6F4");
+      root.style.setProperty("--hs-text-main", "#393938");
+      root.style.setProperty("--hs-text-secondary", "#5B6073");
+      root.style.setProperty("--hs-border", "#E9E7E2");
+      root.classList.remove("dark-mode");
     }
   }, [config.colorScheme]);
 
@@ -586,7 +658,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Top Banner - Headspace style */}
       <div className="bg-[#49A35B] text-white py-2 text-center text-sm">
         <Link href="#contact" className="hover:underline">
@@ -596,7 +668,7 @@ export default function Home() {
 
       {/* Navigation - Headspace style */}
       <nav
-        className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${
+        className={`sticky top-0 z-50 bg-card transition-shadow duration-300 ${
           scrolled ? "shadow-md" : ""
         }`}
       >
@@ -668,7 +740,7 @@ export default function Home() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t animate-fade-in">
+          <div className="md:hidden bg-card border-t border-border animate-fade-in">
             <div className="px-4 py-6 space-y-4">
               <Link
                 href="#services"
@@ -767,7 +839,7 @@ export default function Home() {
       </section>
 
       {/* Category Buttons Section - Headspace style */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center">
             What kind of support are you looking for?
@@ -947,7 +1019,7 @@ export default function Home() {
             {abaHelps.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-4xl p-6 text-center card-hover cursor-pointer flex flex-col items-center gap-3"
+                className="bg-card rounded-4xl p-6 text-center card-hover cursor-pointer flex flex-col items-center gap-3"
               >
                 <div
                   className={`w-16 h-16 ${item.color} rounded-full flex items-center justify-center`}
@@ -964,7 +1036,7 @@ export default function Home() {
       </section>
 
       {/* Team Section - Headspace style carousel */}
-      <section className="py-24 bg-white overflow-hidden flex flex-col gap-12">
+      <section className="py-24 bg-background overflow-hidden flex flex-col gap-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
           <div className="text-center flex flex-col gap-6">
             <h2 className="font-bold text-3xl md:text-4xl">
@@ -1074,7 +1146,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials - Headspace style */}
-      <section className="py-24 bg-white relative">
+      <section className="py-24 bg-background relative">
         {/* Floating decorative elements */}
         <DecorativeBlob
           icon={<IconFOrangeHeart size={32} />}
@@ -1237,7 +1309,7 @@ export default function Home() {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-white rounded-2xl px-6 border-0 shadow-sm"
+                className="bg-card rounded-2xl px-6 border-0 shadow-sm"
               >
                 <AccordionTrigger className="text-left text-base md:text-lg font-bold hover:no-underline py-5">
                   {faq.question}
