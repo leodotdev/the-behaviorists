@@ -220,6 +220,7 @@ const ConfigPanel = ({
     cornerStyle: "squircle" | "rounded";
     colorScheme: "default" | "warm" | "dark";
     font: "stack" | "bricolage";
+    fontSize: "regular" | "large" | "xl";
     showAnimations: boolean;
     showDecorations: boolean;
     compactMode: boolean;
@@ -373,6 +374,46 @@ const ConfigPanel = ({
               </div>
             </div>
 
+            {/* Font Size */}
+            <div className="space-y-2">
+              <label className="text-xs font-medium text-gray-700">
+                Font Size
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {(
+                  [
+                    { key: "regular", label: "Regular" },
+                    { key: "large", label: "Large" },
+                    { key: "xl", label: "XL" },
+                  ] as const
+                ).map(({ key, label }) => (
+                  <label
+                    key={key}
+                    className={`flex items-center justify-center p-2 rounded-lg cursor-pointer border transition-all text-xs ${
+                      config.fontSize === key
+                        ? "border-[#FF7E1D] bg-orange-50"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="fontSize"
+                      value={key}
+                      checked={config.fontSize === key}
+                      onChange={(e) =>
+                        setConfig((c) => ({
+                          ...c,
+                          fontSize: e.target.value as typeof key,
+                        }))
+                      }
+                      className="sr-only"
+                    />
+                    <span>{label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
             {/* Toggles */}
             <div className="space-y-3">
               <label className="text-xs font-medium text-gray-700">
@@ -433,6 +474,7 @@ const ConfigPanel = ({
                   cornerStyle: "squircle",
                   colorScheme: "default",
                   font: "stack",
+                  fontSize: "regular",
                   showAnimations: true,
                   showDecorations: true,
                   compactMode: false,
@@ -603,6 +645,7 @@ export default function Home() {
     cornerStyle: "squircle" as "squircle" | "rounded",
     colorScheme: "default" as "default" | "warm" | "dark",
     font: "stack" as "stack" | "bricolage",
+    fontSize: "regular" as "regular" | "large" | "xl",
     showAnimations: true,
     showDecorations: true,
     compactMode: false,
@@ -630,6 +673,13 @@ export default function Home() {
         : '"Stack Sans Headline"';
     document.documentElement.style.setProperty("--active-font", fontValue);
   }, [config.font]);
+
+  // Apply font size
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove("font-size-regular", "font-size-large", "font-size-xl");
+    root.classList.add(`font-size-${config.fontSize}`);
+  }, [config.fontSize]);
 
   // Apply animations toggle
   useEffect(() => {

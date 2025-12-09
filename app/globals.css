@@ -430,3 +430,70 @@
 .compact-mode h2 {
   font-size: 1.75rem !important;
 }
+
+/* Font size modes */
+.font-size-regular {
+  font-size: 100%;
+}
+
+.font-size-large {
+  font-size: 112.5%;
+}
+
+.font-size-large h1 {
+  font-size: 3.5rem !important;
+}
+
+.font-size-large h2 {
+  font-size: 2.5rem !important;
+}
+
+.font-size-large h3 {
+  font-size: 1.75rem !important;
+}
+
+.font-size-large p,
+.font-size-large span,
+.font-size-large button {
+  font-size: 1.125rem;
+}
+
+.font-size-xl {
+  font-size: 125%;
+}
+
+.font-size-xl h1 {
+  font-size: 4rem !important;
+}
+
+.font-size-xl h2 {
+  font-size: 3rem !important;
+}
+
+.font-size-xl h3 {
+  font-size: 2rem !important;
+}
+
+.font-size-xl p,
+.font-size-xl span,
+.font-size-xl button {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .font-size-large h1 {
+    font-size: 4.5rem !important;
+  }
+
+  .font-size-large h2 {
+    font-size: 3rem !important;
+  }
+
+  .font-size-xl h1 {
+    font-size: 5rem !important;
+  }
+
+  .font-size-xl h2 {
+    font-size: 3.5rem !important;
+  }
+}
