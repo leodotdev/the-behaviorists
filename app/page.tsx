@@ -1399,7 +1399,10 @@ export default function Home() {
       </section>
 
       {/* Insurance Marquee - Headspace style */}
-      <section className="py-24 bg-[#0C6FF9] text-white overflow-hidden flex flex-col gap-8">
+      <section
+        className="py-24 text-white overflow-hidden flex flex-col gap-8"
+        style={{ backgroundColor: config.colorScheme === "dark" ? "#1a365d" : "#0C6FF9" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-2">
           <Reveal>
             <h2 className="font-bold text-3xl md:text-4xl text-center">
@@ -1500,8 +1503,11 @@ export default function Home() {
             {processSteps.map((step, index) => (
               <Reveal key={index} delay={index * 0.15}>
                 <div className="text-center flex flex-col items-center gap-6">
-                  <div className="w-20 h-20 rounded-full bg-[#FFCE00] flex items-center justify-center">
-                    <step.icon className="w-10 h-10 text-foreground" />
+                  <div
+                    className="w-20 h-20 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: config.colorScheme === "dark" ? "#854d0e" : "#FFCE00" }}
+                  >
+                    <step.icon className={`w-10 h-10 ${config.colorScheme === "dark" ? "text-white" : "text-foreground"}`} />
                   </div>
                   <div className="flex flex-col gap-2">
                     <h3 className="text-xl md:text-2xl font-bold">
@@ -1566,7 +1572,8 @@ export default function Home() {
       {/* CTA Section - Headspace style */}
       <section
         id="contact"
-        className="py-24 bg-[#FF7E1D] relative overflow-hidden"
+        className="py-24 relative overflow-hidden"
+        style={{ backgroundColor: config.colorScheme === "dark" ? "#7c2d12" : "#FF7E1D" }}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col gap-10">
           <Reveal>
@@ -1587,7 +1594,7 @@ export default function Home() {
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full bg-white text-[#FF7E1D] hover:bg-white/90 btn-headspace px-8"
+                  className={`rounded-full btn-headspace px-8 ${config.colorScheme === "dark" ? "bg-white/90 text-[#7c2d12] hover:bg-white" : "bg-white text-[#FF7E1D] hover:bg-white/90"}`}
                 >
                   <a href="tel:786-860-5161" className="flex items-center gap-2">
                     <Phone className="w-5 h-5" />
